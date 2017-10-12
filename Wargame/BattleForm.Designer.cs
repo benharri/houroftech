@@ -45,7 +45,8 @@
             // 
             // txtLog
             // 
-            this.txtLog.BackColor = System.Drawing.Color.White;
+            this.txtLog.BackColor = System.Drawing.Color.Black;
+            this.txtLog.ForeColor = System.Drawing.SystemColors.Window;
             this.txtLog.Location = new System.Drawing.Point(12, 12);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
