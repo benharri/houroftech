@@ -31,11 +31,21 @@ namespace Wargame
         internal void StartNextRound(GameData gameData)
         {
             gameData.RoundOrder.Clear();
-            // todo: implement this
-            while (gameData.RoundOrder.Count < gameData.Team1.Count + gameData.Team2.Count)
+
+            var lstInitiatives = (from c in gameData.Team1.Concat(gameData.Team2)
+                                  select new
+                                  {
+                                    TheCharacter = c,
+                                    InitiativeRoll = RollDice(1, 20)
+                                  });
+
+            foreach(var i in lstInitiatives.OrderBy(l => l.InitiativeRoll))
             {
-                // todo: randomly choose a character not in RoundOrder and add it to the stack.
+                i.TheCharacter.InitiativeRoll = i.InitiativeRoll;
+                gameData.RoundOrder.Push(i.TheCharacter);
             }
+            
+            //todo: add stat modifier
         }
     }
 }

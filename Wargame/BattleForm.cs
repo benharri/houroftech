@@ -59,8 +59,18 @@ namespace Wargame
         private void RefreshLog()
         {
             OutputCharacterStats();
+            OutputInitiativeOrder();
             OutputMessages();
             messages.Clear();
+        }
+
+        private void OutputInitiativeOrder()
+        {
+            messages.AppendLine("Initiative Rolls: ");
+            foreach(var character in gameData.RoundOrder)
+            {
+                messages.AppendLine(character.Name + ": " + character.InitiativeRoll);
+            }
         }
 
         private void OutputMessages()
@@ -90,10 +100,16 @@ namespace Wargame
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
+            //todo: take next attacker from round stack
+            //todo: make sure attacker is still alive
+            //todo: choose and alive defnder
+            //todo: process attack
+            //todo: check if round is done and start next round if anyone is still alive
             messages.AppendLine(engine.DoAttack(gameData.Team1.First(), gameData.Team2.First()));
             messages.AppendLine(engine.DoAttack(gameData.Team2.First(), gameData.Team1.First()));
             RefreshLog();
         }
 
+        //todo: display initiative order
     }
 }
