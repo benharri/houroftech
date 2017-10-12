@@ -19,7 +19,7 @@ namespace Wargame
         {
             InitializeComponent();
             messages = new StringBuilder();
-            CreateGrid();
+            //CreateGrid();
             btnAttack.Enabled = false;
         }
 
@@ -55,49 +55,22 @@ namespace Wargame
 
         private void RefreshLog()
         {
-            OutputCharacterStats();
-            OutputInitiativeOrder();
-            OutputMessages();
             messages.Clear();
-        }
+            messages.AppendLine("\r\nCharacters:");
+            foreach (var c in gameData.Team1.Concat(gameData.Team2))
+                messages.AppendLine($"  {c.ToString()}");
 
-        private void OutputInitiativeOrder()
-        {
             messages.AppendLine("\r\nInitiative:");
             foreach (var c in gameData.RoundOrder)
-            {
-                messages.AppendLine($"{c.Name}: {c.Initiative}");
-            }
-        }
+                messages.AppendLine($"  {c.Initiative}: {c.Name}");
 
-        private void OutputMessages()
-        {
             txtLog.Text = messages.ToString();
         }
-
-        private void OutputCharacterStats()
-        {
-            foreach (var c in gameData.Team1)
-            {
-                OutputCharacter(c);
-            }
-
-            foreach (var c in gameData.Team2)
-            {
-                OutputCharacter(c);
-            }
-        }
-
-
-        private void OutputCharacter(Character character)
-        {
-            messages.AppendLine($"{character.Name}: {character.CurrentHP}/{character.MaxHP} HP");
-        }
-
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
+
             var attacker = gameData.RoundOrder.Pop();
             if (attacker.CurrentHP < 1)
             {
@@ -115,9 +88,7 @@ namespace Wargame
             }
             messages.AppendLine(engine.DoAttack(attacker, defender));
 
-            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0)
-                ||
-                !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
+            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0) || !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
             {
                 btnAttack.Enabled = false;
                 messages.AppendLine("game over");

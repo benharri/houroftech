@@ -35,40 +35,45 @@
             // 
             // btnCreateGame
             // 
-            this.btnCreateGame.Location = new System.Drawing.Point(427, 12);
+            this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateGame.Location = new System.Drawing.Point(535, 12);
             this.btnCreateGame.Name = "btnCreateGame";
-            this.btnCreateGame.Size = new System.Drawing.Size(75, 36);
+            this.btnCreateGame.Size = new System.Drawing.Size(138, 36);
             this.btnCreateGame.TabIndex = 0;
-            this.btnCreateGame.Text = "Create Game";
+            this.btnCreateGame.Text = "New Game";
             this.btnCreateGame.UseVisualStyleBackColor = true;
             this.btnCreateGame.Click += new System.EventHandler(this.btnCreateGame_Click);
             // 
             // txtLog
             // 
             this.txtLog.BackColor = System.Drawing.Color.Black;
-            this.txtLog.ForeColor = System.Drawing.SystemColors.Window;
+            this.txtLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLog.ForeColor = System.Drawing.Color.Lime;
             this.txtLog.Location = new System.Drawing.Point(12, 12);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(276, 314);
+            this.txtLog.Size = new System.Drawing.Size(517, 351);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
             // 
-            this.btnAttack.Location = new System.Drawing.Point(295, 302);
+            this.btnAttack.BackColor = System.Drawing.Color.Maroon;
+            this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAttack.Location = new System.Drawing.Point(535, 281);
             this.btnAttack.Name = "btnAttack";
-            this.btnAttack.Size = new System.Drawing.Size(207, 24);
+            this.btnAttack.Size = new System.Drawing.Size(138, 82);
             this.btnAttack.TabIndex = 2;
             this.btnAttack.Text = "Attack";
-            this.btnAttack.UseVisualStyleBackColor = true;
+            this.btnAttack.UseVisualStyleBackColor = false;
             this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
             // 
             // BattleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 375);
+            this.ClientSize = new System.Drawing.Size(685, 375);
             this.Controls.Add(this.btnAttack);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnCreateGame);
