@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wargame
 {
@@ -11,14 +8,9 @@ namespace Wargame
         private Random rng = new Random();
 
 
-        internal int RollDice(int num, int sides)
+        internal int RollDice(int num = 1, int sides = 6)
         {
-            var total = 0;
-            for (var i = 0; i < num; i++)
-            {
-                total += rng.Next(sides) + 1;
-            }
-            return total;
+            return Enumerable.Range(1, num).Aggregate(0, (acc, _) => acc += rng.Next(1, sides + 1));
         }
 
         internal string DoAttack(Character attacker, Character defender)
@@ -31,21 +23,20 @@ namespace Wargame
         internal void StartNextRound(GameData gameData)
         {
             gameData.RoundOrder.Clear();
+            var initlist = (from c in gameData.Team1.Concat(gameData.Team2)
+                            where c.CurrentHP > 0
+                            select new
+                            {
+                                aCharacter = c,
+                                InitiativeRoll = RollDice(1, 20)
+                            });
 
-            var lstInitiatives = (from c in gameData.Team1.Concat(gameData.Team2)
-                                  select new
-                                  {
-                                    TheCharacter = c,
-                                    InitiativeRoll = RollDice(1, 20)
-                                  });
-
-            foreach(var i in lstInitiatives.OrderBy(l => l.InitiativeRoll))
+            foreach (var i in initlist.OrderBy(l => l.InitiativeRoll))
             {
-                i.TheCharacter.InitiativeRoll = i.InitiativeRoll;
-                gameData.RoundOrder.Push(i.TheCharacter);
+                gameData.RoundOrder.Push(i.aCharacter);
+                i.aCharacter.Initiative = i.InitiativeRoll;
             }
-            
-            //todo: add stat modifier
+            // todo: add stat modifiers
         }
     }
 }

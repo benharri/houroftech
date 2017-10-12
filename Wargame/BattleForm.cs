@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Wargame
@@ -66,10 +63,10 @@ namespace Wargame
 
         private void OutputInitiativeOrder()
         {
-            messages.AppendLine("Initiative Rolls: ");
-            foreach(var character in gameData.RoundOrder)
+            messages.AppendLine("\r\nInitiative:");
+            foreach (var c in gameData.RoundOrder)
             {
-                messages.AppendLine(character.Name + ": " + character.InitiativeRoll);
+                messages.AppendLine($"{c.Name}: {c.Initiative}");
             }
         }
 
@@ -100,44 +97,38 @@ namespace Wargame
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
-            //take next attacker from round stack
+            btnAttack.Enabled = false;
             var attacker = gameData.RoundOrder.Pop();
-            //make sure attacker is still alive
-            if(attacker.CurrentHP < 1)
+            if (attacker.CurrentHP < 1)
             {
-                messages.AppendLine("Attacker is down");
+                messages.AppendLine($"{attacker.Name} died");
                 return;
             }
-            //choose and alive defender
-            var opposingTeam = gameData.Team1.Contains(attacker) ? gameData.Team2 : gameData.Team1;
-            var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
-            
-            if(defender == null)
-            {
-                messages.AppendLine("No standing defenders");
-                return;
-            }
-            //process attack
-            var result = engine.DoAttack(attacker, defender);
-            messages.AppendLine(result);
-            //todo: check if round is done and start next round if anyone is still alive
-            messages.AppendLine(engine.DoAttack(gameData.Team1.First(), gameData.Team2.First()));
-            messages.AppendLine(engine.DoAttack(gameData.Team2.First(), gameData.Team1.First()));
-            RefreshLog();
 
-            //todo: check if one side has one and end fight if so
-            if(!gameData.Team1.Any(t1 => t1.CurrentHP > 0) || !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
+            var opposingTeam = gameData.Team1.Contains(attacker) ? gameData.Team2 : gameData.Team1;
+            // todo: attack someone other than the first living person on the opposingTeam
+            var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
+            if (defender == null)
+            {
+                messages.AppendLine($"no standing defenders");
+                return;
+            }
+            messages.AppendLine(engine.DoAttack(attacker, defender));
+
+            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0)
+                ||
+                !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
             {
                 btnAttack.Enabled = false;
-                messages.AppendLine("Game Over");
-                //todo: start caring about who won
-                //todo: don't just end completely after one fight
-            }
-            //check if round done and start next round if anyone is still alive
-            if (!gameData.RoundOrder.Any())
-            {
-                engine.StartNextRound(gameData);
-            }
+                messages.AppendLine("game over");
+                // todo: start caring about who won
+                // todo: don't just end after the fight
+            } 
+
+            if (!gameData.RoundOrder.Any()) engine.StartNextRound(gameData);
+
+            RefreshLog();
+            btnAttack.Enabled = true;
         }
 
         //todo: display initiative order
