@@ -131,5 +131,6 @@ namespace Wargame
             btnAttack.Enabled = true;
         }
 
+        //todo: display initiative order
     }
 }
