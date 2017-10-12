@@ -57,7 +57,7 @@
             // 
             this.btnAttack.Location = new System.Drawing.Point(295, 302);
             this.btnAttack.Name = "btnAttack";
-            this.btnAttack.Size = new System.Drawing.Size(75, 24);
+            this.btnAttack.Size = new System.Drawing.Size(207, 24);
             this.btnAttack.TabIndex = 2;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = true;

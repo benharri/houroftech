@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Wargame
@@ -59,8 +56,18 @@ namespace Wargame
         private void RefreshLog()
         {
             OutputCharacterStats();
+            OutputInitiativeOrder();
             OutputMessages();
             messages.Clear();
+        }
+
+        private void OutputInitiativeOrder()
+        {
+            messages.AppendLine("\r\nInitiative:");
+            foreach (var c in gameData.RoundOrder)
+            {
+                messages.AppendLine($"{c.Name}: {c.Initiative}");
+            }
         }
 
         private void OutputMessages()
@@ -90,9 +97,38 @@ namespace Wargame
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
-            messages.AppendLine(engine.DoAttack(gameData.Team1.First(), gameData.Team2.First()));
-            messages.AppendLine(engine.DoAttack(gameData.Team2.First(), gameData.Team1.First()));
+            btnAttack.Enabled = false;
+            var attacker = gameData.RoundOrder.Pop();
+            if (attacker.CurrentHP < 1)
+            {
+                messages.AppendLine($"{attacker.Name} died");
+                return;
+            }
+
+            var opposingTeam = gameData.Team1.Contains(attacker) ? gameData.Team2 : gameData.Team1;
+            // todo: attack someone other than the first living person on the opposingTeam
+            var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
+            if (defender == null)
+            {
+                messages.AppendLine($"no standing defenders");
+                return;
+            }
+            messages.AppendLine(engine.DoAttack(attacker, defender));
+
+            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0)
+                ||
+                !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
+            {
+                btnAttack.Enabled = false;
+                messages.AppendLine("game over");
+                // todo: start caring about who won
+                // todo: don't just end after the fight
+            } 
+
+            if (!gameData.RoundOrder.Any()) engine.StartNextRound(gameData);
+
             RefreshLog();
+            btnAttack.Enabled = true;
         }
 
     }

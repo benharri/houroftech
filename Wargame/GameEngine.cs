@@ -15,21 +15,28 @@ namespace Wargame
 
         internal string DoAttack(Character attacker, Character defender)
         {
-            return $"{attacker.Name} dealt {defender.CurrentHP -= RollDice(1, 6)} damage to {defender.Name}";
-            //var dmg = RollDice(1, 6);
-            //defender.CurrentHP -= dmg;
-            //return $"{attacker.Name} dealt {dmg} damage to {defender.Name}";
+            var dmg = RollDice(1, 6);
+            defender.CurrentHP -= dmg;
+            return $"{attacker.Name} dealt {dmg} damage to {defender.Name}";
         }
 
         internal void StartNextRound(GameData gameData)
         {
             gameData.RoundOrder.Clear();
-            // todo: implement this
+            var initlist = (from c in gameData.Team1.Concat(gameData.Team2)
+                            where c.CurrentHP > 0
+                            select new
+                            {
+                                aCharacter = c,
+                                InitiativeRoll = RollDice(1, 20)
+                            });
 
-            while (gameData.RoundOrder.Count < gameData.Team1.Count + gameData.Team2.Count)
+            foreach (var i in initlist.OrderBy(l => l.InitiativeRoll))
             {
-                // todo: randomly choose a character not in RoundOrder and add it to the stack.
+                gameData.RoundOrder.Push(i.aCharacter);
+                i.aCharacter.Initiative = i.InitiativeRoll;
             }
+            // todo: add stat modifiers
         }
     }
 }
