@@ -17,11 +17,16 @@ namespace Wargame
         {
             var dmg = RollDice(1, 6);
             defender.CurrentHP -= dmg;
+            if (defender.CurrentHP < 1)
+            {
+                return $"{attacker.Name} killed {defender.Name} (by dealing {dmg} damage)";
+            }
             return $"{attacker.Name} dealt {dmg} damage to {defender.Name}";
         }
 
         internal void StartNextRound(GameData gameData)
         {
+            gameData.RoundNumber++;
             gameData.RoundOrder.Clear();
             var initlist = (from c in gameData.Team1.Concat(gameData.Team2)
                             where c.CurrentHP > 0

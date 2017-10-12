@@ -12,8 +12,8 @@ namespace Wargame
         {
             var c = new Character();
             c.Name = name;
-            c.MaxHP = 100;
-            c.CurrentHP = 100;
+            c.MaxHP = 20;
+            c.CurrentHP = 20;
             return c;
         }
     }

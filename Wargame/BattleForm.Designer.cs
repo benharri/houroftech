@@ -78,7 +78,7 @@
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnCreateGame);
             this.Name = "BattleForm";
-            this.Text = "Battle";
+            this.Text = "Wargame";
             this.ResumeLayout(false);
             this.PerformLayout();
 

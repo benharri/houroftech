@@ -55,26 +55,38 @@ namespace Wargame
 
         private void RefreshLog()
         {
-            messages.Clear();
-            messages.AppendLine("\r\nCharacters:");
-            foreach (var c in gameData.Team1.Concat(gameData.Team2))
-                messages.AppendLine($"  {c.ToString()}");
-
-            messages.AppendLine("\r\nInitiative:");
-            foreach (var c in gameData.RoundOrder)
-                messages.AppendLine($"  {c.Initiative}: {c.Name}");
-
+            messages.Append(gameData.ToString());
             txtLog.Text = messages.ToString();
+            messages.Clear();
         }
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
 
+            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0))
+            {
+                btnAttack.Enabled = false;
+                messages.AppendLine("Team 2 won!");
+                RefreshLog();
+                return;
+            }
+            else if (!gameData.Team2.Any(t2 => t2.CurrentHP > 0))
+            {
+                btnAttack.Enabled = false;
+                messages.AppendLine("Team 1 won!");
+                RefreshLog();
+                return;
+                // todo: don't just end after the fight
+            } 
+
             var attacker = gameData.RoundOrder.Pop();
             if (attacker.CurrentHP < 1)
             {
-                messages.AppendLine($"{attacker.Name} died");
+                messages.AppendLine($"{attacker.Name} can't attack because they're dead");
+                RefreshLog();
+                if (!gameData.RoundOrder.Any()) engine.StartNextRound(gameData);
+                btnAttack.Enabled = true;
                 return;
             }
 
@@ -83,18 +95,14 @@ namespace Wargame
             var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
             if (defender == null)
             {
-                messages.AppendLine($"no standing defenders");
+                messages.AppendLine($"game over");
+                RefreshLog();
                 return;
             }
-            messages.AppendLine(engine.DoAttack(attacker, defender));
-
-            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0) || !gameData.Team2.Any(t2 => t2.CurrentHP > 0))
+            else
             {
-                btnAttack.Enabled = false;
-                messages.AppendLine("game over");
-                // todo: start caring about who won
-                // todo: don't just end after the fight
-            } 
+                messages.AppendLine(engine.DoAttack(attacker, defender));
+            }
 
             if (!gameData.RoundOrder.Any()) engine.StartNextRound(gameData);
 
