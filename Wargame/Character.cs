@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"{Name}: {(CurrentHP < 1 ? "[X] ": "")}{CurrentHP}/{MaxHP} HP ({Initiative})";
+            return $"{(CurrentHP < 1 ? "X" : " ")} {Name}: \t{CurrentHP}/{MaxHP} HP ({Initiative})";
         }
     }
 }
