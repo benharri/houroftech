@@ -40,14 +40,12 @@ namespace Wargame
         private void btnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
+            var status = engine.ProcessAttack();
+            msgs.AppendLine(status.Item2);
 
-            var atk = engine.ProcessAttack();
-            var gameOver = atk == "";
-            if (!gameOver) msgs.AppendLine(atk);
-
-            if (!gameOver && !gameData.RoundOrder.Any()) engine.StartNextRound();
+            if (!gameData.RoundOrder.Any()) engine.StartNextRound();
             RefreshLog();
-            btnAttack.Enabled = !gameOver;
+            btnAttack.Enabled = !status.Item1;
         }
 
     }

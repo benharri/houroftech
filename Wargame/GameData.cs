@@ -23,7 +23,8 @@ namespace Wargame
         {
             StringBuilder roster = new StringBuilder();
             roster.AppendLine($"Team {team}:");
-            foreach (var c in team == 1 ? Team1 : Team2) roster.AppendLine($"  {c.ToString()}");
+            foreach (var c in team == 1 ? Team1 : Team2)
+                roster.AppendLine($"  {c.ToString()}");
             return roster.ToString();
         }
 

@@ -48,32 +48,23 @@ namespace Wargame
             // todo: add stat modifiers
         }
 
-        internal string CheckWin()
+        internal Tuple<bool, string> ProcessAttack()
         {
             if (!gd.Team1.Any(t1 => t1.CurrentHP > 0)) // no one alive on team1
-                return "Team 2 won!\r\n";
+                return Tuple.Create(true, "Team 2 won!\r\nGame Over\r\n");
             else if (!gd.Team2.Any(t2 => t2.CurrentHP > 0)) // no one alive on team2
-                return "Team 1 won!\r\n";
-            else
-                return "";
-        }
-
-        internal string ProcessAttack()
-        {
-            var win = CheckWin();
-            var gameOver = win != "";
-            if (gameOver) return win;
+                return Tuple.Create(true, "Team 1 won!\r\nGame Over\r\n");
 
             var attacker = gd.RoundOrder.Pop();
             if (attacker.CurrentHP < 1)
-                return $"{attacker.Name} can't attack because they're dead. skipping to next player.\r\n";
+                return Tuple.Create(false, $"{attacker.Name} can't attack because they're dead. skipping to next player.\r\n");
 
             var opposingTeam = gd.Team1.Contains(attacker) ? gd.Team2 : gd.Team1;
             var defender = opposingTeam
                 .Where(x => x.CurrentHP > 0)
                 .ToArray()
                 [rng.Next(opposingTeam.Count(x => x.CurrentHP > 0))];
-            return $"{DoAttack(attacker, defender)}\r\n";
+            return Tuple.Create(false, $"{DoAttack(attacker, defender)}\r\n");
         }
     }
 }
