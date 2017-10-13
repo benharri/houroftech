@@ -10,46 +10,46 @@ namespace Wargame
     public partial class BattleForm : Form
     {
         private GameData gameData { get; set; }
-        private StringBuilder messages { get; set; }
-        private GameEngine engine = new GameEngine();
+        private StringBuilder msgs { get; set; }
+        private GameEngine engine { get; set; }
 
 
         public BattleForm()
         {
             InitializeComponent();
-            messages = new StringBuilder();
+            msgs = new StringBuilder();
             btnAttack.Enabled = false;
         }
 
         private void btnCreateGame_Click(object sender, EventArgs e)
         {
-            var gf = new GameFactory();
-            gameData = gf.CreateNewGame();
-            engine.StartNextRound(gameData);
+            gameData = (new GameFactory()).CreateNewGame();
+            engine = new GameEngine(gameData);
+            engine.StartNextRound();
             btnAttack.Enabled = true;
             RefreshLog();
         }
 
         private void RefreshLog()
         {
-            messages.Append(gameData.ToString());
-            txtLog.Text = messages.ToString();
-            messages.Clear();
+            msgs.Append(gameData.ToString());
+            txtLog.Text = msgs.ToString();
+            msgs.Clear();
         }
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
 
-            var win = engine.CheckWin(gameData);
+            var win = engine.CheckWin();
             var gameOver = win == "";
-            if (!gameOver) messages.AppendLine(win);
+            if (!gameOver) msgs.AppendLine(win);
 
-            var atk = engine.ProcessAttack(gameData);
+            var atk = engine.ProcessAttack();
             gameOver = atk == "";
-            if (!gameOver) messages.AppendLine(atk);
+            if (!gameOver) msgs.AppendLine(atk);
 
-            if (!gameOver && !gameData.RoundOrder.Any()) engine.StartNextRound(gameData);
+            if (!gameOver && !gameData.RoundOrder.Any()) engine.StartNextRound();
             RefreshLog();
             btnAttack.Enabled = !gameOver;
         }

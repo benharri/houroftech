@@ -35,13 +35,14 @@
             // 
             // btnCreateGame
             // 
+            this.btnCreateGame.BackColor = System.Drawing.Color.Olive;
             this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateGame.Location = new System.Drawing.Point(616, 12);
+            this.btnCreateGame.Location = new System.Drawing.Point(760, 12);
             this.btnCreateGame.Name = "btnCreateGame";
             this.btnCreateGame.Size = new System.Drawing.Size(138, 36);
             this.btnCreateGame.TabIndex = 0;
             this.btnCreateGame.Text = "New Game";
-            this.btnCreateGame.UseVisualStyleBackColor = true;
+            this.btnCreateGame.UseVisualStyleBackColor = false;
             this.btnCreateGame.Click += new System.EventHandler(this.btnCreateGame_Click);
             // 
             // txtLog
@@ -53,7 +54,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(598, 454);
+            this.txtLog.Size = new System.Drawing.Size(742, 632);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -61,7 +62,7 @@
             this.btnAttack.BackColor = System.Drawing.Color.Maroon;
             this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttack.Location = new System.Drawing.Point(616, 384);
+            this.btnAttack.Location = new System.Drawing.Point(760, 562);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(138, 82);
             this.btnAttack.TabIndex = 2;
@@ -73,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 478);
+            this.ClientSize = new System.Drawing.Size(910, 656);
             this.Controls.Add(this.btnAttack);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnCreateGame);
