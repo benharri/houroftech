@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Wargame
@@ -18,9 +19,7 @@ namespace Wargame
             var dmg = RollDice(1, 6);
             defender.CurrentHP -= dmg;
             if (defender.CurrentHP < 1)
-            {
                 return $"{attacker.Name} killed {defender.Name} (by dealing {dmg} damage)";
-            }
             return $"{attacker.Name} dealt {dmg} damage to {defender.Name}";
         }
 
@@ -42,6 +41,31 @@ namespace Wargame
                 i.aCharacter.Initiative = i.InitiativeRoll;
             }
             // todo: add stat modifiers
+        }
+
+        public string CheckWin(GameData gameData)
+        {
+            if (!gameData.Team1.Any(t1 => t1.CurrentHP > 0)) // no one alive on team1
+                return "Team 2 won!";
+            else if (!gameData.Team2.Any(t2 => t2.CurrentHP > 0)) // no one alive on team2
+                return "Team 1 won!";
+            else
+                return "";
+        }
+
+        internal string ProcessAttack(GameData gameData)
+        {
+            var attacker = gameData.RoundOrder.Pop();
+            if (attacker.CurrentHP < 1)
+                return $"{attacker.Name} can't attack because they're dead. skipping to next player.";
+
+            var opposingTeam = gameData.Team1.Contains(attacker) ? gameData.Team2 : gameData.Team1;
+            // todo: attack someone other than the first living person on the opposingTeam
+            var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
+            if (defender == null)
+                return "";
+            else
+                return DoAttack(attacker, defender);
         }
     }
 }

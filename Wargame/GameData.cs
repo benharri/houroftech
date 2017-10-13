@@ -16,13 +16,15 @@ namespace Wargame
         public override string ToString()
         {
             StringBuilder messages = new StringBuilder();
-            messages.AppendLine("\r\nCharacters:");
-            foreach (var c in Team1.Concat(Team2))
-                messages.AppendLine($"  {c.ToString()}");
+
+            messages.AppendLine("\r\nTeam 1:");
+            foreach (var c in Team1) messages.AppendLine($"  {c.ToString()}");
+            messages.AppendLine("\r\nTeam 2:");
+            foreach (var c in Team2) messages.AppendLine($"  {c.ToString()}");
 
             messages.AppendLine($"\r\nRound {RoundNumber}\r\nInitiative:");
-            foreach (var c in RoundOrder)
-                messages.AppendLine($"  {c.Initiative}: {c.Name}");
+            foreach (var c in RoundOrder) messages.AppendLine($"  {c.Initiative}: {c.Name}");
+
             return messages.ToString();
         }
     }
