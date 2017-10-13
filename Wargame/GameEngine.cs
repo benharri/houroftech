@@ -60,6 +60,10 @@ namespace Wargame
 
         internal string ProcessAttack()
         {
+            var win = CheckWin();
+            var gameOver = win != "";
+            if (gameOver) return win;
+
             var attacker = gd.RoundOrder.Pop();
             if (attacker.CurrentHP < 1)
                 return $"{attacker.Name} can't attack because they're dead. skipping to next player.";

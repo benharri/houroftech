@@ -39,12 +39,8 @@ namespace Wargame
         {
             btnAttack.Enabled = false;
 
-            var win = engine.CheckWin();
-            var gameOver = win == "";
-            if (!gameOver) msgs.AppendLine(win);
-
             var atk = engine.ProcessAttack();
-            gameOver = atk == "";
+            var gameOver = atk == "";
             if (!gameOver) msgs.AppendLine(atk);
 
             if (!gameOver && !gameData.RoundOrder.Any()) engine.StartNextRound();
