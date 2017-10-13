@@ -7,7 +7,7 @@ namespace Wargame
 {
     public partial class BattleForm : Form
     {
-        private GameData gameData { get; set; }
+        private GameData gd { get; set; }
         private StringBuilder msgs { get; set; }
         private GameEngine engine { get; set; }
 
@@ -21,8 +21,8 @@ namespace Wargame
 
         private void btnCreateGame_Click(object sender, EventArgs e)
         {
-            gameData = (new GameFactory()).CreateNewGame();
-            engine = new GameEngine(gameData);
+            gd = (new GameFactory()).CreateNewGame();
+            engine = new GameEngine(gd);
             engine.StartNextRound();
             btnAttack.Enabled = true;
             RefreshLog();
@@ -30,20 +30,20 @@ namespace Wargame
 
         private void RefreshLog()
         {
-            msgs.Append(gameData.ToString());
-            txtLog.Text = msgs.ToString();
-            txtTeam1.Text = gameData.teamRoster(1);
-            txtTeam2.Text = gameData.teamRoster(2);
+            txtLog.Text = msgs.Append(gd).ToString();
+            txtTeam1.Text = gd.TeamRoster(1);
+            txtTeam2.Text = gd.TeamRoster(2);
             msgs.Clear();
         }
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
-            var status = engine.ProcessAttack();
-            msgs.AppendLine(status.Item2);
 
-            if (!gameData.RoundOrder.Any()) engine.StartNextRound();
+            var status = engine.ProcessAttack();
+            msgs.AppendLine($"{status.Item2}\r\n");
+
+            if (!gd.RoundOrder.Any()) engine.StartNextRound();
             RefreshLog();
             btnAttack.Enabled = !status.Item1;
         }

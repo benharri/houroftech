@@ -13,18 +13,27 @@ namespace Wargame
 
         public override string ToString()
         {
-            StringBuilder messages = new StringBuilder();
-            messages.AppendLine($"Round {RoundNumber}\r\nInitiative:");
-            foreach (var c in RoundOrder) messages.AppendLine($"  {c.Initiative}: {c.Name}");
-            return messages.ToString();
+            return InitiativeList();
         }
 
-        internal string teamRoster(int team = 1)
+        internal string InitiativeList()
+        {
+            StringBuilder initiativeList = new StringBuilder();
+            initiativeList.AppendLine($"Round {RoundNumber}\r\nInitiative:");
+            foreach (var c in RoundOrder)
+                initiativeList.AppendLine($"  {c.Initiative}: {c.Name}");
+            return initiativeList.ToString();
+        }
+
+        internal string TeamRoster(int team = 1)
         {
             StringBuilder roster = new StringBuilder();
             roster.AppendLine($"Team {team}:");
             foreach (var c in team == 1 ? Team1 : Team2)
-                roster.AppendLine($"{c.ToString()}");
+            {
+                roster.Append(c);
+                roster.AppendLine();
+            }
             return roster.ToString();
         }
 

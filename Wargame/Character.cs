@@ -6,10 +6,14 @@
         public int MaxHP { get; set; }
         public int CurrentHP { get; set; }
         public int Initiative { get; set; }
+        public bool Alive
+        {
+            get { return CurrentHP > 0; }
+        }
 
         public override string ToString()
         {
-            return $"{(CurrentHP < 1 ? "X" : " ")} {Name}: \t{CurrentHP}/{MaxHP} HP ({Initiative})";
+            return $"{(Alive ? " " : "X")} {Name}: \t{CurrentHP}/{MaxHP} HP ({Initiative})";
         }
     }
 }
