@@ -48,7 +48,7 @@ namespace Wargame
             // todo: add stat modifiers
         }
 
-        public string CheckWin()
+        internal string CheckWin()
         {
             if (!gd.Team1.Any(t1 => t1.CurrentHP > 0)) // no one alive on team1
                 return "Team 2 won!";
