@@ -51,9 +51,9 @@ namespace Wargame
         internal string CheckWin()
         {
             if (!gd.Team1.Any(t1 => t1.CurrentHP > 0)) // no one alive on team1
-                return "Team 2 won!";
+                return "Team 2 won!\r\n";
             else if (!gd.Team2.Any(t2 => t2.CurrentHP > 0)) // no one alive on team2
-                return "Team 1 won!";
+                return "Team 1 won!\r\n";
             else
                 return "";
         }
@@ -66,15 +66,14 @@ namespace Wargame
 
             var attacker = gd.RoundOrder.Pop();
             if (attacker.CurrentHP < 1)
-                return $"{attacker.Name} can't attack because they're dead. skipping to next player.";
+                return $"{attacker.Name} can't attack because they're dead. skipping to next player.\r\n";
 
             var opposingTeam = gd.Team1.Contains(attacker) ? gd.Team2 : gd.Team1;
-            // todo: attack someone other than the first living person on the opposingTeam
-            var defender = opposingTeam.FirstOrDefault(d => d.CurrentHP > 0);
-            if (defender == null)
-                return "";
-            else
-                return DoAttack(attacker, defender);
+            var defender = opposingTeam
+                .Where(x => x.CurrentHP > 0)
+                .ToArray()
+                [rng.Next(opposingTeam.Count(x => x.CurrentHP > 0))];
+            return $"{DoAttack(attacker, defender)}\r\n";
         }
     }
 }

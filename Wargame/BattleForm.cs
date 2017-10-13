@@ -32,6 +32,8 @@ namespace Wargame
         {
             msgs.Append(gameData.ToString());
             txtLog.Text = msgs.ToString();
+            txtTeam1.Text = gameData.teamRoster(1);
+            txtTeam2.Text = gameData.teamRoster(2);
             msgs.Clear();
         }
 
