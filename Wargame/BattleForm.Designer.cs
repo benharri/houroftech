@@ -31,6 +31,8 @@
             this.btnCreateGame = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.btnAttack = new System.Windows.Forms.Button();
+            this.txtTeam2 = new System.Windows.Forms.TextBox();
+            this.txtTeam1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCreateGame
@@ -50,11 +52,11 @@
             this.txtLog.BackColor = System.Drawing.Color.Black;
             this.txtLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLog.ForeColor = System.Drawing.Color.Lime;
-            this.txtLog.Location = new System.Drawing.Point(12, 12);
+            this.txtLog.Location = new System.Drawing.Point(12, 315);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(742, 632);
+            this.txtLog.Size = new System.Drawing.Size(742, 329);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -70,11 +72,39 @@
             this.btnAttack.UseVisualStyleBackColor = false;
             this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
             // 
+            // txtTeam2
+            // 
+            this.txtTeam2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtTeam2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTeam2.ForeColor = System.Drawing.Color.LimeGreen;
+            this.txtTeam2.Location = new System.Drawing.Point(12, 41);
+            this.txtTeam2.Multiline = true;
+            this.txtTeam2.Name = "txtTeam2";
+            this.txtTeam2.ReadOnly = true;
+            this.txtTeam2.Size = new System.Drawing.Size(365, 268);
+            this.txtTeam2.TabIndex = 3;
+            this.txtTeam2.TabStop = false;
+            // 
+            // txtTeam1
+            // 
+            this.txtTeam1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtTeam1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTeam1.ForeColor = System.Drawing.Color.LimeGreen;
+            this.txtTeam1.Location = new System.Drawing.Point(383, 41);
+            this.txtTeam1.Multiline = true;
+            this.txtTeam1.Name = "txtTeam1";
+            this.txtTeam1.ReadOnly = true;
+            this.txtTeam1.Size = new System.Drawing.Size(371, 268);
+            this.txtTeam1.TabIndex = 4;
+            this.txtTeam1.TabStop = false;
+            // 
             // BattleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 656);
+            this.Controls.Add(this.txtTeam1);
+            this.Controls.Add(this.txtTeam2);
             this.Controls.Add(this.btnAttack);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnCreateGame);
@@ -90,6 +120,8 @@
         private System.Windows.Forms.Button btnCreateGame;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button btnAttack;
+        private System.Windows.Forms.TextBox txtTeam2;
+        private System.Windows.Forms.TextBox txtTeam1;
     }
 }
 
