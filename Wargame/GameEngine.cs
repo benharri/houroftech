@@ -23,10 +23,9 @@ namespace Wargame
         internal string DoAttack(Character attacker, Character defender)
         {
             var roll = RollDice(1, 4);
-            var modi = Character.Modifier(attacker.Strength);
-            defender.CurrentHP -= (roll + modi);
+            defender.CurrentHP -= (roll + attacker.Strength.Modifier);
 
-            return $"{attacker.Name} dealt {roll + modi} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name} (melee 1d4 => {roll} and {modi} STR modifier)\r\n\r\nAttacker:\r\n{attacker.PrintStats()}\r\nDefender:\r\n{defender.PrintStats()}";
+            return $"{attacker.Name} dealt {roll + attacker.Strength.Modifier} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name} (melee 1d4 => {roll} and {attacker.Strength.Modifier} STR modifier)\r\n\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
         internal void StartNextRound()

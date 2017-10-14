@@ -25,7 +25,7 @@ namespace Wargame
             Engine = new GameEngine(Game);
             Engine.StartNextRound();
             btnAttack.Enabled = true;
-            Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
+            Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
@@ -47,8 +47,7 @@ namespace Wargame
             Messages.AppendLine($"{status.Item2}\r\n");
 
             if (!Game.RoundOrder.Any()) Engine.StartNextRound();
-            btnAttack.Enabled = !status.Item1;
-            if (!status.Item1) Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
+            if ((btnAttack.Enabled = !status.Item1)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
