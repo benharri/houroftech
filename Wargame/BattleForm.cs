@@ -30,7 +30,8 @@ namespace Wargame
 
         private void RefreshLog()
         {
-            txtLog.Text = msgs.Append(gd).ToString();
+            txtLog.Text = msgs.ToString();
+            txtRoundLog.Text = gd.PrintRoundInit();
             txtTeam1.Text = gd.TeamRoster(1);
             txtTeam2.Text = gd.TeamRoster(2);
             msgs.Clear();
