@@ -15,21 +15,18 @@ namespace Wargame
         }
 
 
-        public static int RollDice(int num = 1, int sides = 6)
+        public static int RollDice(int num = 1, int sides = 6, int modifier = 0)
         {
-            return Enumerable.Range(1, num).Aggregate(0, (acc, _) => acc += rng.Next(1, sides + 1));
+            return Enumerable.Range(1, num).Aggregate(0, (acc, _) => acc += rng.Next(1, sides + 1)) + modifier;
         }
 
         internal string DoAttack(Character attacker, Character defender)
         {
-            var dmg = RollDice(1, 6);
-            defender.CurrentHP -= dmg;
-            if (!defender.Alive)
-            {
-                return $"{attacker.Name} killed {defender.Name} (by dealing {dmg} damage)";
-            }
+            var roll = RollDice(1, 4);
+            var modi = Character.Modifier(attacker.Strength);
+            defender.CurrentHP -= (roll + modi);
 
-            return $"{attacker.Name} dealt {dmg} damage to {defender.Name}";
+            return $"{attacker.Name} dealt {roll + modi} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name} (melee 1d4 => {roll} and {modi} STR modifier)\r\n\r\nAttacker:\r\n{attacker.PrintStats()}\r\nDefender:\r\n{defender.PrintStats()}";
         }
 
         internal void StartNextRound()

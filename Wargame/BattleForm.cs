@@ -25,14 +25,17 @@ namespace Wargame
             Engine = new GameEngine(Game);
             Engine.StartNextRound();
             btnAttack.Enabled = true;
+            Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
         private void RefreshLog()
         {
-            txtLog.Text = Messages.Append(Game).ToString();
+            txtLog.Text = Messages.ToString();
+            txtRoundLog.Text = Game.InitiativeList();
             txtTeam1.Text = Game.TeamRoster(1);
             txtTeam2.Text = Game.TeamRoster(2);
+            roundLabel.Text = $"Round {Game.RoundNumber}";
             Messages.Clear();
         }
 
@@ -44,8 +47,9 @@ namespace Wargame
             Messages.AppendLine($"{status.Item2}\r\n");
 
             if (!Game.RoundOrder.Any()) Engine.StartNextRound();
-            RefreshLog();
             btnAttack.Enabled = !status.Item1;
+            if (!status.Item1) Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
+            RefreshLog();
         }
 
     }
