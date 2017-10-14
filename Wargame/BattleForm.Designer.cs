@@ -45,7 +45,7 @@
             this.btnCreateGame.TabIndex = 0;
             this.btnCreateGame.Text = "New Game";
             this.btnCreateGame.UseVisualStyleBackColor = false;
-            this.btnCreateGame.Click += new System.EventHandler(this.btnCreateGame_Click);
+            this.btnCreateGame.Click += new System.EventHandler(this.BtnCreateGame_Click);
             // 
             // txtLog
             // 
@@ -70,7 +70,7 @@
             this.btnAttack.TabIndex = 2;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = false;
-            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
+            this.btnAttack.Click += new System.EventHandler(this.BtnAttack_Click);
             // 
             // txtTeam1
             // 

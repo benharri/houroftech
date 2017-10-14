@@ -6,10 +6,10 @@ namespace Wargame
 {
     class GameData
     {
-        public int RoundNumber { get; set; }
-        public Stack<Character> RoundOrder = new Stack<Character>();
-        public List<Character> Team1 = new List<Character>();
-        public List<Character> Team2 = new List<Character>();
+        internal int RoundNumber { get; set; }
+        internal Stack<Character> RoundOrder = new Stack<Character>();
+        internal List<Character> Team1 = new List<Character>();
+        internal List<Character> Team2 = new List<Character>();
 
         public override string ToString()
         {

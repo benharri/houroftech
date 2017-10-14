@@ -1,4 +1,6 @@
-﻿namespace Wargame
+﻿using System;
+
+namespace Wargame
 {
     class Character
     {
@@ -9,6 +11,18 @@
         public bool Alive
         {
             get { return CurrentHP > 0; }
+        }
+
+        public Character(string name, int maxHP = 10)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            MaxHP = maxHP;
+            CurrentHP = maxHP;
+        }
+
+        internal void RollInitiative()
+        {
+            Initiative = GameEngine.RollDice(1, 20);
         }
 
         public override string ToString()
