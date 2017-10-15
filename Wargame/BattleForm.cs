@@ -90,6 +90,7 @@ namespace Wargame
                 checkBoxIndex++;
             }
 
+            //todo: we don't want to save the previous purchase
         }
     }
 }
