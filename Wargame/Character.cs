@@ -15,12 +15,12 @@ namespace Wargame
         {
             get { return CurrentHP > 0; }
         }
-        internal int Strength { get; }
-        internal int Constitution { get; }
-        internal int Dexterity { get; }
-        internal int Intelligence { get; }
-        internal int Wisdom { get; }
-        internal int Charisma { get; }
+        internal Stat Strength { get; }
+        internal Stat Constitution { get; }
+        internal Stat Dexterity { get; }
+        internal Stat Intelligence { get; }
+        internal Stat Wisdom { get; }
+        internal Stat Charisma { get; }
 
         public Character(string name, int maxHP = 10)
         {
@@ -28,17 +28,17 @@ namespace Wargame
             MaxHP = maxHP;
             CurrentHP = maxHP;
             var rolls = new Stack<int>(baseStats.OrderBy(x => Guid.NewGuid()));
-            Strength = rolls.Pop();
-            Constitution = rolls.Pop();
-            Dexterity = rolls.Pop();
-            Intelligence = rolls.Pop();
-            Wisdom = rolls.Pop();
-            Charisma = rolls.Pop();
+            Strength = new Stat(rolls.Pop());
+            Constitution = new Stat(rolls.Pop());
+            Dexterity = new Stat(rolls.Pop());
+            Intelligence = new Stat(rolls.Pop());
+            Wisdom = new Stat(rolls.Pop());
+            Charisma = new Stat(rolls.Pop());
         }
 
         internal static int Modifier(int stat = 10) => (stat - 10) / 2;
 
-        internal void RollInitiative() => Initiative = GameEngine.RollDice(1, 20, Modifier(Dexterity));
+        internal void RollInitiative() => Initiative = GameEngine.RollDice(1, 20, Dexterity.Modifier);
 
         public override string ToString()
         {
@@ -47,7 +47,7 @@ namespace Wargame
 
         internal string PrintStats()
         {
-            return $"{Name} [STR: {Strength}({Modifier(Strength)}) CON: {Constitution}({Modifier(Constitution)}) DEX: {Dexterity}({Modifier(Dexterity)}) INT: {Intelligence}({Modifier(Intelligence)}) WIS: {Wisdom}({Modifier(Wisdom)}) CHR: {Charisma}({Modifier(Charisma)})]";
+            return $"{Name} [STR: {Strength}({Strength.Modifier}) CON: {Constitution}({Constitution.Modifier}) DEX: {Dexterity}({Dexterity.Modifier}) INT: {Intelligence}({Intelligence.Modifier}) WIS: {Wisdom}({Wisdom.Modifier}) CHR: {Charisma}({Charisma.Modifier})]";
         }
     }
 }
