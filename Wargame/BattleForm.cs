@@ -23,7 +23,6 @@ namespace Wargame
         {
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
-            InitializeVendor();
             Engine.StartNextRound();
             btnAttack.Enabled = true;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
@@ -38,14 +37,6 @@ namespace Wargame
             txtTeam2.Text = Game.TeamRoster(2);
             roundLabel.Text = $"Round {Game.RoundNumber}";
             Messages.Clear();
-        }
-
-        private void InitializeVendor()
-        {
-            foreach (var item in Game.WeaponVendor)
-            {
-                clbVendorWeapons.Items.Insert(0,($"{item.Name} - Damage: {item.MinimumDamage}-{item.MaximumDamage} - Price: {item.Price}"));
-            }
         }
 
         private void BtnAttack_Click(object sender, EventArgs e)
