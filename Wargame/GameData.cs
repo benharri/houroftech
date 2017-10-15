@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Wargame
@@ -10,6 +10,8 @@ namespace Wargame
         internal Stack<Character> RoundOrder = new Stack<Character>();
         internal List<Character> Team1 = new List<Character>();
         internal List<Character> Team2 = new List<Character>();
+        internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
+        internal bool GameOver => !LivingCharacters.Any();
 
         internal string InitiativeList()
         {
@@ -26,8 +28,7 @@ namespace Wargame
             StringBuilder roster = new StringBuilder();
             foreach (var c in team == 1 ? Team1 : Team2)
             {
-                roster.Append(c);
-                roster.AppendLine();
+                roster.AppendLine($"{c}");
             }
             return roster.ToString();
         }

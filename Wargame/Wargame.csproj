@@ -69,6 +69,7 @@
     <Compile Include="BattleForm.Designer.cs">
       <DependentUpon>BattleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiceRoll.cs" />
     <Compile Include="GameData.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameFactory.cs" />

@@ -44,10 +44,10 @@ namespace Wargame
             btnAttack.Enabled = false;
 
             var status = Engine.ProcessAttack();
-            Messages.AppendLine($"{status.Item2}\r\n");
+            Messages.AppendLine($"{status}\r\n");
 
             if (!Game.RoundOrder.Any()) Engine.StartNextRound();
-            if ((btnAttack.Enabled = !status.Item1)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
+            if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
