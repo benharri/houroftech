@@ -32,16 +32,5 @@ namespace Wargame
             }
             return roster.ToString();
         }
-
-        internal List<Weapon> InitializeVendorItems()
-        {
-            var vendorItems = new List<Weapon>();
-            foreach (var i in WeaponVendor)
-            {
-                vendorItems.Add(i);
-            }
-
-            return vendorItems;
-        }
     }
 }
