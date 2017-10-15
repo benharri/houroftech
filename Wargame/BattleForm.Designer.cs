@@ -49,11 +49,13 @@
             this.tabControlShop = new System.Windows.Forms.TabControl();
             this.tabWeapons = new System.Windows.Forms.TabPage();
             this.tabArmor = new System.Windows.Forms.TabPage();
+            this.clbVendorWeapons = new System.Windows.Forms.CheckedListBox();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabShop.SuspendLayout();
             this.tabControlShop.SuspendLayout();
+            this.tabWeapons.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCreateGame
@@ -62,10 +64,9 @@
             this.btnCreateGame.BackColor = System.Drawing.Color.Olive;
             this.btnCreateGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateGame.Location = new System.Drawing.Point(1335, 5);
-            this.btnCreateGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCreateGame.Location = new System.Drawing.Point(890, 3);
             this.btnCreateGame.Name = "btnCreateGame";
-            this.btnCreateGame.Size = new System.Drawing.Size(158, 55);
+            this.btnCreateGame.Size = new System.Drawing.Size(105, 36);
             this.btnCreateGame.TabIndex = 0;
             this.btnCreateGame.Text = "New Game";
             this.btnCreateGame.UseVisualStyleBackColor = false;
@@ -80,12 +81,11 @@
             this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLog.ForeColor = System.Drawing.Color.Lime;
-            this.txtLog.Location = new System.Drawing.Point(9, 518);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLog.Location = new System.Drawing.Point(6, 337);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(1212, 329);
+            this.txtLog.Size = new System.Drawing.Size(808, 214);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -97,10 +97,9 @@
             this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttack.Location = new System.Drawing.Point(1229, 719);
-            this.btnAttack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAttack.Location = new System.Drawing.Point(819, 467);
             this.btnAttack.Name = "btnAttack";
-            this.btnAttack.Size = new System.Drawing.Size(264, 128);
+            this.btnAttack.Size = new System.Drawing.Size(176, 83);
             this.btnAttack.TabIndex = 2;
             this.btnAttack.Text = "Attack";
             this.toolTip1.SetToolTip(this.btnAttack, "Press \'Attack\' button to inflict damage against enemy team");
@@ -113,11 +112,10 @@
             this.txtTeam1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTeam1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTeam1.ForeColor = System.Drawing.Color.Lime;
-            this.txtTeam1.Location = new System.Drawing.Point(9, 188);
-            this.txtTeam1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTeam1.Location = new System.Drawing.Point(6, 122);
             this.txtTeam1.Multiline = true;
             this.txtTeam1.Name = "txtTeam1";
-            this.txtTeam1.Size = new System.Drawing.Size(556, 288);
+            this.txtTeam1.Size = new System.Drawing.Size(371, 187);
             this.txtTeam1.TabIndex = 3;
             this.txtTeam1.TabStop = false;
             // 
@@ -127,11 +125,10 @@
             this.txtTeam2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTeam2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTeam2.ForeColor = System.Drawing.Color.Lime;
-            this.txtTeam2.Location = new System.Drawing.Point(944, 188);
-            this.txtTeam2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTeam2.Location = new System.Drawing.Point(629, 122);
             this.txtTeam2.Multiline = true;
             this.txtTeam2.Name = "txtTeam2";
-            this.txtTeam2.Size = new System.Drawing.Size(553, 288);
+            this.txtTeam2.Size = new System.Drawing.Size(369, 187);
             this.txtTeam2.TabIndex = 4;
             this.txtTeam2.TabStop = false;
             // 
@@ -147,7 +144,7 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.Padding = new System.Drawing.Point(0, 0);
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1512, 896);
+            this.tabControlMain.Size = new System.Drawing.Size(1008, 582);
             this.tabControlMain.TabIndex = 5;
             // 
             // tabGame
@@ -164,10 +161,10 @@
             this.tabGame.Controls.Add(this.txtTeam1);
             this.tabGame.Controls.Add(this.txtTeam2);
             this.tabGame.Controls.Add(this.txtLog);
-            this.tabGame.Location = new System.Drawing.Point(4, 29);
+            this.tabGame.Location = new System.Drawing.Point(4, 22);
             this.tabGame.Margin = new System.Windows.Forms.Padding(0);
             this.tabGame.Name = "tabGame";
-            this.tabGame.Size = new System.Drawing.Size(1504, 863);
+            this.tabGame.Size = new System.Drawing.Size(1000, 556);
             this.tabGame.TabIndex = 0;
             this.tabGame.Text = "Game";
             // 
@@ -176,9 +173,10 @@
             this.initiativeLabel.AutoSize = true;
             this.initiativeLabel.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.initiativeLabel.ForeColor = System.Drawing.Color.Lime;
-            this.initiativeLabel.Location = new System.Drawing.Point(569, 158);
+            this.initiativeLabel.Location = new System.Drawing.Point(379, 103);
+            this.initiativeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.initiativeLabel.Name = "initiativeLabel";
-            this.initiativeLabel.Size = new System.Drawing.Size(150, 24);
+            this.initiativeLabel.Size = new System.Drawing.Size(108, 16);
             this.initiativeLabel.TabIndex = 10;
             this.initiativeLabel.Text = "Initiative";
             // 
@@ -187,9 +185,10 @@
             this.roundLabel.AutoSize = true;
             this.roundLabel.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roundLabel.ForeColor = System.Drawing.Color.Lime;
-            this.roundLabel.Location = new System.Drawing.Point(8, 489);
+            this.roundLabel.Location = new System.Drawing.Point(5, 318);
+            this.roundLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.roundLabel.Name = "roundLabel";
-            this.roundLabel.Size = new System.Drawing.Size(220, 24);
+            this.roundLabel.Size = new System.Drawing.Size(158, 16);
             this.roundLabel.TabIndex = 9;
             this.roundLabel.Text = "No Game Started";
             // 
@@ -198,9 +197,10 @@
             this.team2Label.AutoSize = true;
             this.team2Label.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.team2Label.ForeColor = System.Drawing.Color.Lime;
-            this.team2Label.Location = new System.Drawing.Point(940, 158);
+            this.team2Label.Location = new System.Drawing.Point(627, 103);
+            this.team2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team2Label.Name = "team2Label";
-            this.team2Label.Size = new System.Drawing.Size(94, 24);
+            this.team2Label.Size = new System.Drawing.Size(68, 16);
             this.team2Label.TabIndex = 8;
             this.team2Label.Text = "Team 2";
             // 
@@ -209,17 +209,17 @@
             this.team1Label.AutoSize = true;
             this.team1Label.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.team1Label.ForeColor = System.Drawing.Color.Lime;
-            this.team1Label.Location = new System.Drawing.Point(8, 158);
+            this.team1Label.Location = new System.Drawing.Point(5, 103);
+            this.team1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team1Label.Name = "team1Label";
-            this.team1Label.Size = new System.Drawing.Size(94, 24);
+            this.team1Label.Size = new System.Drawing.Size(68, 16);
             this.team1Label.TabIndex = 7;
             this.team1Label.Text = "Team 1";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Wargame.Properties.Resources.wargame;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(273, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -232,11 +232,10 @@
             this.txtRoundLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRoundLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoundLog.ForeColor = System.Drawing.Color.LimeGreen;
-            this.txtRoundLog.Location = new System.Drawing.Point(573, 188);
-            this.txtRoundLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtRoundLog.Location = new System.Drawing.Point(382, 122);
             this.txtRoundLog.Multiline = true;
             this.txtRoundLog.Name = "txtRoundLog";
-            this.txtRoundLog.Size = new System.Drawing.Size(363, 288);
+            this.txtRoundLog.Size = new System.Drawing.Size(242, 187);
             this.txtRoundLog.TabIndex = 5;
             this.txtRoundLog.TabStop = false;
             // 
@@ -246,33 +245,30 @@
             this.tabShop.Controls.Add(this.textBox1);
             this.tabShop.Controls.Add(this.button1);
             this.tabShop.Controls.Add(this.tabControlShop);
-            this.tabShop.Location = new System.Drawing.Point(4, 29);
-            this.tabShop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabShop.Location = new System.Drawing.Point(4, 22);
             this.tabShop.Name = "tabShop";
-            this.tabShop.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabShop.Size = new System.Drawing.Size(1508, 760);
+            this.tabShop.Padding = new System.Windows.Forms.Padding(3);
+            this.tabShop.Size = new System.Drawing.Size(1000, 556);
             this.tabShop.TabIndex = 1;
-            this.tabShop.Text = "Shop";
+            this.tabShop.Text = "Vendor";
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.MenuText;
             this.textBox1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.textBox1.Location = new System.Drawing.Point(886, 209);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Location = new System.Drawing.Point(591, 136);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(436, 492);
+            this.textBox1.Size = new System.Drawing.Size(292, 321);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(222, 755);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(148, 491);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 71);
+            this.button1.Size = new System.Drawing.Size(125, 46);
             this.button1.TabIndex = 1;
             this.button1.Text = "Purchase";
             this.button1.UseVisualStyleBackColor = false;
@@ -281,45 +277,53 @@
             // 
             this.tabControlShop.Controls.Add(this.tabWeapons);
             this.tabControlShop.Controls.Add(this.tabArmor);
-            this.tabControlShop.Location = new System.Drawing.Point(45, 175);
-            this.tabControlShop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControlShop.Location = new System.Drawing.Point(30, 114);
             this.tabControlShop.Name = "tabControlShop";
             this.tabControlShop.SelectedIndex = 0;
-            this.tabControlShop.Size = new System.Drawing.Size(618, 528);
+            this.tabControlShop.Size = new System.Drawing.Size(412, 343);
             this.tabControlShop.TabIndex = 0;
             // 
             // tabWeapons
             // 
-            this.tabWeapons.Location = new System.Drawing.Point(4, 29);
-            this.tabWeapons.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabWeapons.Controls.Add(this.clbVendorWeapons);
+            this.tabWeapons.Location = new System.Drawing.Point(4, 22);
             this.tabWeapons.Name = "tabWeapons";
-            this.tabWeapons.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabWeapons.Size = new System.Drawing.Size(610, 495);
+            this.tabWeapons.Padding = new System.Windows.Forms.Padding(3);
+            this.tabWeapons.Size = new System.Drawing.Size(404, 317);
             this.tabWeapons.TabIndex = 0;
             this.tabWeapons.Text = "Weapons";
             this.tabWeapons.UseVisualStyleBackColor = true;
             // 
             // tabArmor
             // 
-            this.tabArmor.Location = new System.Drawing.Point(4, 29);
-            this.tabArmor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabArmor.Location = new System.Drawing.Point(4, 22);
             this.tabArmor.Name = "tabArmor";
-            this.tabArmor.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabArmor.Size = new System.Drawing.Size(610, 495);
+            this.tabArmor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabArmor.Size = new System.Drawing.Size(404, 317);
             this.tabArmor.TabIndex = 1;
             this.tabArmor.Text = "Armor";
             this.tabArmor.UseVisualStyleBackColor = true;
             // 
+            // clbVendorWeapons
+            // 
+            this.clbVendorWeapons.BackColor = System.Drawing.SystemColors.MenuText;
+            this.clbVendorWeapons.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clbVendorWeapons.ForeColor = System.Drawing.Color.LimeGreen;
+            this.clbVendorWeapons.FormattingEnabled = true;
+            this.clbVendorWeapons.Location = new System.Drawing.Point(6, 7);
+            this.clbVendorWeapons.Name = "clbVendorWeapons";
+            this.clbVendorWeapons.Size = new System.Drawing.Size(392, 292);
+            this.clbVendorWeapons.TabIndex = 0;
+            // 
             // BattleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1510, 891);
+            this.ClientSize = new System.Drawing.Size(1007, 579);
             this.Controls.Add(this.tabControlMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BattleForm";
             this.Text = "Wargame";
             this.tabControlMain.ResumeLayout(false);
@@ -329,6 +333,7 @@
             this.tabShop.ResumeLayout(false);
             this.tabShop.PerformLayout();
             this.tabControlShop.ResumeLayout(false);
+            this.tabWeapons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -355,6 +360,7 @@
         private System.Windows.Forms.Label team2Label;
         private System.Windows.Forms.Label roundLabel;
         private System.Windows.Forms.Label initiativeLabel;
+        private System.Windows.Forms.CheckedListBox clbVendorWeapons;
     }
 }
 

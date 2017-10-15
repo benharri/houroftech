@@ -10,6 +10,7 @@ namespace Wargame
         internal Stack<Character> RoundOrder = new Stack<Character>();
         internal List<Character> Team1 = new List<Character>();
         internal List<Character> Team2 = new List<Character>();
+        internal List<Weapon> WeaponVendor = new List<Weapon>();
 
         internal string InitiativeList()
         {
@@ -32,9 +33,15 @@ namespace Wargame
             return roster.ToString();
         }
 
-        internal string PrintRoundInit()
+        internal List<Weapon> InitializeVendorItems()
         {
-            return InitiativeList();
+            var vendorItems = new List<Weapon>();
+            foreach (var i in WeaponVendor)
+            {
+                vendorItems.Add(i);
+            }
+
+            return vendorItems;
         }
     }
 }

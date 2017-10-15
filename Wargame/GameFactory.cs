@@ -18,6 +18,8 @@
             data.Team2.Add(new Character("Ge'els"));
             data.Team2.Add(new Character("Avallac'h"));
 
+            data.WeaponVendor.Add(new Weapon(1, "Sword", 1, 4, 4));
+
             return data;
         }
     }

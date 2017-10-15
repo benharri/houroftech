@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,7 +12,6 @@ namespace Wargame
         private StringBuilder Messages { get; set; }
         private GameEngine Engine { get; set; }
 
-
         public BattleForm()
         {
             InitializeComponent();
@@ -23,6 +23,7 @@ namespace Wargame
         {
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
+            InitializeVendor();
             Engine.StartNextRound();
             btnAttack.Enabled = true;
             Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
@@ -39,6 +40,14 @@ namespace Wargame
             Messages.Clear();
         }
 
+        private void InitializeVendor()
+        {
+            foreach (var item in Game.WeaponVendor)
+            {
+                clbVendorWeapons.Items.Insert(0,($"{item.Name} - Damage: {item.MinimumDamage}-{item.MaximumDamage} - Price: {item.Price}"));
+            }
+        }
+
         private void BtnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
@@ -51,6 +60,5 @@ namespace Wargame
             if (!status.Item1) Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
-
     }
 }
