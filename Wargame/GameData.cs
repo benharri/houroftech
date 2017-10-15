@@ -10,7 +10,8 @@ namespace Wargame
         internal Stack<Character> RoundOrder = new Stack<Character>();
         internal List<Character> Team1 = new List<Character>();
         internal List<Character> Team2 = new List<Character>();
-        internal List<Weapon> WeaponVendor = new List<Weapon>();
+        //todo: how can we use interface instead?
+        internal List<object> Vendor = new List<object>();
 
         internal string InitiativeList()
         {

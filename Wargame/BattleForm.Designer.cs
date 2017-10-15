@@ -46,16 +46,18 @@
             this.tabShop = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabControlShop = new System.Windows.Forms.TabControl();
+            this.VendorShop = new System.Windows.Forms.TabControl();
             this.tabWeapons = new System.Windows.Forms.TabPage();
-            this.tabArmor = new System.Windows.Forms.TabPage();
             this.clbVendorWeapons = new System.Windows.Forms.CheckedListBox();
+            this.tabArmor = new System.Windows.Forms.TabPage();
+            this.clbVendorArmor = new System.Windows.Forms.CheckedListBox();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabShop.SuspendLayout();
-            this.tabControlShop.SuspendLayout();
+            this.VendorShop.SuspendLayout();
             this.tabWeapons.SuspendLayout();
+            this.tabArmor.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCreateGame
@@ -244,7 +246,7 @@
             this.tabShop.BackColor = System.Drawing.Color.SlateGray;
             this.tabShop.Controls.Add(this.textBox1);
             this.tabShop.Controls.Add(this.button1);
-            this.tabShop.Controls.Add(this.tabControlShop);
+            this.tabShop.Controls.Add(this.VendorShop);
             this.tabShop.Location = new System.Drawing.Point(4, 22);
             this.tabShop.Name = "tabShop";
             this.tabShop.Padding = new System.Windows.Forms.Padding(3);
@@ -272,16 +274,17 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Purchase";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BtnPurchase_Click);
             // 
-            // tabControlShop
+            // VendorShop
             // 
-            this.tabControlShop.Controls.Add(this.tabWeapons);
-            this.tabControlShop.Controls.Add(this.tabArmor);
-            this.tabControlShop.Location = new System.Drawing.Point(30, 114);
-            this.tabControlShop.Name = "tabControlShop";
-            this.tabControlShop.SelectedIndex = 0;
-            this.tabControlShop.Size = new System.Drawing.Size(412, 343);
-            this.tabControlShop.TabIndex = 0;
+            this.VendorShop.Controls.Add(this.tabWeapons);
+            this.VendorShop.Controls.Add(this.tabArmor);
+            this.VendorShop.Location = new System.Drawing.Point(30, 114);
+            this.VendorShop.Name = "VendorShop";
+            this.VendorShop.SelectedIndex = 0;
+            this.VendorShop.Size = new System.Drawing.Size(412, 343);
+            this.VendorShop.TabIndex = 0;
             // 
             // tabWeapons
             // 
@@ -294,26 +297,47 @@
             this.tabWeapons.Text = "Weapons";
             this.tabWeapons.UseVisualStyleBackColor = true;
             // 
+            // clbVendorWeapons
+            // 
+            this.clbVendorWeapons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clbVendorWeapons.BackColor = System.Drawing.SystemColors.MenuText;
+            this.clbVendorWeapons.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clbVendorWeapons.ForeColor = System.Drawing.Color.LimeGreen;
+            this.clbVendorWeapons.FormattingEnabled = true;
+            this.clbVendorWeapons.Location = new System.Drawing.Point(0, 0);
+            this.clbVendorWeapons.Name = "clbVendorWeapons";
+            this.clbVendorWeapons.Size = new System.Drawing.Size(410, 328);
+            this.clbVendorWeapons.TabIndex = 0;
+            this.clbVendorWeapons.TabStop = false;
+            // 
             // tabArmor
             // 
+            this.tabArmor.BackColor = System.Drawing.Color.Black;
+            this.tabArmor.Controls.Add(this.clbVendorArmor);
+            this.tabArmor.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabArmor.ForeColor = System.Drawing.Color.LimeGreen;
             this.tabArmor.Location = new System.Drawing.Point(4, 22);
             this.tabArmor.Name = "tabArmor";
             this.tabArmor.Padding = new System.Windows.Forms.Padding(3);
             this.tabArmor.Size = new System.Drawing.Size(404, 317);
             this.tabArmor.TabIndex = 1;
             this.tabArmor.Text = "Armor";
-            this.tabArmor.UseVisualStyleBackColor = true;
             // 
-            // clbVendorWeapons
+            // clbVendorArmor
             // 
-            this.clbVendorWeapons.BackColor = System.Drawing.SystemColors.MenuText;
-            this.clbVendorWeapons.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clbVendorWeapons.ForeColor = System.Drawing.Color.LimeGreen;
-            this.clbVendorWeapons.FormattingEnabled = true;
-            this.clbVendorWeapons.Location = new System.Drawing.Point(6, 7);
-            this.clbVendorWeapons.Name = "clbVendorWeapons";
-            this.clbVendorWeapons.Size = new System.Drawing.Size(392, 292);
-            this.clbVendorWeapons.TabIndex = 0;
+            this.clbVendorArmor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clbVendorArmor.BackColor = System.Drawing.SystemColors.MenuText;
+            this.clbVendorArmor.ForeColor = System.Drawing.Color.LimeGreen;
+            this.clbVendorArmor.FormattingEnabled = true;
+            this.clbVendorArmor.Location = new System.Drawing.Point(0, 1);
+            this.clbVendorArmor.Name = "clbVendorArmor";
+            this.clbVendorArmor.Size = new System.Drawing.Size(404, 310);
+            this.clbVendorArmor.TabIndex = 0;
+            this.clbVendorArmor.TabStop = false;
             // 
             // BattleForm
             // 
@@ -332,8 +356,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabShop.ResumeLayout(false);
             this.tabShop.PerformLayout();
-            this.tabControlShop.ResumeLayout(false);
+            this.VendorShop.ResumeLayout(false);
             this.tabWeapons.ResumeLayout(false);
+            this.tabArmor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -349,7 +374,7 @@
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabGame;
         private System.Windows.Forms.TabPage tabShop;
-        private System.Windows.Forms.TabControl tabControlShop;
+        private System.Windows.Forms.TabControl VendorShop;
         private System.Windows.Forms.TabPage tabWeapons;
         private System.Windows.Forms.TabPage tabArmor;
         private System.Windows.Forms.TextBox textBox1;
@@ -361,6 +386,7 @@
         private System.Windows.Forms.Label roundLabel;
         private System.Windows.Forms.Label initiativeLabel;
         private System.Windows.Forms.CheckedListBox clbVendorWeapons;
+        private System.Windows.Forms.CheckedListBox clbVendorArmor;
     }
 }
 

@@ -42,10 +42,24 @@ namespace Wargame
 
         private void InitializeVendor()
         {
-            foreach (var item in Game.WeaponVendor)
+            var i = 0;
+            var j = 0;
+            foreach (var item in Game.Vendor)
             {
-                clbVendorWeapons.Items.Insert(0,($"{item.Name} - Damage: {item.MinimumDamage}-{item.MaximumDamage} - Price: {item.Price}"));
+                if(typeof(Weapon) == item.GetType())
+                {
+                    var weapon = (Weapon)item;
+                    clbVendorWeapons.Items.Insert(i, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
+                    i++;
+                }
+                else if (typeof(Armor) == item.GetType())
+                {
+                    var armor = (Armor)item;
+                    clbVendorArmor.Items.Insert(j, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
+                    j++;
+                }
             }
+
         }
 
         private void BtnAttack_Click(object sender, EventArgs e)
@@ -59,6 +73,20 @@ namespace Wargame
             btnAttack.Enabled = !status.Item1;
             if (!status.Item1) Messages.AppendLine($"Next up:\r\n{Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
+        }
+
+        private void BtnPurchase_Click(object sender, EventArgs e)
+        {
+            foreach (object itemChecked in clbVendorWeapons.CheckedItems)
+            {
+                MessageBox.Show(itemChecked.ToString());
+            }
+
+            foreach (object itemChecked in clbVendorArmor.CheckedItems)
+            {
+                MessageBox.Show(itemChecked.ToString());
+            }
+
         }
     }
 }
