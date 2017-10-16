@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Vendor\Item.cs" />
-    <Compile Include="Vendor\Items\Armor.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="BattleForm.cs">
       <SubType>Form</SubType>
@@ -120,6 +119,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -23,7 +23,7 @@ namespace Wargame
         {
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
-            InitializeVendor();
+            //InitializeVendor();
             Engine.StartNextRound();
             btnAttack.Enabled = true;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
