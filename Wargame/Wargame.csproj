@@ -62,8 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IItem.cs" />
     <Compile Include="Vendor\Items\Armor.cs" />
-    <Compile Include="Vendor\Item.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="BattleForm.cs">
       <SubType>Form</SubType>
