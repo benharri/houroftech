@@ -26,7 +26,7 @@ namespace Wargame
         internal void StartNextRound()
         {
             gd.RoundNumber++;
-            gd.RoundOrder.Clear();
+            if (gd.RoundOrder != null) gd.RoundOrder.Clear();
 
             foreach (var c in gd.LivingCharacters)
             {
