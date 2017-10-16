@@ -9,7 +9,8 @@ namespace Wargame
 
         public CharacterInventory()
         {
-
+            inventory = new List<Item>();
+            equipped = new List<Item>();
         }
     }
 }
