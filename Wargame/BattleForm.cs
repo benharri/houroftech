@@ -16,14 +16,14 @@ namespace Wargame
         {
             InitializeComponent();
             Messages = new StringBuilder();
+            Game = (new GameFactory()).CreateNewGame();
+            Engine = new GameEngine(Game);
+            InitializeVendor();
             btnAttack.Enabled = false;
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
-            Game = (new GameFactory()).CreateNewGame();
-            Engine = new GameEngine(Game);
-            InitializeVendor();
             Engine.StartNextRound();
             btnAttack.Enabled = true;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
