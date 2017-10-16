@@ -20,12 +20,17 @@ namespace Wargame
             Quantity = qty;
             Sides    = sides;
             Modifier = modifier;
-            for (var i = 0; i < qty; i++)
+        }
+
+        internal DiceRoll DoRoll()
+        {
+            for (var i = 0; i < Quantity; i++)
             {
                 Rolls[i] = RollDice(sides: Sides);
             }
             BareRoll = Rolls.Sum();
             Total = BareRoll + Modifier;
+            return this;
         }
 
         public override string ToString()

@@ -15,45 +15,32 @@ namespace Wargame
         public BattleForm()
         {
             InitializeComponent();
-            Messages = new StringBuilder();
             btnAttack.Enabled = false;
+            Messages = new StringBuilder();
+            Game = (new GameFactory()).CreateNewGame();
+            Engine = new GameEngine(Game);
+            InitializeVendor();
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
-            Game = (new GameFactory()).CreateNewGame();
-            Engine = new GameEngine(Game);
-            InitializeVendor();
             Engine.StartNextRound();
-            btnAttack.Enabled = true;
+            Game.RoundNumber = 1;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
+            btnAttack.Enabled = true;
         }
 
         private void InitializeVendor()
         {
-            var i = 0;
-            var j = 0;
             var weaponIndex = 0;
             var armorIndex = 0;
             foreach (var item in Game.Vendor)
             {
                 if (typeof(Weapon) == item.GetType())
-                {
-                    var weapon = (Weapon)item;
-                    clbVendorWeapons.Items.Insert(i, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
-                    i++;
-                    clbVendorWeapons.Items.Insert(weaponIndex, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
-                    weaponIndex++;
-                }
+                    clbVendorWeapons.Items.Insert(weaponIndex++, item.ToString());
                 else if (typeof(Armor) == item.GetType())
-                {
-                    var armor = (Armor)item;
-                    clbVendorArmor.Items.Insert(j, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
-                    j++;
-                    clbVendorArmor.Items.Insert(armorIndex, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
-                    armorIndex++;
-                }
+                    clbVendorArmor.Items.Insert(armorIndex++, item.ToString());
             }
         }
         private void RefreshLog()

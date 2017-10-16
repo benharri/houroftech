@@ -17,7 +17,7 @@ namespace Wargame
 
         internal string DoAttack(Character attacker, Character defender)
         {
-            var roll = new DiceRoll(sides: 4, modifier: attacker.STR.Modifier);
+            var roll = attacker.Roll.DoRoll();
             defender.CurrentHP -= roll.Total;
 
             return $"{attacker.Name} dealt {roll.Total} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
@@ -26,7 +26,7 @@ namespace Wargame
         internal void StartNextRound()
         {
             gd.RoundNumber++;
-            gd.RoundOrder.Clear();
+            if (gd.RoundOrder != null) gd.RoundOrder.Clear();
 
             foreach (var c in gd.LivingCharacters)
             {
@@ -39,11 +39,11 @@ namespace Wargame
         {
             if (!gd.Team1.Any(t1 => t1.Alive)) // no one alive on team1
             {
-                return "Team 2 won!\r\nGame Over";
+                return "You lost!\r\nGame Over";
             }
             else if (!gd.Team2.Any(t2 => t2.Alive)) // no one alive on team2
             {
-                return "Team 1 won!\r\nGame Over";
+                return "You won!\r\nGame Over";
             }
 
             var attacker = gd.RoundOrder.Pop();

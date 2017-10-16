@@ -7,12 +7,14 @@ namespace Wargame
     class GameData
     {
         internal int RoundNumber { get; set; }
-        internal Stack<Character> RoundOrder = new Stack<Character>();
-        internal List<Character> Team1 = new List<Character>();
-        internal List<Character> Team2 = new List<Character>();
+        internal Stack<Character> RoundOrder;
+        internal List<Character> Team1;
+        internal List<Character> Team2;
+        internal List<IItem> Vendor;
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
-        internal List<object> Vendor = new List<object>();
+
+        public GameData() { }
 
         internal string InitiativeList()
         {
@@ -34,9 +36,5 @@ namespace Wargame
             return roster.ToString();
         }
 
-        internal string PrintRoundInit()
-        {
-            return InitiativeList();
-        }
     }
 }
