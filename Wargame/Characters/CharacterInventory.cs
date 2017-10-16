@@ -4,8 +4,8 @@ namespace Wargame
 {
     class CharacterInventory
     {
-        public List<IItem> inventory;
-        public List<IItem> equipped;
+        public List<Item> inventory;
+        public List<Item> equipped;
 
         public CharacterInventory()
         {

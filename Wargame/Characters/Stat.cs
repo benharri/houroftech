@@ -11,5 +11,10 @@
             Statistic = stat;
         }
         public override string ToString() => $"{Statistic}";
+
+        public static Stat operator +(Stat s1, int s2) => new Stat(s1.Val + s2);
+        public static Stat operator -(Stat s1, int s2) => new Stat(s1.Val - s2);
+        public static Stat operator *(Stat s1, int s2) => new Stat(s1.Val * s2);
+        public static Stat operator /(Stat s1, int s2) => new Stat(s1.Val / s2);
     }
 }

@@ -12,6 +12,7 @@ namespace Wargame
         internal int BareRoll;
         internal int Quantity;
         internal int Modifier;
+        internal string DieName => $"{Quantity}d{Sides}";
         internal static Random rng = new Random();
 
         public DiceRoll(int qty = 1, int sides = 6, int modifier = 0)
@@ -33,10 +34,11 @@ namespace Wargame
             return this;
         }
 
+
         public override string ToString()
         {
             StringBuilder res = new StringBuilder();
-            res.AppendLine($"{Quantity}d{Sides}: {Total} ({BareRoll} with {Modifier} modifier)");
+            res.AppendLine($"{DieName}: {Total} ({BareRoll} with {Modifier} modifier)");
             if (Quantity > 1)
             {
                 for (var n = 0; n < Quantity; n++)
