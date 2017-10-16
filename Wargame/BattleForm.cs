@@ -37,15 +37,9 @@ namespace Wargame
             foreach (var item in Game.Vendor)
             {
                 if (typeof(Weapon) == item.GetType())
-                {
-                    var weapon = (Weapon)item;
-                    clbVendorWeapons.Items.Insert(weaponIndex++, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
-                }
+                    clbVendorWeapons.Items.Insert(weaponIndex++, item.ToString());
                 else if (typeof(Armor) == item.GetType())
-                {
-                    var armor = (Armor)item;
-                    clbVendorArmor.Items.Insert(armorIndex++, ($"{armor.Name} - Defense: {armor.Defense} Strength: {armor.StrengthModifer} - Price: {armor.Price}"));
-                }
+                    clbVendorArmor.Items.Insert(armorIndex++, item.ToString());
             }
         }
         private void RefreshLog()

@@ -25,5 +25,10 @@ namespace Wargame
             Defense = defense;
             StrengthModifer = strengthmodifier;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}: [STR: {StrengthModifer} DEF: {Defense}] Price: {Price}";
+        }
     }
 }

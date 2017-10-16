@@ -24,5 +24,10 @@ namespace Wargame
             MinimumDamage = minimumDamage;
             MaximumDamage = maximumDamage;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}: [DMG: {MinimumDamage} - {MaximumDamage}] Price: {Price}";
+        }
     }
 }

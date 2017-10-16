@@ -26,7 +26,7 @@ namespace Wargame
                 new Character("Avallac'h"),
             };
 
-            data.Vendor = new List<Item>
+            data.Vendor = new List<IItem>
             {
                 //Weapon designer
                 new Weapon(1, "Sword", 1, 4, 4, "Weapon"),
