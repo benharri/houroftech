@@ -12,6 +12,7 @@ namespace Wargame
         internal List<Character> Team2 = new List<Character>();
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
+        internal List<object> Vendor = new List<object>();
 
         internal string InitiativeList()
         {
