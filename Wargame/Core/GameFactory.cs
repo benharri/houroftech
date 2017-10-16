@@ -10,20 +10,25 @@ namespace Wargame
 
             data.Team1 = new List<Character>
             {
-                new Character("Geralt"),
-                new Character("Ciri"),
-                new Character("Vesemir"),
-                new Character("Lambert"),
-                new Character("Eskel"),
             };
 
+
             data.Team2 = new List<Character>
+            {
+            };
+
+            data.AvailableCharacters = new List<Character>
             {
                 new Character("Eredin"),
                 new Character("Imlerith"),
                 new Character("Caranthir"),
                 new Character("Ge'els"),
                 new Character("Avallac'h"),
+                new Character("Geralt"),
+                new Character("Ciri"),
+                new Character("Vesemir"),
+                new Character("Lambert"),
+                new Character("Eskel"),
             };
 
             data.Vendor = new List<IItem>
@@ -40,3 +45,4 @@ namespace Wargame
         }
     }
 }
+
