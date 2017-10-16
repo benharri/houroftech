@@ -11,14 +11,12 @@ namespace Wargame
         public string Name { get; set; }
         public int ID { get; set; }
         public int Price { get; set; }
-        public string ItemType { get; set; }
 
-        public Item(int id, string name, int price, string itemtype)
+        public Item(int id, string name, int price)
         {
             ID = id;
             Name = name;
             Price = price;
-            ItemType = itemtype;
         }
     }
 }

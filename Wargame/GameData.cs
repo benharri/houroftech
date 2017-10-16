@@ -10,8 +10,6 @@ namespace Wargame
         internal Stack<Character> RoundOrder = new Stack<Character>();
         internal List<Character> Team1 = new List<Character>();
         internal List<Character> Team2 = new List<Character>();
-        //todo: how can we use interface instead?
-        internal List<object> Vendor = new List<object>();
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
 
@@ -35,5 +33,9 @@ namespace Wargame
             return roster.ToString();
         }
 
+        internal string PrintRoundInit()
+        {
+            return InitiativeList();
+        }
     }
 }
