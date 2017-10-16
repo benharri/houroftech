@@ -268,7 +268,6 @@
             this.clbInventory.Name = "clbInventory";
             this.clbInventory.Size = new System.Drawing.Size(410, 436);
             this.clbInventory.TabIndex = 2;
-            this.clbInventory.SelectedIndexChanged += new System.EventHandler(this.clbInventory_SelectedIndexChanged);
             // 
             // textBox1
             // 

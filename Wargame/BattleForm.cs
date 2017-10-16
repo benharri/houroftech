@@ -23,7 +23,7 @@ namespace Wargame
         {
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
-            //InitializeVendor();
+            InitializeVendor();
             Engine.StartNextRound();
             btnAttack.Enabled = true;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
@@ -92,11 +92,6 @@ namespace Wargame
                 clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
                 checkBoxIndex++;
             }
-        }
-
-        private void clbInventory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
