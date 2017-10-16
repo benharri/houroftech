@@ -54,7 +54,6 @@ namespace Wargame
 
             var defender = (gd.Team1.Contains(attacker) ? gd.Team2 : gd.Team1)
                 .Where(x => x.Alive)
-                .ToArray()
                 .OrderBy(q => Guid.NewGuid())
                 .First();
             return $"{DoAttack(attacker, defender)}";
