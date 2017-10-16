@@ -25,6 +25,7 @@ namespace Wargame
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
             Engine.StartNextRound();
+            Game.RoundNumber = 1;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
             btnAttack.Enabled = true;

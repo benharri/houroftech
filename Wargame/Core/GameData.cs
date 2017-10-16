@@ -36,9 +36,5 @@ namespace Wargame
             return roster.ToString();
         }
 
-        internal string PrintRoundInit()
-        {
-            return InitiativeList();
-        }
     }
 }

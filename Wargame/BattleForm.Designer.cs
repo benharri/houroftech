@@ -44,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtRoundLog = new System.Windows.Forms.TextBox();
             this.tabShop = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.clbInventory = new System.Windows.Forms.CheckedListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.clbVendorWeapons = new System.Windows.Forms.CheckedListBox();
             this.tabArmor = new System.Windows.Forms.TabPage();
             this.clbVendorArmor = new System.Windows.Forms.CheckedListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -204,9 +204,9 @@
             this.team2Label.Location = new System.Drawing.Point(627, 103);
             this.team2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team2Label.Name = "team2Label";
-            this.team2Label.Size = new System.Drawing.Size(68, 16);
+            this.team2Label.Size = new System.Drawing.Size(138, 16);
             this.team2Label.TabIndex = 8;
-            this.team2Label.Text = "Team 2";
+            this.team2Label.Text = "Opposing Team";
             // 
             // team1Label
             // 
@@ -216,9 +216,9 @@
             this.team1Label.Location = new System.Drawing.Point(5, 103);
             this.team1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team1Label.Name = "team1Label";
-            this.team1Label.Size = new System.Drawing.Size(68, 16);
+            this.team1Label.Size = new System.Drawing.Size(78, 16);
             this.team1Label.TabIndex = 7;
-            this.team1Label.Text = "Team 1";
+            this.team1Label.Text = "My Team";
             // 
             // pictureBox1
             // 
@@ -257,6 +257,17 @@
             this.tabShop.Size = new System.Drawing.Size(1000, 556);
             this.tabShop.TabIndex = 1;
             this.tabShop.Text = "Vendor";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LawnGreen;
+            this.label1.Location = new System.Drawing.Point(521, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Inventory";
             // 
             // clbInventory
             // 
@@ -347,17 +358,6 @@
             this.clbVendorArmor.Name = "clbVendorArmor";
             this.clbVendorArmor.Size = new System.Drawing.Size(467, 436);
             this.clbVendorArmor.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.LawnGreen;
-            this.label1.Location = new System.Drawing.Point(521, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Inventory";
             // 
             // BattleForm
             // 
