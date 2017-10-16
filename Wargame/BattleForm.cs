@@ -39,28 +39,6 @@ namespace Wargame
             Messages.Clear();
         }
 
-        private void InitializeVendor()
-        {
-            var weaponIndex = 0;
-            var armorIndex = 0;
-            foreach (var item in Game.Vendor)
-            {
-                if(typeof(Weapon) == item.GetType())
-                {
-                    var weapon = (Weapon)item;
-                    clbVendorWeapons.Items.Insert(weaponIndex, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
-                    weaponIndex++;
-                }
-                else if (typeof(Armor) == item.GetType())
-                {
-                    var armor = (Armor)item;
-                    clbVendorArmor.Items.Insert(armorIndex, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
-                    armorIndex++;
-                }
-            }
-
-        }
-
         private void BtnAttack_Click(object sender, EventArgs e)
         {
             btnAttack.Enabled = false;
@@ -71,24 +49,6 @@ namespace Wargame
             if (!Game.RoundOrder.Any()) Engine.StartNextRound();
             if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
-        }
-
-        private void BtnPurchase_Click(object sender, EventArgs e)
-        {
-            var checkBoxIndex = 0;
-            foreach (object itemChecked in clbVendorWeapons.CheckedItems)
-            {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
-            }
-
-            foreach (object itemChecked in clbVendorArmor.CheckedItems)
-            {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
-            }
-
-            //todo: we don't want to save the previous purchase
         }
     }
 }
