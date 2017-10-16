@@ -15,39 +15,31 @@ namespace Wargame
         {
             get { return CurrentHP > 0; }
         }
-        internal int Strength { get; }
-        internal int Constitution { get; }
-        internal int Dexterity { get; }
-        internal int Intelligence { get; }
-        internal int Wisdom { get; }
-        internal int Charisma { get; }
+        internal Stat STR { get; }
+        internal Stat CON { get; }
+        internal Stat DEX { get; }
+        internal Stat INT { get; }
+        internal Stat WIS { get; }
+        internal Stat CHR { get; }
 
         public Character(string name, int maxHP = 10)
         {
-            Name = name;
-            MaxHP = maxHP;
+            Name      = name;
+            MaxHP     = maxHP;
             CurrentHP = maxHP;
             var rolls = new Stack<int>(baseStats.OrderBy(x => Guid.NewGuid()));
-            Strength = rolls.Pop();
-            Constitution = rolls.Pop();
-            Dexterity = rolls.Pop();
-            Intelligence = rolls.Pop();
-            Wisdom = rolls.Pop();
-            Charisma = rolls.Pop();
+            STR       = new Stat(rolls.Pop());
+            CON       = new Stat(rolls.Pop());
+            DEX       = new Stat(rolls.Pop());
+            INT       = new Stat(rolls.Pop());
+            WIS       = new Stat(rolls.Pop());
+            CHR       = new Stat(rolls.Pop());
         }
 
-        internal static int Modifier(int stat = 10) => (stat - 10) / 2;
+        public override string ToString() => $"{(Alive ? " " : "X")} {Name}: \t{CurrentHP}/{MaxHP} HP ({Initiative})";
 
-        internal void RollInitiative() => Initiative = GameEngine.RollDice(1, 20, Modifier(Dexterity));
+        internal void RollInitiative() => Initiative = new DiceRoll(sides: 20, modifier: DEX.Modifier).Total;
 
-        public override string ToString()
-        {
-            return $"{(Alive ? " " : "X")} {Name}: \t{CurrentHP}/{MaxHP} HP ({Initiative})";
-        }
-
-        internal string PrintStats()
-        {
-            return $"{Name} [STR: {Strength}({Modifier(Strength)}) CON: {Constitution}({Modifier(Constitution)}) DEX: {Dexterity}({Modifier(Dexterity)}) INT: {Intelligence}({Modifier(Intelligence)}) WIS: {Wisdom}({Modifier(Wisdom)}) CHR: {Charisma}({Modifier(Charisma)})]";
-        }
+        internal string PrintStats() => $"{Name} [STR: {STR}({STR.Modifier}) CON: {CON}({CON.Modifier}) DEX: {DEX}({DEX.Modifier}) INT: {INT}({INT.Modifier}) WIS: {WIS}({WIS.Modifier}) CHR: {CHR}({CHR.Modifier})]";
     }
 }
