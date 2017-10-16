@@ -11,7 +11,7 @@
             WIS -= 1;
             CHR /= 2;
             NumDmgDice = 2;
-            BaseStrength = 6;
+            BaseStrength = 4;
         }
     }
 }

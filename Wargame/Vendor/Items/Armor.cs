@@ -5,10 +5,8 @@
         internal int Defense { get; set; }
         internal int StrengthModifer { get; set; }
 
-        public Armor() {}
-        public Armor(int id, string name, int defense, int strengthmodifier, int price)
+        public Armor(string name, int defense = 1, int strengthmodifier = 0, int price = 5)
         {
-            ID = id;
             Name = name;
             Price = price;
             Defense = defense;

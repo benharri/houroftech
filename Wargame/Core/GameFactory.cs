@@ -27,14 +27,32 @@ namespace Wargame
                     new Witcher("Lambert"),
                 },
 
+
                 Vendor = new List<Item>
                 {
                     //Weapon designer
-                    new Weapon(1, "Sword", 1, 4, 4),
-                    new Weapon(2, "Rolling Pin", 0, 1, 1),
+                    new Weapon("Sword")
+                    {
+                        Price = 5,
+                        Strength = new DiceRoll(sides: 8),
+                    },
+                    new Weapon("Rolling Pin")
+                    {
+                        Price = 1,
+                        Strength = new DiceRoll(sides: 1),
+                    },
+
                     //Armor designer
-                    new Armor(3, "Light Armor", 2, 3, 3),
-                    new Armor(4, "Heavy Armor", 4, 3, 4),
+                    new Armor("Light Armor")
+                    {
+                        Price = 3,
+                    },
+                    new Armor("Heavy Armor")
+                    {
+                        Price = 10,
+                        Defense = 10,
+                        StrengthModifer = -2,
+                    },
                 },
             };
 

@@ -6,32 +6,32 @@ namespace Wargame
 {
     class Character
     {
-        internal static int[] baseStats = new[] { 15, 14, 13, 12, 10, 8 };
         internal string Name { get; set; }
+        internal string Class => GetType().Name;
         internal int MaxHP { get; set; }
         internal int CurrentHP { get; set; }
+        internal bool Alive => CurrentHP > 0;
         internal int Initiative { get; set; }
-        internal int InitiativeModifier => DEX.Modifier;
         internal int BaseStrength { get; set; }
         internal int NumDmgDice { get; set; }
         internal CharacterInventory Inventory { get; set; }
-        internal DiceRoll Roll => StatRoll(STR);
-        internal bool Alive => CurrentHP > 0;
-        internal string Class => GetType().Name;
+        internal static int[] baseStats = new[] { 15, 14, 13, 12, 10, 8 };
         internal Stat STR { get; set; }
         internal Stat CON { get; set; }
         internal Stat DEX { get; set; }
         internal Stat INT { get; set; }
         internal Stat WIS { get; set; }
         internal Stat CHR { get; set; }
+        internal Stat MeleeStat { get; set; }
+        internal DiceRoll Roll => StatRoll(MeleeStat);
 
-        public Character(string name, int maxHP = 20, int baseStrength = 4)
+        public Character(string name, int maxHP = 20)
         {
             Name         = name;
             MaxHP        = maxHP;
             CurrentHP    = maxHP;
             NumDmgDice   = 1;
-            BaseStrength = baseStrength;
+            BaseStrength = 4;
 
             var rolls = new Stack<int>(baseStats.OrderBy(x => Guid.NewGuid()));
             STR = new Stat(rolls.Pop());
@@ -40,6 +40,8 @@ namespace Wargame
             INT = new Stat(rolls.Pop());
             WIS = new Stat(rolls.Pop());
             CHR = new Stat(rolls.Pop());
+
+            MeleeStat = STR;
 
             Inventory = new CharacterInventory();
         }
