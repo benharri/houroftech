@@ -32,8 +32,6 @@ namespace Wargame
 
         private void InitializeVendor()
         {
-            var i = 0;
-            var j = 0;
             var weaponIndex = 0;
             var armorIndex = 0;
             foreach (var item in Game.Vendor)
@@ -41,16 +39,12 @@ namespace Wargame
                 if (typeof(Weapon) == item.GetType())
                 {
                     var weapon = (Weapon)item;
-                    clbVendorWeapons.Items.Insert(i, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
-                    i++;
                     clbVendorWeapons.Items.Insert(weaponIndex, ($"{weapon.Name} - Damage: {weapon.MinimumDamage}-{weapon.MaximumDamage} - Price: {weapon.Price}"));
                     weaponIndex++;
                 }
                 else if (typeof(Armor) == item.GetType())
                 {
                     var armor = (Armor)item;
-                    clbVendorArmor.Items.Insert(j, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
-                    j++;
                     clbVendorArmor.Items.Insert(armorIndex, ($"{armor.Name} - Defense: {armor.Defense} Strength+: {armor.StrengthModifer} - Price: {armor.Price}"));
                     armorIndex++;
                 }
