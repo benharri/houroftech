@@ -43,7 +43,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "HP",
-                    Width = 30,
+                    Width = 45,
                     HeaderText = "HP",
                     DataPropertyName = "MaxHP",
                 });
@@ -51,7 +51,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 30,
+                    Width = 40,
                     HeaderText = "Strength",
                     DataPropertyName = "DieName",
                 });
@@ -59,7 +59,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Class",
-                    Width = 70,
+                    Width = 150,
                     HeaderText = "Class",
                     DataPropertyName = "Class",
                 });
