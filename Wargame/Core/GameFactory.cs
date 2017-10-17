@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using Wargame.Characters.Classes;
 
 namespace Wargame
 {
@@ -8,35 +10,58 @@ namespace Wargame
         {
             var data = new GameData();
 
-            data.Team1 = new List<Character>
+
+            //data.Team2 = new List<Character>
+            //{
+            //};
+
+            data.AvailableCharacters = new BindingList<Character>
             {
-                new Character("Geralt"),
-                new Character("Ciri"),
-                new Character("Vesemir"),
-                new Character("Lambert"),
-                new Character("Eskel"),
+                new Mage("Eredin"),
+                new Priest("Imlerith"),
+                new Soldier("Caranthir"),
+                new Thief("Ge'els"),
+                new Mage("Avallac'h"),
+                new Witcher("Geralt"),
+                new Thief("Ciri"),
+                new Soldier("Vesemir"),
+                new Witcher("Lambert"),
+                new Witcher("Eskel"),
+                new Mage("Josh"),
+                new Thief("Dave"),
             };
 
-            data.Team2 = new List<Character>
-            {
-                new Character("Eredin"),
-                new Character("Imlerith"),
-                new Character("Caranthir"),
-                new Character("Ge'els"),
-                new Character("Avallac'h"),
-            };
 
-            data.Vendor = new List<IItem>
-            {
-                //Weapon designer
-                new Weapon(1, "Sword", 1, 4, 4, "Weapon"),
-                new Weapon(2, "Rolling Pin", 0, 1, 1, "Weapon"),
-                //Armor designer
-                new Armor(3, "Light Armor", 2, 3, 3, "Armor"),
-                new Armor(4, "Heavy Armor", 4, 3, 4, "Armor"),
-            };
+            data.Vendor = new List<Item>
+                {
+                    //Weapon designer
+                    new Weapon("Sword")
+                    {
+                        Price = 5,
+                        Strength = new DiceRoll(sides: 8),
+                    },
+                    new Weapon("Rolling Pin")
+                    {
+                        Price = 1,
+                        Strength = new DiceRoll(sides: 1),
+                    },
 
+                    //Armor designer
+                    new Armor("Light Armor")
+                    {
+                        Price = 3,
+                    },
+                    new Armor("Heavy Armor")
+                    {
+                        Price = 10,
+                        Defense = 10,
+                        StrengthModifer = -2,
+                    },
+                };
             return data;
-        }
+
+    }
     }
 }
+
+
