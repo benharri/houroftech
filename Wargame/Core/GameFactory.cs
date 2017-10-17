@@ -7,9 +7,7 @@ namespace Wargame
     {
         public GameData CreateNewGame()
         {
-            return new GameData()
-            {
-            };
+            var data = new GameData();
 
 
             data.Team2 = new List<Character>
@@ -31,7 +29,7 @@ namespace Wargame
             };
 
 
-                Vendor = new List<Item>
+            data.Vendor = new List<Item>
                 {
                     //Weapon designer
                     new Weapon("Sword")
@@ -56,10 +54,11 @@ namespace Wargame
                         Defense = 10,
                         StrengthModifer = -2,
                     },
-                },
-            };
+                };
+            return data;
 
-        }
+    }
     }
 }
+
 
