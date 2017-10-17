@@ -37,7 +37,7 @@ namespace Wargame
                 },
                 new Weapon("Rolling Pin")
                 {
-                    Price = 1,
+                    Price = 100,
                     Strength = new DiceRoll(sides: 1),
                 },
 

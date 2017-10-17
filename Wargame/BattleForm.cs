@@ -136,11 +136,18 @@ namespace Wargame
 
         private void BtnPurchase_Click(object sender, EventArgs e)
         {
-            ////TODO: refactor here based on DraftClick
             if (!Game.Vendor.Any()) return;
             var selectedItem = (Item)dataGridViewVendor.CurrentRow.DataBoundItem;
-            Game.Vendor.Remove(selectedItem);
-            Game.PlayerInventory.Add(selectedItem);
+            if (Game.PlayerGold >= selectedItem.Price)
+            {
+                Game.PlayerGold -= selectedItem.Price;
+                Game.Vendor.Remove(selectedItem);
+                Game.PlayerInventory.Add(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Not enough Gold!");
+            }
         }
 
         private void BtnDraft_Click(object sender, EventArgs e)

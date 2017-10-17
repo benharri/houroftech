@@ -14,6 +14,7 @@ namespace Wargame
         public BindingList<Character> AvailableCharacters = new BindingList<Character>();
         internal BindingList<Item> Vendor = new BindingList<Item>();
         internal BindingList<Item> PlayerInventory = new BindingList<Item>();
+        internal int PlayerGold = 100;
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
         internal int TeamSize = 5;
