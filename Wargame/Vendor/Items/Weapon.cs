@@ -1,33 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Wargame
+﻿namespace Wargame
 {
-    public class Weapon : IItem
+    public class Weapon : Item
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public string ItemType { get; set; }
-        public int MinimumDamage { get; set; }
-        public int MaximumDamage { get; set; }
+        internal DiceRoll Strength { get; set; }
 
-        public Weapon(int id, string name, int minimumDamage, int maximumDamage, int price, string itemtype)
+        public Weapon(string name, int numDice = 1, int strength = 4, int price = 5)
         {
-            ID = id;
             Name = name;
             Price = price;
-            ItemType = itemtype;
-            MinimumDamage = minimumDamage;
-            MaximumDamage = maximumDamage;
+            Strength = new DiceRoll(numDice, strength);
         }
 
-        public override string ToString()
-        {
-            return $"{Name}: [DMG: {MinimumDamage} - {MaximumDamage}] Price: {Price}";
-        }
+        public override string ToString() => $"{Name}: [DMG: {Strength.DieName}] Price: {Price}";
     }
 }

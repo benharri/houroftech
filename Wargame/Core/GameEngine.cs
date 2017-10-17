@@ -23,9 +23,10 @@ namespace Wargame
             return $"{attacker.Name} dealt {roll.Total} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
-        internal void StartNextRound()
+        internal void StartRound(bool firstRound = false)
         {
-            gd.RoundNumber++;
+            if (firstRound) gd.RoundNumber = 1;
+            else gd.RoundNumber++;
             if (gd.RoundOrder != null) gd.RoundOrder.Clear();
 
             foreach (var c in gd.LivingCharacters)

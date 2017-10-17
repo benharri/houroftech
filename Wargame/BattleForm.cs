@@ -16,16 +16,68 @@ namespace Wargame
         {
             InitializeComponent();
             btnAttack.Enabled = false;
+            btnCreateGame.Text = "Pick Players";
             Messages = new StringBuilder();
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
             InitializeVendor();
+            InitializeRoster();
+        }
+
+        private void InitializeRoster()
+        {
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+            var grids = new List<DataGridView>() { dataGridViewAvailableCharacter, dataGridViewMyTeam, dataGridViewOpponentTeam };
+            foreach (var i in grids)
+            {
+                i.AutoGenerateColumns = false;
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Name",
+                    HeaderText = "Name",
+                    DataPropertyName = "Name",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "HP",
+                    Width = 30,
+                    HeaderText = "HP",
+                    DataPropertyName = "MaxHP",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Strength",
+                    Width = 30,
+                    HeaderText = "Strength",
+                    DataPropertyName = "DieName",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Class",
+                    Width = 70,
+                    HeaderText = "Class",
+                    DataPropertyName = "Class",
+                });
+            }
+
+            dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
+            dataGridViewMyTeam.DataSource = Game.Team1;
+            dataGridViewOpponentTeam.DataSource = Game.Team2;
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
-            Engine.StartNextRound();
-            Game.RoundNumber = 1;
+            if (Game.AvailableCharacters.Any())
+            {
+                tabControlMain.SelectTab(tabControlMain.TabPages["tabPage1"]);
+                return;
+            }
+            Engine.StartRound(firstRound: true);
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
             btnAttack.Enabled = true;
@@ -60,7 +112,7 @@ namespace Wargame
             var status = Engine.ProcessAttack();
             Messages.AppendLine($"{status}\r\n");
 
-            if (!Game.RoundOrder.Any()) Engine.StartNextRound();
+            if (!Game.RoundOrder.Any()) Engine.StartRound();
             if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
@@ -69,16 +121,31 @@ namespace Wargame
         {
             var checkBoxIndex = 0;
             foreach (object itemChecked in clbVendorWeapons.CheckedItems)
-            {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
-            }
+                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
 
             foreach (object itemChecked in clbVendorArmor.CheckedItems)
+                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
+        }
+
+        private void BtnDraft_Click(object sender, EventArgs e)
+        {
+            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
+
+            Game.AvailableCharacters.Remove(selectedCharacter);
+            Game.Team1.Add(selectedCharacter);
+
+            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
+
+            Game.AvailableCharacters.Remove(oppCharacter);
+            Game.Team2.Add(oppCharacter);
+
+            if (!Game.AvailableCharacters.Any())
             {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
+                tabControlMain.SelectTab(0);
+                btnCreateGame.Text = "Start Game";
+                btnCreateGame.PerformClick();
             }
         }
+
     }
 }

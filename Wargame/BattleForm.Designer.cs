@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateGame = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.btnAttack = new System.Windows.Forms.Button();
@@ -53,6 +55,14 @@
             this.clbVendorWeapons = new System.Windows.Forms.CheckedListBox();
             this.tabArmor = new System.Windows.Forms.TabPage();
             this.clbVendorArmor = new System.Windows.Forms.CheckedListBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridViewAvailableCharacter = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOpponentTeam = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMyTeam = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +70,10 @@
             this.tabControlShop.SuspendLayout();
             this.tabWeapons.SuspendLayout();
             this.tabArmor.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailableCharacter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpponentTeam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyTeam)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateGame
@@ -68,9 +82,9 @@
             this.btnCreateGame.BackColor = System.Drawing.Color.Olive;
             this.btnCreateGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateGame.Location = new System.Drawing.Point(890, 3);
+            this.btnCreateGame.Location = new System.Drawing.Point(1002, 3);
             this.btnCreateGame.Name = "btnCreateGame";
-            this.btnCreateGame.Size = new System.Drawing.Size(105, 36);
+            this.btnCreateGame.Size = new System.Drawing.Size(176, 36);
             this.btnCreateGame.TabIndex = 0;
             this.btnCreateGame.Text = "New Game";
             this.btnCreateGame.UseVisualStyleBackColor = false;
@@ -89,7 +103,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(808, 214);
+            this.txtLog.Size = new System.Drawing.Size(991, 361);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -101,7 +115,7 @@
             this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttack.Location = new System.Drawing.Point(819, 467);
+            this.btnAttack.Location = new System.Drawing.Point(1002, 614);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(176, 83);
             this.btnAttack.TabIndex = 2;
@@ -119,7 +133,7 @@
             this.txtTeam1.Location = new System.Drawing.Point(6, 122);
             this.txtTeam1.Multiline = true;
             this.txtTeam1.Name = "txtTeam1";
-            this.txtTeam1.Size = new System.Drawing.Size(371, 187);
+            this.txtTeam1.Size = new System.Drawing.Size(459, 187);
             this.txtTeam1.TabIndex = 3;
             this.txtTeam1.TabStop = false;
             // 
@@ -129,10 +143,10 @@
             this.txtTeam2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTeam2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTeam2.ForeColor = System.Drawing.Color.Lime;
-            this.txtTeam2.Location = new System.Drawing.Point(629, 122);
+            this.txtTeam2.Location = new System.Drawing.Point(719, 122);
             this.txtTeam2.Multiline = true;
             this.txtTeam2.Name = "txtTeam2";
-            this.txtTeam2.Size = new System.Drawing.Size(369, 187);
+            this.txtTeam2.Size = new System.Drawing.Size(459, 187);
             this.txtTeam2.TabIndex = 4;
             this.txtTeam2.TabStop = false;
             // 
@@ -143,12 +157,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabGame);
             this.tabControlMain.Controls.Add(this.tabShop);
+            this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.Padding = new System.Drawing.Point(0, 0);
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1008, 582);
+            this.tabControlMain.Size = new System.Drawing.Size(1191, 729);
             this.tabControlMain.TabIndex = 5;
             // 
             // tabGame
@@ -168,7 +183,7 @@
             this.tabGame.Location = new System.Drawing.Point(4, 22);
             this.tabGame.Margin = new System.Windows.Forms.Padding(0);
             this.tabGame.Name = "tabGame";
-            this.tabGame.Size = new System.Drawing.Size(1000, 556);
+            this.tabGame.Size = new System.Drawing.Size(1183, 703);
             this.tabGame.TabIndex = 0;
             this.tabGame.Text = "Game";
             // 
@@ -177,7 +192,7 @@
             this.initiativeLabel.AutoSize = true;
             this.initiativeLabel.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.initiativeLabel.ForeColor = System.Drawing.Color.Lime;
-            this.initiativeLabel.Location = new System.Drawing.Point(379, 103);
+            this.initiativeLabel.Location = new System.Drawing.Point(468, 103);
             this.initiativeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.initiativeLabel.Name = "initiativeLabel";
             this.initiativeLabel.Size = new System.Drawing.Size(108, 16);
@@ -201,7 +216,7 @@
             this.team2Label.AutoSize = true;
             this.team2Label.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.team2Label.ForeColor = System.Drawing.Color.Lime;
-            this.team2Label.Location = new System.Drawing.Point(627, 103);
+            this.team2Label.Location = new System.Drawing.Point(716, 103);
             this.team2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team2Label.Name = "team2Label";
             this.team2Label.Size = new System.Drawing.Size(138, 16);
@@ -216,9 +231,9 @@
             this.team1Label.Location = new System.Drawing.Point(5, 103);
             this.team1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team1Label.Name = "team1Label";
-            this.team1Label.Size = new System.Drawing.Size(78, 16);
+            this.team1Label.Size = new System.Drawing.Size(98, 16);
             this.team1Label.TabIndex = 7;
-            this.team1Label.Text = "My Team";
+            this.team1Label.Text = "Your Team";
             // 
             // pictureBox1
             // 
@@ -236,7 +251,7 @@
             this.txtRoundLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRoundLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoundLog.ForeColor = System.Drawing.Color.LimeGreen;
-            this.txtRoundLog.Location = new System.Drawing.Point(382, 122);
+            this.txtRoundLog.Location = new System.Drawing.Point(471, 122);
             this.txtRoundLog.Multiline = true;
             this.txtRoundLog.Name = "txtRoundLog";
             this.txtRoundLog.Size = new System.Drawing.Size(242, 187);
@@ -254,7 +269,7 @@
             this.tabShop.Location = new System.Drawing.Point(4, 22);
             this.tabShop.Name = "tabShop";
             this.tabShop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShop.Size = new System.Drawing.Size(1000, 556);
+            this.tabShop.Size = new System.Drawing.Size(1183, 703);
             this.tabShop.TabIndex = 1;
             this.tabShop.Text = "Vendor";
             // 
@@ -359,6 +374,109 @@
             this.clbVendorArmor.Size = new System.Drawing.Size(467, 436);
             this.clbVendorArmor.TabIndex = 1;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabPage1.Controls.Add(this.dataGridViewAvailableCharacter);
+            this.tabPage1.Controls.Add(this.dataGridViewOpponentTeam);
+            this.tabPage1.Controls.Add(this.dataGridViewMyTeam);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1183, 703);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Roster Management";
+            // 
+            // dataGridViewAvailableCharacter
+            // 
+            this.dataGridViewAvailableCharacter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAvailableCharacter.Location = new System.Drawing.Point(364, 33);
+            this.dataGridViewAvailableCharacter.Name = "dataGridViewAvailableCharacter";
+            this.dataGridViewAvailableCharacter.Size = new System.Drawing.Size(267, 481);
+            this.dataGridViewAvailableCharacter.TabIndex = 10;
+            // 
+            // dataGridViewOpponentTeam
+            // 
+            this.dataGridViewOpponentTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOpponentTeam.Location = new System.Drawing.Point(673, 33);
+            this.dataGridViewOpponentTeam.Name = "dataGridViewOpponentTeam";
+            this.dataGridViewOpponentTeam.Size = new System.Drawing.Size(318, 485);
+            this.dataGridViewOpponentTeam.TabIndex = 9;
+            // 
+            // dataGridViewMyTeam
+            // 
+            this.dataGridViewMyTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMyTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewMyTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMyTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridViewMyTeam.Location = new System.Drawing.Point(6, 33);
+            this.dataGridViewMyTeam.Name = "dataGridViewMyTeam";
+            this.dataGridViewMyTeam.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMyTeam.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewMyTeam.Size = new System.Drawing.Size(318, 485);
+            this.dataGridViewMyTeam.TabIndex = 8;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(438, 520);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(108, 36);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Draft Player";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.BtnDraft_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.LightGreen;
+            this.label4.Location = new System.Drawing.Point(674, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(178, 16);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Opponent\'s Roster";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.LightGreen;
+            this.label3.Location = new System.Drawing.Point(361, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(208, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Available Characters";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightGreen;
+            this.label2.Location = new System.Drawing.Point(9, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "My Team Roster";
+            // 
             // BattleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +484,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1007, 579);
+            this.ClientSize = new System.Drawing.Size(1190, 726);
             this.Controls.Add(this.tabControlMain);
             this.Name = "BattleForm";
             this.Text = "Wargame";
@@ -379,6 +497,11 @@
             this.tabControlShop.ResumeLayout(false);
             this.tabWeapons.ResumeLayout(false);
             this.tabArmor.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailableCharacter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpponentTeam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyTeam)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,6 +532,14 @@
         private System.Windows.Forms.CheckedListBox clbVendorArmor;
         private System.Windows.Forms.CheckedListBox clbInventory;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridViewOpponentTeam;
+        private System.Windows.Forms.DataGridView dataGridViewMyTeam;
+        private System.Windows.Forms.DataGridView dataGridViewAvailableCharacter;
     }
 }
 
