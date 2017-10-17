@@ -85,15 +85,32 @@ namespace Wargame
 
         private void InitializeVendor()
         {
-            var weaponIndex = 0;
-            var armorIndex = 0;
-            foreach (var item in Game.Vendor)
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory };
+            foreach (var i in grids)
             {
-                if (typeof(Weapon) == item.GetType())
-                    clbVendorWeapons.Items.Insert(weaponIndex++, item.ToString());
-                else if (typeof(Armor) == item.GetType())
-                    clbVendorArmor.Items.Insert(armorIndex++, item.ToString());
+                i.AutoGenerateColumns = false;
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Name",
+                    HeaderText = "Name",
+                    DataPropertyName = "Name",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Price",
+                    Width = 70,
+                    HeaderText = "Price",
+                    DataPropertyName = "Price",
+                });
+                //TODO: show other stats on vendor screen
             }
+
+            dataGridViewVendor.DataSource = Game.Vendor;
+            dataGridViewPlayerInventory.DataSource = Game.PlayerInventory;
         }
         private void RefreshLog()
         {
@@ -119,12 +136,11 @@ namespace Wargame
 
         private void BtnPurchase_Click(object sender, EventArgs e)
         {
-            var checkBoxIndex = 0;
-            foreach (object itemChecked in clbVendorWeapons.CheckedItems)
-                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
-
-            foreach (object itemChecked in clbVendorArmor.CheckedItems)
-                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
+            ////TODO: refactor here based on DraftClick
+            if (!Game.Vendor.Any()) return;
+            var selectedItem = (Item)dataGridViewVendor.CurrentRow.DataBoundItem;
+            Game.Vendor.Remove(selectedItem);
+            Game.PlayerInventory.Add(selectedItem);
         }
 
         private void BtnDraft_Click(object sender, EventArgs e)
