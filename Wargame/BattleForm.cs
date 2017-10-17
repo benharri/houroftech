@@ -28,10 +28,17 @@ namespace Wargame
 
         private void InitializeRosterSelection()
         {
-            foreach (var character in Game.AvailableCharacters)
-            {
-                //todo: add column for both name and hp to pass to character
-                dataGridViewAvailableCharacter.Rows.Add(character.Name);
+            var i = 0;
+            foreach(var character in Game.AvailableCharacters)
+                {
+                if(i != Game.AvailableCharacters.Count)
+                {
+                    //dataGridViewAvailableCharacter.Rows[i].Cells[1].Value = character.Name;
+                    //dataGridViewAvailableCharacter.Rows[i].Cells[2].Value = character.MaxHP;
+                    //dataGridViewAvailableCharacter.Rows.Add(character.Name);
+                }
+
+                i++;
             }
         }
 
