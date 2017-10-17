@@ -10,6 +10,8 @@ namespace Wargame
         internal Stack<Character> RoundOrder;
         internal List<Character> Team1;
         internal List<Character> Team2;
+        internal List<Character> AvailableCharacters;
+        internal List<IItem> Vendor;
         internal List<Item> Vendor;
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
@@ -35,6 +37,5 @@ namespace Wargame
             }
             return roster.ToString();
         }
-
     }
 }
