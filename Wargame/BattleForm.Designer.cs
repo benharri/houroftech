@@ -451,9 +451,9 @@
             this.label4.ForeColor = System.Drawing.Color.LightGreen;
             this.label4.Location = new System.Drawing.Point(674, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(208, 16);
+            this.label4.Size = new System.Drawing.Size(178, 16);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Opponent Team Roster";
+            this.label4.Text = "Opponent\'s Roster";
             // 
             // label3
             // 
