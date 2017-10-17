@@ -65,6 +65,7 @@ namespace Wargame
                 });
             }
 
+            RefreshPlayerGold();
             dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
             dataGridViewMyTeam.DataSource = Game.Team1;
             dataGridViewOpponentTeam.DataSource = Game.Team2;
@@ -121,6 +122,12 @@ namespace Wargame
             roundLabel.Text = $"Round {Game.RoundNumber}";
             Messages.Clear();
         }
+        
+        private void RefreshPlayerGold()
+        {
+            txtPlayerGold.Text = $"Player Gold: {Game.PlayerGold}";
+            Messages.Clear();
+        }
 
         private void BtnAttack_Click(object sender, EventArgs e)
         {
@@ -143,6 +150,7 @@ namespace Wargame
                 Game.PlayerGold -= selectedItem.Price;
                 Game.Vendor.Remove(selectedItem);
                 Game.PlayerInventory.Add(selectedItem);
+                RefreshPlayerGold();
             }
             else
             {
