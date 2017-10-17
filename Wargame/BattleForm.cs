@@ -77,8 +77,7 @@ namespace Wargame
                 tabControlMain.SelectTab(tabControlMain.TabPages["tabPage1"]);
                 return;
             }
-            Engine.StartNextRound();
-            Game.RoundNumber = 1;
+            Engine.StartRound(firstRound: true);
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
             btnAttack.Enabled = true;
@@ -113,7 +112,7 @@ namespace Wargame
             var status = Engine.ProcessAttack();
             Messages.AppendLine($"{status}\r\n");
 
-            if (!Game.RoundOrder.Any()) Engine.StartNextRound();
+            if (!Game.RoundOrder.Any()) Engine.StartRound();
             if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
