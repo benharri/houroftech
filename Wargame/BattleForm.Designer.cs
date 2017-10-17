@@ -57,19 +57,12 @@
             this.clbVendorArmor = new System.Windows.Forms.CheckedListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewAvailableCharacter = new System.Windows.Forms.DataGridView();
-            this.ColumnAvailableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAvailableHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewOpponentTeam = new System.Windows.Forms.DataGridView();
             this.dataGridViewMyTeam = new System.Windows.Forms.DataGridView();
-            this.ColumnMyTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMyTeamHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnSaveTeamRoster = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ColumnOpponentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnOpponentHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,9 +82,9 @@
             this.btnCreateGame.BackColor = System.Drawing.Color.Olive;
             this.btnCreateGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateGame.Location = new System.Drawing.Point(1073, 3);
+            this.btnCreateGame.Location = new System.Drawing.Point(1002, 3);
             this.btnCreateGame.Name = "btnCreateGame";
-            this.btnCreateGame.Size = new System.Drawing.Size(105, 36);
+            this.btnCreateGame.Size = new System.Drawing.Size(176, 36);
             this.btnCreateGame.TabIndex = 0;
             this.btnCreateGame.Text = "New Game";
             this.btnCreateGame.UseVisualStyleBackColor = false;
@@ -276,7 +269,7 @@
             this.tabShop.Location = new System.Drawing.Point(4, 22);
             this.tabShop.Name = "tabShop";
             this.tabShop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShop.Size = new System.Drawing.Size(1000, 556);
+            this.tabShop.Size = new System.Drawing.Size(1183, 703);
             this.tabShop.TabIndex = 1;
             this.tabShop.Text = "Vendor";
             // 
@@ -387,7 +380,6 @@
             this.tabPage1.Controls.Add(this.dataGridViewAvailableCharacter);
             this.tabPage1.Controls.Add(this.dataGridViewOpponentTeam);
             this.tabPage1.Controls.Add(this.dataGridViewMyTeam);
-            this.tabPage1.Controls.Add(this.BtnSaveTeamRoster);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
@@ -395,39 +387,21 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1000, 556);
+            this.tabPage1.Size = new System.Drawing.Size(1183, 703);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Roster Management";
             // 
             // dataGridViewAvailableCharacter
             // 
             this.dataGridViewAvailableCharacter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAvailableCharacter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnAvailableName,
-            this.ColumnAvailableHP});
             this.dataGridViewAvailableCharacter.Location = new System.Drawing.Point(364, 33);
             this.dataGridViewAvailableCharacter.Name = "dataGridViewAvailableCharacter";
             this.dataGridViewAvailableCharacter.Size = new System.Drawing.Size(267, 481);
             this.dataGridViewAvailableCharacter.TabIndex = 10;
             // 
-            // ColumnAvailableName
-            // 
-            this.ColumnAvailableName.HeaderText = "Name";
-            this.ColumnAvailableName.Name = "ColumnAvailableName";
-            this.ColumnAvailableName.Width = 175;
-            // 
-            // ColumnAvailableHP
-            // 
-            this.ColumnAvailableHP.HeaderText = "HP";
-            this.ColumnAvailableHP.Name = "ColumnAvailableHP";
-            this.ColumnAvailableHP.ReadOnly = true;
-            // 
             // dataGridViewOpponentTeam
             // 
             this.dataGridViewOpponentTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOpponentTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnOpponentName,
-            this.ColumnOpponentHP});
             this.dataGridViewOpponentTeam.Location = new System.Drawing.Point(673, 33);
             this.dataGridViewOpponentTeam.Name = "dataGridViewOpponentTeam";
             this.dataGridViewOpponentTeam.Size = new System.Drawing.Size(318, 485);
@@ -445,9 +419,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewMyTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMyTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMyTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnMyTeamName,
-            this.ColumnMyTeamHP});
             this.dataGridViewMyTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewMyTeam.Location = new System.Drawing.Point(6, 33);
             this.dataGridViewMyTeam.Name = "dataGridViewMyTeam";
@@ -463,32 +434,9 @@
             this.dataGridViewMyTeam.Size = new System.Drawing.Size(318, 485);
             this.dataGridViewMyTeam.TabIndex = 8;
             // 
-            // ColumnMyTeamName
-            // 
-            this.ColumnMyTeamName.HeaderText = "Name";
-            this.ColumnMyTeamName.Name = "ColumnMyTeamName";
-            this.ColumnMyTeamName.ReadOnly = true;
-            this.ColumnMyTeamName.Width = 200;
-            // 
-            // ColumnMyTeamHP
-            // 
-            this.ColumnMyTeamHP.HeaderText = "HP";
-            this.ColumnMyTeamHP.Name = "ColumnMyTeamHP";
-            this.ColumnMyTeamHP.ReadOnly = true;
-            // 
-            // BtnSaveTeamRoster
-            // 
-            this.BtnSaveTeamRoster.Location = new System.Drawing.Point(494, 520);
-            this.BtnSaveTeamRoster.Name = "BtnSaveTeamRoster";
-            this.BtnSaveTeamRoster.Size = new System.Drawing.Size(120, 36);
-            this.BtnSaveTeamRoster.TabIndex = 7;
-            this.BtnSaveTeamRoster.Text = "Save";
-            this.BtnSaveTeamRoster.UseVisualStyleBackColor = true;
-            this.BtnSaveTeamRoster.Click += new System.EventHandler(this.BtnSaveTeamRoster_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(364, 520);
+            this.button2.Location = new System.Drawing.Point(438, 520);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 36);
             this.button2.TabIndex = 6;
@@ -528,19 +476,6 @@
             this.label2.Size = new System.Drawing.Size(148, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "My Team Roster";
-            // 
-            // ColumnOpponentName
-            // 
-            this.ColumnOpponentName.HeaderText = "Name";
-            this.ColumnOpponentName.Name = "ColumnOpponentName";
-            this.ColumnOpponentName.ReadOnly = true;
-            this.ColumnOpponentName.Width = 200;
-            // 
-            // ColumnOpponentHP
-            // 
-            this.ColumnOpponentHP.HeaderText = "HP";
-            this.ColumnOpponentHP.Name = "ColumnOpponentHP";
-            this.ColumnOpponentHP.ReadOnly = true;
             // 
             // BattleForm
             // 
@@ -602,16 +537,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button BtnSaveTeamRoster;
         private System.Windows.Forms.DataGridView dataGridViewOpponentTeam;
         private System.Windows.Forms.DataGridView dataGridViewMyTeam;
         private System.Windows.Forms.DataGridView dataGridViewAvailableCharacter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMyTeamName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMyTeamHP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvailableName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvailableHP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentHP;
     }
 }
 

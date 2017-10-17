@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Wargame.Characters.Classes;
 
 namespace Wargame
@@ -10,22 +11,22 @@ namespace Wargame
             var data = new GameData();
 
 
-            data.Team2 = new List<Character>
-            {
-            };
+            //data.Team2 = new List<Character>
+            //{
+            //};
 
-            data.AvailableCharacters = new List<Character>
+            data.AvailableCharacters = new BindingList<Character>
             {
-                new Character("Eredin"),
-                new Character("Imlerith"),
-                new Character("Caranthir"),
-                new Character("Ge'els"),
-                new Character("Avallac'h"),
-                new Character("Geralt"),
-                new Character("Ciri"),
-                new Character("Vesemir"),
-                new Character("Lambert"),
-                new Character("Eskel"),
+                new Mage("Eredin"),
+                new Priest("Imlerith"),
+                new Soldier("Caranthir"),
+                new Thief("Ge'els"),
+                new Mage("Avallac'h"),
+                new Witcher("Geralt"),
+                new Thief("Ciri"),
+                new Soldier("Vesemir"),
+                new Witcher("Lambert"),
+                new Witcher("Eskel"),
             };
 
 

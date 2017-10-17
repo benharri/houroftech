@@ -6,9 +6,9 @@ namespace Wargame
 {
     class Character
     {
-        internal string Name { get; set; }
-        internal string Class => GetType().Name;
-        internal int MaxHP { get; set; }
+        public string Name { get; set; }
+        public string Class => GetType().Name;
+        public int MaxHP { get; set; }
         internal int CurrentHP { get; set; }
         internal bool Alive => CurrentHP > 0;
         internal int Initiative { get; set; }
@@ -24,6 +24,7 @@ namespace Wargame
         internal Stat CHR { get; set; }
         internal Stat MeleeStat { get; set; }
         internal DiceRoll Roll => StatRoll(MeleeStat);
+        public string DieName => Roll.DieName;
 
         public Character(string name, int maxHP = 20)
         {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Wargame;
 
 namespace Wargame
 {
@@ -13,37 +11,72 @@ namespace Wargame
         private GameData Game { get; set; }
         private StringBuilder Messages { get; set; }
         private GameEngine Engine { get; set; }
-        internal static Random rng = new Random();
-        private int myTurn = 0;
-        private int opponentTurn = 0;
 
         public BattleForm()
         {
             InitializeComponent();
             btnAttack.Enabled = false;
+            btnCreateGame.Text = "Pick Players";
             Messages = new StringBuilder();
             Game = (new GameFactory()).CreateNewGame();
             Engine = new GameEngine(Game);
             InitializeVendor();
-            InitializeRosterSelection();
+            InitializeRoster();
         }
 
-        private void InitializeRosterSelection()
+        private void InitializeRoster()
         {
-            var i = 0;
-            foreach (var character in Game.AvailableCharacters)
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+            var grids = new List<DataGridView>() { dataGridViewAvailableCharacter, dataGridViewMyTeam, dataGridViewOpponentTeam };
+            foreach (var i in grids)
             {
-                dataGridViewAvailableCharacter.Rows.Add();
-                dataGridViewAvailableCharacter.Rows[i].Cells[0].Value = character.Name;
-                dataGridViewAvailableCharacter.Rows[i].Cells[1].Value = character.MaxHP;
-                i++;
+                i.AutoGenerateColumns = false;
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Name",
+                    HeaderText = "Name",
+                    DataPropertyName = "Name",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "HP",
+                    Width = 30,
+                    HeaderText = "HP",
+                    DataPropertyName = "MaxHP",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Strength",
+                    Width = 30,
+                    HeaderText = "Strength",
+                    DataPropertyName = "DieName",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Class",
+                    Width = 70,
+                    HeaderText = "Class",
+                    DataPropertyName = "Class",
+                });
             }
+
+            dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
+            dataGridViewMyTeam.DataSource = Game.Team1;
+            dataGridViewOpponentTeam.DataSource = Game.Team2;
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
-            Game.Team1 = InitializeTeam(1);
-            Game.Team2 = InitializeTeam(2);
+            if (Game.AvailableCharacters.Any())
+            {
+                tabControlMain.SelectTab(tabControlMain.TabPages["tabPage1"]);
+                return;
+            }
             Engine.StartNextRound();
             Game.RoundNumber = 1;
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
@@ -97,52 +130,23 @@ namespace Wargame
 
         private void BtnDraft_Click(object sender, EventArgs e)
         {
-            //todo: verify row is selected and available characters stilla available or show message
-            //select my player
-            dataGridViewMyTeam.Rows.Add();
-            dataGridViewMyTeam.Rows[myTurn].Cells[0].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[0].Value;
-            dataGridViewMyTeam.Rows[myTurn].Cells[1].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[1].Value;
-            dataGridViewAvailableCharacter.Rows.Remove(dataGridViewAvailableCharacter.CurrentRow);
-            myTurn++;
-            //select opponent player
-            dataGridViewAvailableCharacter.CurrentCell = dataGridViewAvailableCharacter.Rows[rng.Next(0, dataGridViewAvailableCharacter.Rows.Count - 2)].Cells[0];
-            dataGridViewOpponentTeam.Rows.Add();
-            dataGridViewOpponentTeam.Rows[opponentTurn].Cells[0].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[0].Value;
-            dataGridViewOpponentTeam.Rows[opponentTurn].Cells[1].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[1].Value;
-            dataGridViewAvailableCharacter.Rows.Remove(dataGridViewAvailableCharacter.CurrentRow);
-            opponentTurn++;
-        }
+            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
 
-        private List<Character> InitializeTeam(int team = 1)
-        { 
-            if(team == 1)
+            Game.AvailableCharacters.Remove(selectedCharacter);
+            Game.Team1.Add(selectedCharacter);
+
+            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
+
+            Game.AvailableCharacters.Remove(oppCharacter);
+            Game.Team2.Add(oppCharacter);
+
+            if (!Game.AvailableCharacters.Any())
             {
-                var myTeam = new List<Character>();
-                for(var i = 0; i < dataGridViewMyTeam.Rows.Count - 1; i++)
-                {
-                    Character c = new Character(dataGridViewMyTeam.Rows[i].Cells["ColumnMyTeamName"].Value.ToString(), (int)dataGridViewMyTeam.Rows[i].Cells["ColumnMyTeamHP"].Value);
-                    myTeam.Add(c);
-                }
-                return myTeam;
+                tabControlMain.SelectTab(0);
+                btnCreateGame.Text = "Start Game";
+                btnCreateGame.PerformClick();
             }
-            else if(team == 2)
-            {
-                var opponentTeam = new List<Character>();
-                for (var i = 0; i < dataGridViewOpponentTeam.Rows.Count - 1; i++)
-                {
-                    Character c = new Character(dataGridViewOpponentTeam.Rows[i].Cells["ColumnOpponentName"].Value.ToString(), (int)dataGridViewOpponentTeam.Rows[i].Cells["ColumnOpponentHP"].Value);
-                    opponentTeam.Add(c);
-                }
-                return opponentTeam;
-            }
-
-            return null;
         }
 
-        private void BtnSaveTeamRoster_Click(object sender, EventArgs e)
-        {
-            InitializeTeam(1);
-            InitializeTeam(2);
-        }
     }
 }
