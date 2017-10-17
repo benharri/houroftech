@@ -14,6 +14,8 @@ namespace Wargame
         private StringBuilder Messages { get; set; }
         private GameEngine Engine { get; set; }
         internal static Random rng = new Random();
+        private int myTurn = 0;
+        private int opponentTurn = 0;
 
         public BattleForm()
         {
@@ -29,15 +31,11 @@ namespace Wargame
         private void InitializeRosterSelection()
         {
             var i = 0;
-            foreach(var character in Game.AvailableCharacters)
-                {
-                if(i != Game.AvailableCharacters.Count)
-                {
-                    //dataGridViewAvailableCharacter.Rows[i].Cells[1].Value = character.Name;
-                    //dataGridViewAvailableCharacter.Rows[i].Cells[2].Value = character.MaxHP;
-                    //dataGridViewAvailableCharacter.Rows.Add(character.Name);
-                }
-
+            foreach (var character in Game.AvailableCharacters)
+            {
+                dataGridViewAvailableCharacter.Rows.Add();
+                dataGridViewAvailableCharacter.Rows[i].Cells[0].Value = character.Name;
+                dataGridViewAvailableCharacter.Rows[i].Cells[1].Value = character.MaxHP;
                 i++;
             }
         }
@@ -105,29 +103,30 @@ namespace Wargame
 
         private void BtnDraft_Click(object sender, EventArgs e)
         {
-            var myTurn = 0;
-            var opponentTurn = 0;
-
+            //todo: verify row is selected and available characters stilla available or show message
             //select my player
-            dataGridViewMyTeam.Rows.Add(dataGridViewAvailableCharacter.CurrentCell.Value);
+            dataGridViewMyTeam.Rows.Add();
+            dataGridViewMyTeam.Rows[myTurn].Cells[0].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[0].Value;
+            dataGridViewMyTeam.Rows[myTurn].Cells[1].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[1].Value;
             dataGridViewAvailableCharacter.Rows.Remove(dataGridViewAvailableCharacter.CurrentRow);
             myTurn++;
             //select opponent player
             dataGridViewAvailableCharacter.CurrentCell = dataGridViewAvailableCharacter.Rows[rng.Next(0, dataGridViewAvailableCharacter.Rows.Count - 2)].Cells[0];
-            dataGridViewOpponentTeam.Rows.Add(dataGridViewAvailableCharacter.CurrentCell.Value);
+            dataGridViewOpponentTeam.Rows.Add();
+            dataGridViewOpponentTeam.Rows[opponentTurn].Cells[0].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[0].Value;
+            dataGridViewOpponentTeam.Rows[opponentTurn].Cells[1].Value = dataGridViewAvailableCharacter.Rows[dataGridViewAvailableCharacter.CurrentCell.RowIndex].Cells[1].Value;
             dataGridViewAvailableCharacter.Rows.Remove(dataGridViewAvailableCharacter.CurrentRow);
             opponentTurn++;
         }
 
         private List<Character> InitializeTeam(int team = 1)
-        {
-            //todo: add column for both name and hp to pass to character, then use here
+        { 
             if(team == 1)
             {
                 var myTeam = new List<Character>();
                 for(var i = 0; i < dataGridViewMyTeam.Rows.Count - 1; i++)
                 {
-                    Character c = new Character(dataGridViewMyTeam.Rows[i].Cells["ColumnMyTeamName"].Value.ToString(), 20);
+                    Character c = new Character(dataGridViewMyTeam.Rows[i].Cells["ColumnMyTeamName"].Value.ToString(), (int)dataGridViewMyTeam.Rows[i].Cells["ColumnMyTeamHP"].Value);
                     myTeam.Add(c);
                 }
                 return myTeam;
@@ -137,7 +136,7 @@ namespace Wargame
                 var opponentTeam = new List<Character>();
                 for (var i = 0; i < dataGridViewOpponentTeam.Rows.Count - 1; i++)
                 {
-                    Character c = new Character(dataGridViewOpponentTeam.Rows[i].Cells["ColumnOpponentName"].Value.ToString(), 20);
+                    Character c = new Character(dataGridViewOpponentTeam.Rows[i].Cells["ColumnOpponentName"].Value.ToString(), (int)dataGridViewOpponentTeam.Rows[i].Cells["ColumnOpponentHP"].Value);
                     opponentTeam.Add(c);
                 }
                 return opponentTeam;

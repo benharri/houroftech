@@ -55,8 +55,12 @@
             this.clbVendorArmor = new System.Windows.Forms.CheckedListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewAvailableCharacter = new System.Windows.Forms.DataGridView();
+            this.ColumnAvailableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAvailableHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewOpponentTeam = new System.Windows.Forms.DataGridView();
             this.dataGridViewMyTeam = new System.Windows.Forms.DataGridView();
+            this.ColumnMyTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMyTeamHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnSaveTeamRoster = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,10 +68,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ColumnOpponentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOpponentHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMyTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMyTeamHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAvailableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAvailableHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -408,6 +408,18 @@
             this.dataGridViewAvailableCharacter.Size = new System.Drawing.Size(267, 481);
             this.dataGridViewAvailableCharacter.TabIndex = 10;
             // 
+            // ColumnAvailableName
+            // 
+            this.ColumnAvailableName.HeaderText = "Name";
+            this.ColumnAvailableName.Name = "ColumnAvailableName";
+            this.ColumnAvailableName.Width = 175;
+            // 
+            // ColumnAvailableHP
+            // 
+            this.ColumnAvailableHP.HeaderText = "HP";
+            this.ColumnAvailableHP.Name = "ColumnAvailableHP";
+            this.ColumnAvailableHP.ReadOnly = true;
+            // 
             // dataGridViewOpponentTeam
             // 
             this.dataGridViewOpponentTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -429,6 +441,19 @@
             this.dataGridViewMyTeam.Name = "dataGridViewMyTeam";
             this.dataGridViewMyTeam.Size = new System.Drawing.Size(318, 485);
             this.dataGridViewMyTeam.TabIndex = 8;
+            // 
+            // ColumnMyTeamName
+            // 
+            this.ColumnMyTeamName.HeaderText = "Name";
+            this.ColumnMyTeamName.Name = "ColumnMyTeamName";
+            this.ColumnMyTeamName.ReadOnly = true;
+            this.ColumnMyTeamName.Width = 200;
+            // 
+            // ColumnMyTeamHP
+            // 
+            this.ColumnMyTeamHP.HeaderText = "HP";
+            this.ColumnMyTeamHP.Name = "ColumnMyTeamHP";
+            this.ColumnMyTeamHP.ReadOnly = true;
             // 
             // BtnSaveTeamRoster
             // 
@@ -488,38 +513,13 @@
             this.ColumnOpponentName.HeaderText = "Name";
             this.ColumnOpponentName.Name = "ColumnOpponentName";
             this.ColumnOpponentName.ReadOnly = true;
-            this.ColumnOpponentName.Width = 275;
+            this.ColumnOpponentName.Width = 200;
             // 
             // ColumnOpponentHP
             // 
             this.ColumnOpponentHP.HeaderText = "HP";
             this.ColumnOpponentHP.Name = "ColumnOpponentHP";
             this.ColumnOpponentHP.ReadOnly = true;
-            // 
-            // ColumnMyTeamName
-            // 
-            this.ColumnMyTeamName.HeaderText = "Name";
-            this.ColumnMyTeamName.Name = "ColumnMyTeamName";
-            this.ColumnMyTeamName.ReadOnly = true;
-            this.ColumnMyTeamName.Width = 200;
-            // 
-            // ColumnMyTeamHP
-            // 
-            this.ColumnMyTeamHP.HeaderText = "HP";
-            this.ColumnMyTeamHP.Name = "ColumnMyTeamHP";
-            this.ColumnMyTeamHP.ReadOnly = true;
-            // 
-            // ColumnAvailableName
-            // 
-            this.ColumnAvailableName.HeaderText = "Name";
-            this.ColumnAvailableName.Name = "ColumnAvailableName";
-            this.ColumnAvailableName.Width = 175;
-            // 
-            // ColumnAvailableHP
-            // 
-            this.ColumnAvailableHP.HeaderText = "HP";
-            this.ColumnAvailableHP.Name = "ColumnAvailableHP";
-            this.ColumnAvailableHP.ReadOnly = true;
             // 
             // BattleForm
             // 
@@ -585,12 +585,12 @@
         private System.Windows.Forms.DataGridView dataGridViewOpponentTeam;
         private System.Windows.Forms.DataGridView dataGridViewMyTeam;
         private System.Windows.Forms.DataGridView dataGridViewAvailableCharacter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMyTeamName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMyTeamHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvailableName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvailableHP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOpponentHP;
     }
 }
 
