@@ -1,6 +1,6 @@
 ﻿namespace Wargame
 {
-    public class Weapon : Item
+    class Weapon : Item
     {
         internal DiceRoll Strength { get; set; }
 

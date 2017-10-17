@@ -43,7 +43,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "HP",
-                    Width = 30,
+                    Width = 45,
                     HeaderText = "HP",
                     DataPropertyName = "MaxHP",
                 });
@@ -51,7 +51,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 30,
+                    Width = 40,
                     HeaderText = "Strength",
                     DataPropertyName = "DieName",
                 });
@@ -59,12 +59,13 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Class",
-                    Width = 70,
+                    Width = 150,
                     HeaderText = "Class",
                     DataPropertyName = "Class",
                 });
             }
 
+            RefreshPlayerGold();
             dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
             dataGridViewMyTeam.DataSource = Game.Team1;
             dataGridViewOpponentTeam.DataSource = Game.Team2;
@@ -85,15 +86,32 @@ namespace Wargame
 
         private void InitializeVendor()
         {
-            var weaponIndex = 0;
-            var armorIndex = 0;
-            foreach (var item in Game.Vendor)
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory };
+            foreach (var i in grids)
             {
-                if (typeof(Weapon) == item.GetType())
-                    clbVendorWeapons.Items.Insert(weaponIndex++, item.ToString());
-                else if (typeof(Armor) == item.GetType())
-                    clbVendorArmor.Items.Insert(armorIndex++, item.ToString());
+                i.AutoGenerateColumns = false;
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Name",
+                    HeaderText = "Name",
+                    DataPropertyName = "Name",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Price",
+                    Width = 70,
+                    HeaderText = "Price",
+                    DataPropertyName = "Price",
+                });
+                //TODO: show other stats on vendor screen
             }
+
+            dataGridViewVendor.DataSource = Game.Vendor;
+            dataGridViewPlayerInventory.DataSource = Game.PlayerInventory;
         }
         private void RefreshLog()
         {
@@ -102,6 +120,12 @@ namespace Wargame
             txtTeam1.Text = Game.TeamRoster(1);
             txtTeam2.Text = Game.TeamRoster(2);
             roundLabel.Text = $"Round {Game.RoundNumber}";
+            Messages.Clear();
+        }
+        
+        private void RefreshPlayerGold()
+        {
+            txtPlayerGold.Text = $"Player Gold: {Game.PlayerGold}";
             Messages.Clear();
         }
 
@@ -119,12 +143,19 @@ namespace Wargame
 
         private void BtnPurchase_Click(object sender, EventArgs e)
         {
-            var checkBoxIndex = 0;
-            foreach (object itemChecked in clbVendorWeapons.CheckedItems)
-                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
-
-            foreach (object itemChecked in clbVendorArmor.CheckedItems)
-                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
+            if (!Game.Vendor.Any()) return;
+            var selectedItem = (Item)dataGridViewVendor.CurrentRow.DataBoundItem;
+            if (Game.PlayerGold >= selectedItem.Price)
+            {
+                Game.PlayerGold -= selectedItem.Price;
+                Game.Vendor.Remove(selectedItem);
+                Game.PlayerInventory.Add(selectedItem);
+                RefreshPlayerGold();
+            }
+            else
+            {
+                MessageBox.Show("Not enough Gold!");
+            }
         }
 
         private void BtnDraft_Click(object sender, EventArgs e)
