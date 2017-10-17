@@ -67,7 +67,8 @@
     <Compile Include="Characters\Classes\Priest.cs" />
     <Compile Include="Characters\Classes\Soldier.cs" />
     <Compile Include="Characters\Classes\Thief.cs" />
-    <Compile Include="Vendor\IItem.cs" />
+    <Compile Include="Characters\Classes\Witcher.cs" />
+    <Compile Include="Vendor\Item.cs" />
     <Compile Include="Vendor\Items\Armor.cs" />
     <Compile Include="Characters\Character.cs" />
     <Compile Include="BattleForm.cs">
@@ -97,6 +98,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\GameData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
