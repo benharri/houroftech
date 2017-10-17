@@ -15,6 +15,8 @@ namespace Wargame
         internal List<Item> Vendor = new List<Item>();
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
+        internal int TeamSize = 5;
+        public bool TeamsFull => Team1.Count == TeamSize && Team2.Count == TeamSize;
 
         public GameData() { }
 

@@ -72,7 +72,7 @@ namespace Wargame
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
         {
-            if (Game.AvailableCharacters.Any())
+            if (!Game.TeamsFull)
             {
                 tabControlMain.SelectTab(tabControlMain.TabPages["tabPage1"]);
                 return;
@@ -129,22 +129,23 @@ namespace Wargame
 
         private void BtnDraft_Click(object sender, EventArgs e)
         {
-            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
-
-            Game.AvailableCharacters.Remove(selectedCharacter);
-            Game.Team1.Add(selectedCharacter);
-
-            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
-
-            Game.AvailableCharacters.Remove(oppCharacter);
-            Game.Team2.Add(oppCharacter);
-
-            if (!Game.AvailableCharacters.Any())
+            if (Game.TeamsFull)
             {
+                MessageBox.Show("All set. Teams full. Starting Game!");
                 tabControlMain.SelectTab(0);
                 btnCreateGame.Text = "Start Game";
                 btnCreateGame.PerformClick();
             }
+            if (!Game.AvailableCharacters.Any() || Game.TeamsFull) return;
+
+            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
+            Game.AvailableCharacters.Remove(selectedCharacter);
+            Game.Team1.Add(selectedCharacter);
+
+            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
+            Game.AvailableCharacters.Remove(oppCharacter);
+            Game.Team2.Add(oppCharacter);
+
         }
 
     }

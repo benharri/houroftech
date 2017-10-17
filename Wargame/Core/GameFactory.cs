@@ -27,6 +27,8 @@ namespace Wargame
                 new Soldier("Vesemir"),
                 new Witcher("Lambert"),
                 new Witcher("Eskel"),
+                new Mage("Josh"),
+                new Thief("Dave"),
             };
 
 
