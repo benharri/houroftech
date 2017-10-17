@@ -8,31 +8,34 @@ namespace Wargame
     {
         public GameData CreateNewGame()
         {
-            var data = new GameData();
-
-
-            //data.Team2 = new List<Character>
-            //{
-            //};
-
-            data.AvailableCharacters = new BindingList<Character>
+            return new GameData()
             {
-                new Mage("Eredin"),
-                new Priest("Imlerith"),
-                new Soldier("Caranthir"),
-                new Thief("Ge'els"),
-                new Mage("Avallac'h"),
-                new Witcher("Geralt"),
-                new Thief("Ciri"),
-                new Soldier("Vesemir"),
-                new Witcher("Lambert"),
-                new Witcher("Eskel"),
-                new Mage("Josh"),
-                new Thief("Dave"),
-            };
+                AvailableCharacters = new BindingList<Character>
+                {
+                    new Mage("Eredin"),
+                    new Priest("Imlerith"),
+                    new Soldier("Caranthir"),
+                    new Thief("Ge'els"),
+                    new Mage("Avallac'h"),
+                    new Witcher("Geralt"),
+                    new Thief("Ciri"),
+                    new Soldier("Vesemir"),
+                    new Witcher("Lambert"),
+                    new Witcher("Eskel"),
+                    new Mage("Josh"),
+                    new Thief("Dave"),
+                    new Assassin("Ezio"),
+                    new Barbarian("Fred"),
+                    new Bard("Dandelion"),
+                    new Druid("Ermion"),
+                    new Hunter("Ragnar"),
+                    new Mage("Keira Metz"),
+                    new Priest("John Paul"),
+                    new Soldier("Ves"),
+                    new Thief("Bootblack"),
+                },
 
-
-            data.Vendor = new List<Item>
+                Vendor = new List<Item>
                 {
                     //Weapon designer
                     new Weapon("Sword")
@@ -57,10 +60,10 @@ namespace Wargame
                         Defense = 10,
                         StrengthModifer = -2,
                     },
-                };
-            return data;
+                },
+            };
 
-    }
+        }
     }
 }
 
