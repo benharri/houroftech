@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Wargame.Characters.Classes;
 
 namespace Wargame
 {
@@ -6,9 +7,7 @@ namespace Wargame
     {
         public GameData CreateNewGame()
         {
-            var data = new GameData();
-
-            data.Team1 = new List<Character>
+            return new GameData()
             {
             };
 
@@ -31,17 +30,35 @@ namespace Wargame
                 new Character("Eskel"),
             };
 
-            data.Vendor = new List<IItem>
-            {
-                //Weapon designer
-                new Weapon(1, "Sword", 1, 4, 4, "Weapon"),
-                new Weapon(2, "Rolling Pin", 0, 1, 1, "Weapon"),
-                //Armor designer
-                new Armor(3, "Light Armor", 2, 3, 3, "Armor"),
-                new Armor(4, "Heavy Armor", 4, 3, 4, "Armor"),
+
+                Vendor = new List<Item>
+                {
+                    //Weapon designer
+                    new Weapon("Sword")
+                    {
+                        Price = 5,
+                        Strength = new DiceRoll(sides: 8),
+                    },
+                    new Weapon("Rolling Pin")
+                    {
+                        Price = 1,
+                        Strength = new DiceRoll(sides: 1),
+                    },
+
+                    //Armor designer
+                    new Armor("Light Armor")
+                    {
+                        Price = 3,
+                    },
+                    new Armor("Heavy Armor")
+                    {
+                        Price = 10,
+                        Defense = 10,
+                        StrengthModifer = -2,
+                    },
+                },
             };
 
-            return data;
         }
     }
 }

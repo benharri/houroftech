@@ -89,16 +89,10 @@ namespace Wargame
         {
             var checkBoxIndex = 0;
             foreach (object itemChecked in clbVendorWeapons.CheckedItems)
-            {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
-            }
+                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
 
             foreach (object itemChecked in clbVendorArmor.CheckedItems)
-            {
-                clbInventory.Items.Insert(checkBoxIndex, itemChecked.ToString());
-                checkBoxIndex++;
-            }
+                clbInventory.Items.Insert(checkBoxIndex++, itemChecked.ToString());
         }
 
         private void BtnDraft_Click(object sender, EventArgs e)

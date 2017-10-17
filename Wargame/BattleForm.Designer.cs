@@ -89,7 +89,7 @@
             this.btnCreateGame.BackColor = System.Drawing.Color.Olive;
             this.btnCreateGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateGame.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateGame.Location = new System.Drawing.Point(890, 3);
+            this.btnCreateGame.Location = new System.Drawing.Point(1073, 3);
             this.btnCreateGame.Name = "btnCreateGame";
             this.btnCreateGame.Size = new System.Drawing.Size(105, 36);
             this.btnCreateGame.TabIndex = 0;
@@ -110,7 +110,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(808, 214);
+            this.txtLog.Size = new System.Drawing.Size(991, 361);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -122,7 +122,7 @@
             this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttack.Location = new System.Drawing.Point(819, 467);
+            this.btnAttack.Location = new System.Drawing.Point(1002, 614);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(176, 83);
             this.btnAttack.TabIndex = 2;
@@ -140,7 +140,7 @@
             this.txtTeam1.Location = new System.Drawing.Point(6, 122);
             this.txtTeam1.Multiline = true;
             this.txtTeam1.Name = "txtTeam1";
-            this.txtTeam1.Size = new System.Drawing.Size(371, 187);
+            this.txtTeam1.Size = new System.Drawing.Size(459, 187);
             this.txtTeam1.TabIndex = 3;
             this.txtTeam1.TabStop = false;
             // 
@@ -150,10 +150,10 @@
             this.txtTeam2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTeam2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTeam2.ForeColor = System.Drawing.Color.Lime;
-            this.txtTeam2.Location = new System.Drawing.Point(629, 122);
+            this.txtTeam2.Location = new System.Drawing.Point(719, 122);
             this.txtTeam2.Multiline = true;
             this.txtTeam2.Name = "txtTeam2";
-            this.txtTeam2.Size = new System.Drawing.Size(369, 187);
+            this.txtTeam2.Size = new System.Drawing.Size(459, 187);
             this.txtTeam2.TabIndex = 4;
             this.txtTeam2.TabStop = false;
             // 
@@ -170,7 +170,7 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.Padding = new System.Drawing.Point(0, 0);
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1008, 582);
+            this.tabControlMain.Size = new System.Drawing.Size(1191, 729);
             this.tabControlMain.TabIndex = 5;
             // 
             // tabGame
@@ -190,7 +190,7 @@
             this.tabGame.Location = new System.Drawing.Point(4, 22);
             this.tabGame.Margin = new System.Windows.Forms.Padding(0);
             this.tabGame.Name = "tabGame";
-            this.tabGame.Size = new System.Drawing.Size(1000, 556);
+            this.tabGame.Size = new System.Drawing.Size(1183, 703);
             this.tabGame.TabIndex = 0;
             this.tabGame.Text = "Game";
             // 
@@ -199,7 +199,7 @@
             this.initiativeLabel.AutoSize = true;
             this.initiativeLabel.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.initiativeLabel.ForeColor = System.Drawing.Color.Lime;
-            this.initiativeLabel.Location = new System.Drawing.Point(379, 103);
+            this.initiativeLabel.Location = new System.Drawing.Point(468, 103);
             this.initiativeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.initiativeLabel.Name = "initiativeLabel";
             this.initiativeLabel.Size = new System.Drawing.Size(108, 16);
@@ -223,7 +223,7 @@
             this.team2Label.AutoSize = true;
             this.team2Label.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.team2Label.ForeColor = System.Drawing.Color.Lime;
-            this.team2Label.Location = new System.Drawing.Point(627, 103);
+            this.team2Label.Location = new System.Drawing.Point(716, 103);
             this.team2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team2Label.Name = "team2Label";
             this.team2Label.Size = new System.Drawing.Size(138, 16);
@@ -238,9 +238,9 @@
             this.team1Label.Location = new System.Drawing.Point(5, 103);
             this.team1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.team1Label.Name = "team1Label";
-            this.team1Label.Size = new System.Drawing.Size(78, 16);
+            this.team1Label.Size = new System.Drawing.Size(98, 16);
             this.team1Label.TabIndex = 7;
-            this.team1Label.Text = "My Team";
+            this.team1Label.Text = "Your Team";
             // 
             // pictureBox1
             // 
@@ -258,7 +258,7 @@
             this.txtRoundLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRoundLog.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoundLog.ForeColor = System.Drawing.Color.LimeGreen;
-            this.txtRoundLog.Location = new System.Drawing.Point(382, 122);
+            this.txtRoundLog.Location = new System.Drawing.Point(471, 122);
             this.txtRoundLog.Multiline = true;
             this.txtRoundLog.Name = "txtRoundLog";
             this.txtRoundLog.Size = new System.Drawing.Size(242, 187);
@@ -549,7 +549,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1007, 579);
+            this.ClientSize = new System.Drawing.Size(1190, 726);
             this.Controls.Add(this.tabControlMain);
             this.Name = "BattleForm";
             this.Text = "Wargame";
