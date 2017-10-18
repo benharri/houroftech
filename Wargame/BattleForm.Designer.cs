@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateGame = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.btnAttack = new System.Windows.Forms.Button();
@@ -60,9 +60,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtRoundLog = new System.Windows.Forms.TextBox();
             this.tabShop = new System.Windows.Forms.TabPage();
+            this.txtPlayerGold = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridViewVendor = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPlayerInventory = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabRosterMgmt = new System.Windows.Forms.TabPage();
             this.dataGridViewAvailableCharacter = new System.Windows.Forms.DataGridView();
             this.dataGridViewOpponentTeam = new System.Windows.Forms.DataGridView();
             this.dataGridViewMyTeam = new System.Windows.Forms.DataGridView();
@@ -70,20 +74,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridViewPlayerInventory = new System.Windows.Forms.DataGridView();
-            this.dataGridViewVendor = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPlayerGold = new System.Windows.Forms.TextBox();
+            this.tabIntro = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
             this.tabGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabShop.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVendor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerInventory)).BeginInit();
+            this.tabRosterMgmt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailableCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpponentTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyTeam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerInventory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVendor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateGame
@@ -165,9 +167,11 @@
             this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlMain.Controls.Add(this.tabIntro);
             this.tabControlMain.Controls.Add(this.tabGame);
+            this.tabControlMain.Controls.Add(this.tabRosterMgmt);
             this.tabControlMain.Controls.Add(this.tabShop);
-            this.tabControlMain.Controls.Add(this.tabPage1);
+            this.tabControlMain.Controls.Add(this.tabPage2);
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlMain.Name = "tabControlMain";
@@ -270,7 +274,7 @@
             // 
             // tabShop
             // 
-            this.tabShop.BackColor = System.Drawing.Color.SlateGray;
+            this.tabShop.BackColor = System.Drawing.Color.DarkSlateGray;
             this.tabShop.Controls.Add(this.txtPlayerGold);
             this.tabShop.Controls.Add(this.label5);
             this.tabShop.Controls.Add(this.dataGridViewVendor);
@@ -283,6 +287,98 @@
             this.tabShop.Size = new System.Drawing.Size(1183, 703);
             this.tabShop.TabIndex = 1;
             this.tabShop.Text = "Vendor";
+            // 
+            // txtPlayerGold
+            // 
+            this.txtPlayerGold.BackColor = System.Drawing.SystemColors.MenuText;
+            this.txtPlayerGold.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPlayerGold.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlayerGold.ForeColor = System.Drawing.Color.LimeGreen;
+            this.txtPlayerGold.Location = new System.Drawing.Point(535, 491);
+            this.txtPlayerGold.Multiline = true;
+            this.txtPlayerGold.Name = "txtPlayerGold";
+            this.txtPlayerGold.Size = new System.Drawing.Size(316, 20);
+            this.txtPlayerGold.TabIndex = 7;
+            this.txtPlayerGold.Text = "Player Gold: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.LightGreen;
+            this.label5.Location = new System.Drawing.Point(9, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 16);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Vendor";
+            // 
+            // dataGridViewVendor
+            // 
+            this.dataGridViewVendor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewVendor.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewVendor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewVendor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewVendor.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewVendor.Location = new System.Drawing.Point(6, 48);
+            this.dataGridViewVendor.Name = "dataGridViewVendor";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewVendor.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewVendor.Size = new System.Drawing.Size(512, 437);
+            this.dataGridViewVendor.TabIndex = 5;
+            // 
+            // dataGridViewPlayerInventory
+            // 
+            this.dataGridViewPlayerInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPlayerInventory.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPlayerInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewPlayerInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlayerInventory.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewPlayerInventory.Location = new System.Drawing.Point(535, 48);
+            this.dataGridViewPlayerInventory.Name = "dataGridViewPlayerInventory";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPlayerInventory.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewPlayerInventory.Size = new System.Drawing.Size(537, 437);
+            this.dataGridViewPlayerInventory.TabIndex = 4;
             // 
             // label1
             // 
@@ -306,35 +402,103 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.BtnPurchase_Click);
             // 
-            // tabPage1
+            // tabRosterMgmt
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.tabPage1.Controls.Add(this.dataGridViewAvailableCharacter);
-            this.tabPage1.Controls.Add(this.dataGridViewOpponentTeam);
-            this.tabPage1.Controls.Add(this.dataGridViewMyTeam);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1183, 703);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Roster Management";
+            this.tabRosterMgmt.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabRosterMgmt.Controls.Add(this.dataGridViewAvailableCharacter);
+            this.tabRosterMgmt.Controls.Add(this.dataGridViewOpponentTeam);
+            this.tabRosterMgmt.Controls.Add(this.dataGridViewMyTeam);
+            this.tabRosterMgmt.Controls.Add(this.button2);
+            this.tabRosterMgmt.Controls.Add(this.label4);
+            this.tabRosterMgmt.Controls.Add(this.label3);
+            this.tabRosterMgmt.Controls.Add(this.label2);
+            this.tabRosterMgmt.Location = new System.Drawing.Point(4, 22);
+            this.tabRosterMgmt.Name = "tabRosterMgmt";
+            this.tabRosterMgmt.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRosterMgmt.Size = new System.Drawing.Size(1183, 703);
+            this.tabRosterMgmt.TabIndex = 2;
+            this.tabRosterMgmt.Text = "Roster Management";
             // 
             // dataGridViewAvailableCharacter
             // 
             this.dataGridViewAvailableCharacter.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAvailableCharacter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewAvailableCharacter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAvailableCharacter.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewAvailableCharacter.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridViewAvailableCharacter.Location = new System.Drawing.Point(398, 33);
+            this.dataGridViewAvailableCharacter.Name = "dataGridViewAvailableCharacter";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAvailableCharacter.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewAvailableCharacter.Size = new System.Drawing.Size(380, 485);
+            this.dataGridViewAvailableCharacter.TabIndex = 10;
+            // 
+            // dataGridViewOpponentTeam
+            // 
+            this.dataGridViewOpponentTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewOpponentTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewOpponentTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewOpponentTeam.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewOpponentTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridViewOpponentTeam.Location = new System.Drawing.Point(784, 33);
+            this.dataGridViewOpponentTeam.Name = "dataGridViewOpponentTeam";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewOpponentTeam.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewOpponentTeam.Size = new System.Drawing.Size(380, 485);
+            this.dataGridViewOpponentTeam.TabIndex = 9;
+            // 
+            // dataGridViewMyTeam
+            // 
+            this.dataGridViewMyTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.LimeGreen;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAvailableCharacter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewAvailableCharacter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMyTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewMyTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.MenuText;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,91 +506,23 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAvailableCharacter.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewAvailableCharacter.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridViewAvailableCharacter.Location = new System.Drawing.Point(398, 33);
-            this.dataGridViewAvailableCharacter.Name = "dataGridViewAvailableCharacter";
+            this.dataGridViewMyTeam.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewMyTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridViewMyTeam.Location = new System.Drawing.Point(6, 33);
+            this.dataGridViewMyTeam.Name = "dataGridViewMyTeam";
+            this.dataGridViewMyTeam.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.LimeGreen;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAvailableCharacter.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewAvailableCharacter.Size = new System.Drawing.Size(380, 485);
-            this.dataGridViewAvailableCharacter.TabIndex = 10;
-            // 
-            // dataGridViewOpponentTeam
-            // 
-            this.dataGridViewOpponentTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewMyTeam.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewOpponentTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewOpponentTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewOpponentTeam.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewOpponentTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridViewOpponentTeam.Location = new System.Drawing.Point(784, 33);
-            this.dataGridViewOpponentTeam.Name = "dataGridViewOpponentTeam";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewOpponentTeam.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewOpponentTeam.Size = new System.Drawing.Size(380, 485);
-            this.dataGridViewOpponentTeam.TabIndex = 9;
-            // 
-            // dataGridViewMyTeam
-            // 
-            this.dataGridViewMyTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMyTeam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridViewMyTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMyTeam.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewMyTeam.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridViewMyTeam.Location = new System.Drawing.Point(6, 33);
-            this.dataGridViewMyTeam.Name = "dataGridViewMyTeam";
-            this.dataGridViewMyTeam.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMyTeam.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dataGridViewMyTeam.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewMyTeam.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewMyTeam.Size = new System.Drawing.Size(380, 485);
             this.dataGridViewMyTeam.TabIndex = 8;
             // 
@@ -473,97 +569,25 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "My Team Roster";
             // 
-            // dataGridViewPlayerInventory
+            // tabIntro
             // 
-            this.dataGridViewPlayerInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPlayerInventory.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPlayerInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewPlayerInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPlayerInventory.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewPlayerInventory.Location = new System.Drawing.Point(535, 48);
-            this.dataGridViewPlayerInventory.Name = "dataGridViewPlayerInventory";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPlayerInventory.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewPlayerInventory.Size = new System.Drawing.Size(537, 437);
-            this.dataGridViewPlayerInventory.TabIndex = 4;
+            this.tabIntro.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabIntro.Location = new System.Drawing.Point(4, 22);
+            this.tabIntro.Name = "tabIntro";
+            this.tabIntro.Padding = new System.Windows.Forms.Padding(3);
+            this.tabIntro.Size = new System.Drawing.Size(1183, 703);
+            this.tabIntro.TabIndex = 3;
+            this.tabIntro.Text = "Intro";
             // 
-            // dataGridViewVendor
+            // tabPage2
             // 
-            this.dataGridViewVendor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewVendor.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewVendor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewVendor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewVendor.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewVendor.Location = new System.Drawing.Point(6, 48);
-            this.dataGridViewVendor.Name = "dataGridViewVendor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewVendor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewVendor.Size = new System.Drawing.Size(512, 437);
-            this.dataGridViewVendor.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.LightGreen;
-            this.label5.Location = new System.Drawing.Point(9, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 16);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Vendor";
-            // 
-            // txtPlayerGold
-            // 
-            this.txtPlayerGold.BackColor = System.Drawing.SystemColors.MenuText;
-            this.txtPlayerGold.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPlayerGold.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlayerGold.ForeColor = System.Drawing.Color.LimeGreen;
-            this.txtPlayerGold.Location = new System.Drawing.Point(535, 491);
-            this.txtPlayerGold.Multiline = true;
-            this.txtPlayerGold.Name = "txtPlayerGold";
-            this.txtPlayerGold.Size = new System.Drawing.Size(316, 20);
-            this.txtPlayerGold.TabIndex = 7;
-            this.txtPlayerGold.Text = "Player Gold: ";
+            this.tabPage2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1183, 703);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "EquipmentManager";
             // 
             // BattleForm
             // 
@@ -582,13 +606,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabShop.ResumeLayout(false);
             this.tabShop.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVendor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerInventory)).EndInit();
+            this.tabRosterMgmt.ResumeLayout(false);
+            this.tabRosterMgmt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailableCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpponentTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyTeam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerInventory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVendor)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -612,7 +636,7 @@
         private System.Windows.Forms.Label roundLabel;
         private System.Windows.Forms.Label initiativeLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabRosterMgmt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -624,6 +648,8 @@
         private System.Windows.Forms.DataGridView dataGridViewVendor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPlayerGold;
+        private System.Windows.Forms.TabPage tabIntro;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

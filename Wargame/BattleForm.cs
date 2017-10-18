@@ -75,7 +75,7 @@ namespace Wargame
         {
             if (!Game.TeamsFull)
             {
-                tabControlMain.SelectTab(tabControlMain.TabPages["tabPage1"]);
+                tabControlMain.SelectTab(tabControlMain.TabPages["tabRosterMgmt"]);
                 return;
             }
             Engine.StartRound(firstRound: true);
@@ -163,7 +163,7 @@ namespace Wargame
             if (Game.TeamsFull)
             {
                 MessageBox.Show("All set. Teams full. Starting Game!");
-                tabControlMain.SelectTab(0);
+                tabControlMain.SelectTab(1);
                 btnCreateGame.Text = "Start Game";
                 btnCreateGame.PerformClick();
             }
