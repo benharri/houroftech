@@ -10,11 +10,6 @@ namespace Wargame
         {
             var data = new GameData();
 
-
-            //data.Team2 = new List<Character>
-            //{
-            //};
-
             data.AvailableCharacters = new BindingList<Character>
             {
                 new Mage("Eredin"),
@@ -27,38 +22,40 @@ namespace Wargame
                 new Soldier("Vesemir"),
                 new Witcher("Lambert"),
                 new Witcher("Eskel"),
+                new Mage("Josh"),
+                new Thief("Dave"),
             };
 
 
-            data.Vendor = new List<Item>
+            data.Vendor = new BindingList<Item>
+            {
+                //Weapon designer
+                new Weapon("Sword")
                 {
-                    //Weapon designer
-                    new Weapon("Sword")
-                    {
-                        Price = 5,
-                        Strength = new DiceRoll(sides: 8),
-                    },
-                    new Weapon("Rolling Pin")
-                    {
-                        Price = 1,
-                        Strength = new DiceRoll(sides: 1),
-                    },
+                    Price = 5,
+                    Strength = new DiceRoll(sides: 8),
+                },
+                new Weapon("Rolling Pin")
+                {
+                    Price = 100,
+                    Strength = new DiceRoll(sides: 1),
+                },
 
-                    //Armor designer
-                    new Armor("Light Armor")
-                    {
-                        Price = 3,
-                    },
-                    new Armor("Heavy Armor")
-                    {
-                        Price = 10,
-                        Defense = 10,
-                        StrengthModifer = -2,
-                    },
-                };
+                //Armor designer
+                new Armor("Light Armor")
+                {
+                    Price = 3,
+                },
+                new Armor("Heavy Armor")
+                {
+                    Price = 10,
+                    Defense = 10,
+                    StrengthModifer = -2,
+                },
+            };
             return data;
 
-    }
+        }
     }
 }
 

@@ -1,9 +1,13 @@
-﻿namespace Wargame
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Wargame
 {
-    public class Item
+    class Item
     {
-        internal string Name { get; set; }
-        internal int Price { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
 
         public override string ToString() => $"{Name} {GetType().Name} {Price}";
     }
