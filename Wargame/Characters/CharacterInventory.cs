@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Wargame
 {
     class CharacterInventory
     {
-        public List<Item> inventory;
-        public List<Item> equipped;
+        public BindingList<Item> inventory;
+        public BindingList<Item> equipped;
 
         public CharacterInventory()
         {
-            inventory = new List<Item>();
-            equipped = new List<Item>();
+            inventory = new BindingList<Item>();
+            equipped = new BindingList<Item>();
         }
     }
 }
