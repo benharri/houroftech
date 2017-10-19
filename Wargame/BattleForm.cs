@@ -179,5 +179,9 @@ namespace Wargame
 
         }
 
+        private void BtnDraftTeamIntroScreen_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectTab(tabControlMain.TabPages["tabRosterMgmt"]);
+        }
     }
 }

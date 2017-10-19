@@ -25,6 +25,7 @@ namespace Wargame
 
         internal DiceRoll DoRoll()
         {
+            //TODO: add parameter and rng chance of attack type. 
             Rolls = Rolls.Select(x => rng.Next(Sides) + 1).ToArray();
             BareRoll = Rolls.Sum();
             Total = BareRoll + Modifier;
