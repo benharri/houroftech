@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Wargame.Core;
 
 namespace Wargame
 {
@@ -37,6 +38,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Name",
+                    Width = 120,
                     HeaderText = "Name",
                     DataPropertyName = "Name",
                 });
@@ -52,21 +54,22 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 50,
-                    HeaderText = "Strength",
+                    Width = 55,
+                    HeaderText = "STR",
                     DataPropertyName = "DieName",
                 });
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     CellTemplate = cell,
                     Name = "Class",
-                    Width = 150,
+                    Width = 100,
                     HeaderText = "Class",
                     DataPropertyName = "Class",
                 });
             }
 
             RefreshPlayerGold();
+
             dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
             dataGridViewMyTeam.DataSource = Game.Team1;
             dataGridViewOpponentTeam.DataSource = Game.Team2;
@@ -166,15 +169,7 @@ namespace Wargame
 
         private void BtnDraft_Click(object sender, EventArgs e)
         {
-            if (Game.TeamsFull)
-            {
-                MessageBox.Show("All set. Teams full. Starting Game!");
-                tabControlMain.SelectTab(1);
-                btnCreateGame.Text = "Start Game";
-                btnCreateGame.PerformClick();
-            }
-            if (!Game.AvailableCharacters.Any() || Game.TeamsFull) return;
-
+            if (StartGameIfTeamFull()) return;
             var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
             Game.AvailableCharacters.Remove(selectedCharacter);
             Game.Team1.Add(selectedCharacter);      
@@ -182,7 +177,19 @@ namespace Wargame
             var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
             Game.AvailableCharacters.Remove(oppCharacter);
             Game.Team2.Add(oppCharacter);
+            StartGameIfTeamFull();
+        }
 
+        private bool StartGameIfTeamFull()
+        {
+            if (Game.TeamsFull)
+            {
+                MessageBox.Show("All set. Teams full. Starting Game!");
+                tabControlMain.SelectTab(1);
+                btnCreateGame.Text = "Start Game";
+                btnCreateGame.PerformClick();
+            }
+            return !Game.AvailableCharacters.Any() || Game.TeamsFull;
         }
 
         private void BtnDraftTeamIntroScreen_Click(object sender, EventArgs e)
@@ -195,9 +202,9 @@ namespace Wargame
             var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
             var selectedItem = (Item)dataGridViewEMPlayerInventory.CurrentRow?.DataBoundItem;
 
-            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.inventory;
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
             Game.PlayerInventory.Remove(selectedItem);
-            selectedCharacter.Inventory.inventory.Add(selectedItem);
+            selectedCharacter.Inventory.Inventory.Add(selectedItem);
 
             
         }
@@ -206,7 +213,7 @@ namespace Wargame
         {
             if(e.StateChanged != DataGridViewElementStates.Selected)  return;
             var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
-            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.inventory;
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
         }
 
         private void InitializePlayerInventories()

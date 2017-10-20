@@ -216,6 +216,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.SpringGreen;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(681, 817);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
@@ -231,11 +232,11 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.textBox1.Location = new System.Drawing.Point(556, 326);
+            this.textBox1.Location = new System.Drawing.Point(556, 242);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(566, 418);
+            this.textBox1.Size = new System.Drawing.Size(566, 502);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -391,6 +392,7 @@
             // 
             // dataGridViewOpponentTeam
             // 
+            this.dataGridViewOpponentTeam.AllowUserToResizeRows = false;
             this.dataGridViewOpponentTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.ControlText;
@@ -430,6 +432,7 @@
             // 
             // dataGridViewMyTeam
             // 
+            this.dataGridViewMyTeam.AllowUserToResizeRows = false;
             this.dataGridViewMyTeam.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -473,6 +476,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(794, 806);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
@@ -563,6 +567,7 @@
             // 
             // dataGridViewVendor
             // 
+            this.dataGridViewVendor.AllowUserToResizeRows = false;
             this.dataGridViewVendor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewVendor.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -602,6 +607,7 @@
             // 
             // dataGridViewPlayerInventory
             // 
+            this.dataGridViewPlayerInventory.AllowUserToResizeRows = false;
             this.dataGridViewPlayerInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPlayerInventory.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -654,6 +660,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(222, 755);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
@@ -680,6 +687,7 @@
             // 
             // button4
             // 
+            this.button4.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(788, 762);
             this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
@@ -691,6 +699,7 @@
             // 
             // dataGridViewEMPlayerInventory
             // 
+            this.dataGridViewEMPlayerInventory.AllowUserToResizeRows = false;
             this.dataGridViewEMPlayerInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMPlayerInventory.Location = new System.Drawing.Point(1260, 92);
             this.dataGridViewEMPlayerInventory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -704,6 +713,7 @@
             // 
             // dataGridViewEMCharInventory
             // 
+            this.dataGridViewEMCharInventory.AllowUserToResizeRows = false;
             this.dataGridViewEMCharInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMCharInventory.Location = new System.Drawing.Point(669, 92);
             this.dataGridViewEMCharInventory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -717,6 +727,7 @@
             // 
             // dataGridViewEMTeamRoster
             // 
+            this.dataGridViewEMTeamRoster.AllowUserToResizeRows = false;
             this.dataGridViewEMTeamRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMTeamRoster.Location = new System.Drawing.Point(84, 92);
             this.dataGridViewEMTeamRoster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
