@@ -2,7 +2,7 @@
 {
     class Thief : Character
     {
-        public Thief(string name, int maxHP = 20) : base(name, maxHP)
+        public Thief(string name, int maxHP = 15) : base(name, maxHP)
         {
             STR -= 1;
             CON += 3;

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Wargame.Characters;
 
 namespace Wargame
 {
-    class Character
+    public class Character
     {
         public string Name { get; set; }
         public string Class => GetType().Name;

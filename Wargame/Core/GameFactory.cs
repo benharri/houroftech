@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Wargame.Characters.Classes;
+using Wargame.Core;
 
 namespace Wargame
 {
@@ -8,7 +9,7 @@ namespace Wargame
     {
         public GameData CreateNewGame()
         {
-            return new GameData
+            return new GameData()
             {
                 AvailableCharacters = new BindingList<Character>
                 {
@@ -24,13 +25,16 @@ namespace Wargame
                     new Witcher("Eskel"),
                     new Mage("Josh"),
                     new Thief("Dave"),
-                    new Mage("CGP Grey", maxHP: 5)
-                    {
-                        BaseStrength = 6,
-                        NumDmgDice = 3,
-                    },
+                    new Assassin("Ezio"),
+                    new Barbarian("Fred"),
+                    new Bard("Dandelion"),
+                    new Druid("Ermion"),
+                    new Hunter("Ragnar"),
+                    new Mage("Keira Metz"),
+                    new Priest("John Paul"),
+                    new Soldier("Ves"),
+                    new Thief("Bootblack"),
                 },
-
 
                 Vendor = new BindingList<Item>
                 {
@@ -42,7 +46,7 @@ namespace Wargame
                     },
                     new Weapon("Rolling Pin")
                     {
-                        Price = 100,
+                        Price = 1,
                         Strength = new DiceRoll(sides: 1),
                     },
 
@@ -57,7 +61,7 @@ namespace Wargame
                         Defense = 10,
                         StrengthModifer = -2,
                     },
-                }
+                },
             };
 
         }
