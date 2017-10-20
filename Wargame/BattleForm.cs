@@ -22,6 +22,7 @@ namespace Wargame
             Engine = new GameEngine(Game);
             InitializeVendor();
             InitializeRoster();
+            InitializePlayerInventories();
         }
 
         private void InitializeRoster()
@@ -69,6 +70,9 @@ namespace Wargame
             dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
             dataGridViewMyTeam.DataSource = Game.Team1;
             dataGridViewOpponentTeam.DataSource = Game.Team2;
+            
+            //also populated view on equipment manager
+            dataGridViewEMTeamRoster.DataSource = Game.Team1;
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
@@ -112,6 +116,8 @@ namespace Wargame
 
             dataGridViewVendor.DataSource = Game.Vendor;
             dataGridViewPlayerInventory.DataSource = Game.PlayerInventory;
+
+            dataGridViewEMPlayerInventory.DataSource = Game.PlayerInventory;
         }
         private void RefreshLog()
         {
@@ -171,7 +177,7 @@ namespace Wargame
 
             var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
             Game.AvailableCharacters.Remove(selectedCharacter);
-            Game.Team1.Add(selectedCharacter);
+            Game.Team1.Add(selectedCharacter);      
 
             var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
             Game.AvailableCharacters.Remove(oppCharacter);
@@ -182,6 +188,51 @@ namespace Wargame
         private void BtnDraftTeamIntroScreen_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectTab(tabControlMain.TabPages["tabRosterMgmt"]);
+        }
+
+        private void BtnEquipItem(object sender, EventArgs e)
+        {
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            var selectedItem = (Item)dataGridViewEMPlayerInventory.CurrentRow?.DataBoundItem;
+
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.inventory;
+            Game.PlayerInventory.Remove(selectedItem);
+            selectedCharacter.Inventory.inventory.Add(selectedItem);
+
+            
+        }
+
+        private void ChangeCharacterInventory(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if(e.StateChanged != DataGridViewElementStates.Selected)  return;
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.inventory;
+        }
+
+        private void InitializePlayerInventories()
+        {
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+            var grids = new List<DataGridView>() { dataGridViewVendor, dataGridViewEMCharInventory };
+            foreach (var i in grids)
+            {
+                i.AutoGenerateColumns = false;
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Name",
+                    HeaderText = "Name",
+                    DataPropertyName = "Name",
+                });
+                i.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = cell,
+                    Name = "Price",
+                    Width = 70,
+                    HeaderText = "Price",
+                    DataPropertyName = "Price",
+                });
+            }
         }
     }
 }
