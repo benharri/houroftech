@@ -35,7 +35,7 @@ namespace Wargame
                     new Thief("Bootblack"),
                 },
 
-                Vendor = new List<Item>
+                Vendor = new BindingList<Item>
                 {
                     //Weapon designer
                     new Weapon("Sword")
