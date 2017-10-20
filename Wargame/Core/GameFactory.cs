@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Wargame.Characters.Classes;
+using Wargame.Core;
 
 namespace Wargame
 {

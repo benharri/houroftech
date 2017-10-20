@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Wargame
+namespace Wargame.Core
 {
-    class GameData
+    public class GameData
     {
         internal int RoundNumber { get; set; }
         internal Stack<Character> RoundOrder;
