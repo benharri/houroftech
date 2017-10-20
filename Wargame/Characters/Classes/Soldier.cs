@@ -12,6 +12,7 @@
             CHR /= 2;
             NumDmgDice = 2;
             BaseStrength = 4;
+            MeleeStat = STR;
         }
     }
 }

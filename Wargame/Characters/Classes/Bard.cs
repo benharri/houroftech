@@ -10,6 +10,7 @@
             INT += 5;
             WIS += 4;
             CHR += 2;
+            MeleeStat = STR;
         }
     }
 }

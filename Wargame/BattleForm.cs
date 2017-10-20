@@ -135,7 +135,6 @@ namespace Wargame
         private void RefreshPlayerGold()
         {
             txtPlayerGold.Text = $"Player Gold: {Game.PlayerGold}";
-            Messages.Clear();
         }
 
         private void BtnAttack_Click(object sender, EventArgs e)
@@ -146,7 +145,9 @@ namespace Wargame
             Messages.AppendLine($"{status}\r\n");
 
             if (!Game.RoundOrder.Any()) Engine.StartRound();
-            if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
+
+            btnAttack.Enabled = !Game.GameOver;
+            if (!Game.GameOver) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
