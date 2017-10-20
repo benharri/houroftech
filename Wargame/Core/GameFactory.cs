@@ -24,6 +24,11 @@ namespace Wargame
                 new Witcher("Eskel"),
                 new Mage("Josh"),
                 new Thief("Dave"),
+                new Mage("CGP Grey", maxHP: 5)
+                {
+                    BaseStrength = 6,
+                    NumDmgDice = 3,
+                },
             };
 
 

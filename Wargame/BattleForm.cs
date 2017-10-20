@@ -52,7 +52,7 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 40,
+                    Width = 50,
                     HeaderText = "Strength",
                     DataPropertyName = "DieName",
                 });
