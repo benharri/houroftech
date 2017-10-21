@@ -79,10 +79,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblCharRoster = new System.Windows.Forms.Label();
+            this.lblCharInv = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewEMPlayerInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMCharInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMTeamRoster = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabIntro.SuspendLayout();
             this.tabGame.SuspendLayout();
@@ -201,7 +204,7 @@
             this.tabIntro.Controls.Add(this.textBox1);
             this.tabIntro.Location = new System.Drawing.Point(4, 22);
             this.tabIntro.Name = "tabIntro";
-            this.tabIntro.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabIntro.Padding = new System.Windows.Forms.Padding(3);
             this.tabIntro.Size = new System.Drawing.Size(1183, 703);
             this.tabIntro.TabIndex = 3;
             this.tabIntro.Text = "Intro";
@@ -337,7 +340,7 @@
             this.tabRosterMgmt.Controls.Add(this.label2);
             this.tabRosterMgmt.Location = new System.Drawing.Point(4, 22);
             this.tabRosterMgmt.Name = "tabRosterMgmt";
-            this.tabRosterMgmt.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabRosterMgmt.Padding = new System.Windows.Forms.Padding(3);
             this.tabRosterMgmt.Size = new System.Drawing.Size(1183, 703);
             this.tabRosterMgmt.TabIndex = 2;
             this.tabRosterMgmt.Text = "Roster Management";
@@ -519,7 +522,7 @@
             this.tabShop.Controls.Add(this.button1);
             this.tabShop.Location = new System.Drawing.Point(4, 22);
             this.tabShop.Name = "tabShop";
-            this.tabShop.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabShop.Padding = new System.Windows.Forms.Padding(3);
             this.tabShop.Size = new System.Drawing.Size(1183, 703);
             this.tabShop.TabIndex = 1;
             this.tabShop.Text = "Vendor";
@@ -652,16 +655,41 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.lblCharRoster);
+            this.tabPage2.Controls.Add(this.lblCharInv);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridViewEMPlayerInventory);
             this.tabPage2.Controls.Add(this.dataGridViewEMCharInventory);
             this.tabPage2.Controls.Add(this.dataGridViewEMTeamRoster);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1183, 703);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "EquipmentManager";
+            // 
+            // lblCharRoster
+            // 
+            this.lblCharRoster.AutoSize = true;
+            this.lblCharRoster.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharRoster.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblCharRoster.Location = new System.Drawing.Point(53, 41);
+            this.lblCharRoster.Name = "lblCharRoster";
+            this.lblCharRoster.Size = new System.Drawing.Size(188, 16);
+            this.lblCharRoster.TabIndex = 5;
+            this.lblCharRoster.Text = "Choose a Character";
+            // 
+            // lblCharInv
+            // 
+            this.lblCharInv.AutoSize = true;
+            this.lblCharInv.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharInv.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblCharInv.Location = new System.Drawing.Point(443, 41);
+            this.lblCharInv.Name = "lblCharInv";
+            this.lblCharInv.Size = new System.Drawing.Size(218, 16);
+            this.lblCharInv.TabIndex = 4;
+            this.lblCharInv.Text = "No Character Selected";
             // 
             // button4
             // 
@@ -677,6 +705,7 @@
             // dataGridViewEMPlayerInventory
             // 
             this.dataGridViewEMPlayerInventory.AllowUserToResizeRows = false;
+            this.dataGridViewEMPlayerInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewEMPlayerInventory.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewEMPlayerInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMPlayerInventory.Location = new System.Drawing.Point(840, 60);
@@ -691,6 +720,7 @@
             // dataGridViewEMCharInventory
             // 
             this.dataGridViewEMCharInventory.AllowUserToResizeRows = false;
+            this.dataGridViewEMCharInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewEMCharInventory.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewEMCharInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMCharInventory.Location = new System.Drawing.Point(446, 60);
@@ -705,6 +735,7 @@
             // dataGridViewEMTeamRoster
             // 
             this.dataGridViewEMTeamRoster.AllowUserToResizeRows = false;
+            this.dataGridViewEMTeamRoster.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewEMTeamRoster.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewEMTeamRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEMTeamRoster.Location = new System.Drawing.Point(56, 60);
@@ -717,6 +748,17 @@
             this.dataGridViewEMTeamRoster.TabIndex = 0;
             this.dataGridViewEMTeamRoster.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellClick);
             this.dataGridViewEMTeamRoster.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellContentClick);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label7.Location = new System.Drawing.Point(837, 41);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(158, 16);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Available Items";
             // 
             // BattleForm
             // 
@@ -745,6 +787,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVendor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerInventory)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEMPlayerInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEMCharInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEMTeamRoster)).EndInit();
@@ -791,6 +834,9 @@
         private System.Windows.Forms.DataGridView dataGridViewEMCharInventory;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridViewEMTeamRoster;
+        private System.Windows.Forms.Label lblCharInv;
+        private System.Windows.Forms.Label lblCharRoster;
+        private System.Windows.Forms.Label label7;
     }
 }
 

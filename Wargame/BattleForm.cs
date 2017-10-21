@@ -37,7 +37,6 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Name",
-                    Width = 120,
                     HeaderText = "Name",
                     DataPropertyName = "Name",
                 });
@@ -45,7 +44,6 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "HP",
-                    Width = 45,
                     HeaderText = "HP",
                     DataPropertyName = "MaxHP",
                 });
@@ -53,7 +51,6 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 55,
                     HeaderText = "STR",
                     DataPropertyName = "DieName",
                 });
@@ -61,7 +58,6 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Class",
-                    Width = 100,
                     HeaderText = "Class",
                     DataPropertyName = "Class",
                 });
@@ -103,14 +99,12 @@ namespace Wargame
                     CellTemplate = cell,
                     Name = "Name",
                     HeaderText = "Item",
-                    Width = 500,
                     DataPropertyName = "Description",
                 });
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     CellTemplate = cell,
                     Name = "Price",
-                    Width = 70,
                     HeaderText = "Price",
                     DataPropertyName = "Price",
                 });
@@ -205,8 +199,7 @@ namespace Wargame
             dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
             Game.PlayerInventory.Remove(selectedItem);
             selectedCharacter.Inventory.Inventory.Add(selectedItem);
-
-            
+          
         }
 
         private void dataGridViewEMTeamRoster_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -230,6 +223,8 @@ namespace Wargame
             {
                 var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
                 dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+                lblCharInv.Text = $"{selectedCharacter.Name}'s Inventory"; 
+                lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
             }
         }
     }
