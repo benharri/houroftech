@@ -114,7 +114,6 @@ namespace Wargame
                     HeaderText = "Price",
                     DataPropertyName = "Price",
                 });
-                //TODO: show other stats on vendor screen
             }
 
             dataGridViewVendor.DataSource = Game.Vendor;
@@ -210,12 +209,28 @@ namespace Wargame
             
         }
 
-        private void ChangeCharacterInventory(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dataGridViewEMTeamRoster_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.StateChanged != DataGridViewElementStates.Selected)  return;
-            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
-            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+            if (dgv.CurrentRow.Selected)
+            {
+                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            }
         }
 
+        private void dataGridViewEMTeamRoster_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+            if (dgv.CurrentRow.Selected)
+            {
+                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            }
+        }
     }
 }
