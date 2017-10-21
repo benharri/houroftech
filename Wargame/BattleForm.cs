@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Wargame.Core;
 
 namespace Wargame
 {
@@ -43,7 +44,6 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "HP",
-                    Width = 45,
                     HeaderText = "HP",
                     DataPropertyName = "MaxHP",
                 });
@@ -51,24 +51,26 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Strength",
-                    Width = 40,
-                    HeaderText = "Strength",
+                    HeaderText = "STR",
                     DataPropertyName = "DieName",
                 });
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     CellTemplate = cell,
                     Name = "Class",
-                    Width = 150,
                     HeaderText = "Class",
                     DataPropertyName = "Class",
                 });
             }
 
             RefreshPlayerGold();
+
             dataGridViewAvailableCharacter.DataSource = Game.AvailableCharacters;
             dataGridViewMyTeam.DataSource = Game.Team1;
             dataGridViewOpponentTeam.DataSource = Game.Team2;
+            
+            //also populated view on equipment manager
+            dataGridViewEMTeamRoster.DataSource = Game.Team1;
         }
 
         private void BtnCreateGame_Click(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace Wargame
         {
             DataGridViewCell cell = new DataGridViewTextBoxCell();
 
-            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory };
+            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory, dataGridViewEMCharInventory };
             foreach (var i in grids)
             {
                 i.AutoGenerateColumns = false;
@@ -96,22 +98,22 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Name",
-                    HeaderText = "Name",
-                    DataPropertyName = "Name",
+                    HeaderText = "Item",
+                    DataPropertyName = "Description",
                 });
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     CellTemplate = cell,
                     Name = "Price",
-                    Width = 70,
                     HeaderText = "Price",
                     DataPropertyName = "Price",
                 });
-                //TODO: show other stats on vendor screen
             }
 
             dataGridViewVendor.DataSource = Game.Vendor;
             dataGridViewPlayerInventory.DataSource = Game.PlayerInventory;
+
+            dataGridViewEMPlayerInventory.DataSource = Game.PlayerInventory;
         }
         private void RefreshLog()
         {
@@ -126,7 +128,6 @@ namespace Wargame
         private void RefreshPlayerGold()
         {
             txtPlayerGold.Text = $"Player Gold: {Game.PlayerGold}";
-            Messages.Clear();
         }
 
         private void BtnAttack_Click(object sender, EventArgs e)
@@ -137,7 +138,9 @@ namespace Wargame
             Messages.AppendLine($"{status}\r\n");
 
             if (!Game.RoundOrder.Any()) Engine.StartRound();
-            if ((btnAttack.Enabled = !Game.GameOver)) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
+
+            btnAttack.Enabled = !Game.GameOver;
+            if (!Game.GameOver) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
         }
 
@@ -160,6 +163,19 @@ namespace Wargame
 
         private void BtnDraft_Click(object sender, EventArgs e)
         {
+            if (StartGameIfTeamFull()) return;
+            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
+            Game.AvailableCharacters.Remove(selectedCharacter);
+            Game.Team1.Add(selectedCharacter);      
+
+            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
+            Game.AvailableCharacters.Remove(oppCharacter);
+            Game.Team2.Add(oppCharacter);
+            StartGameIfTeamFull();
+        }
+
+        private bool StartGameIfTeamFull()
+        {
             if (Game.TeamsFull)
             {
                 MessageBox.Show("All set. Teams full. Starting Game!");
@@ -167,21 +183,49 @@ namespace Wargame
                 btnCreateGame.Text = "Start Game";
                 btnCreateGame.PerformClick();
             }
-            if (!Game.AvailableCharacters.Any() || Game.TeamsFull) return;
-
-            var selectedCharacter = (Character)dataGridViewAvailableCharacter.CurrentRow.DataBoundItem;
-            Game.AvailableCharacters.Remove(selectedCharacter);
-            Game.Team1.Add(selectedCharacter);
-
-            var oppCharacter = Game.AvailableCharacters.OrderBy(x => Guid.NewGuid()).First();
-            Game.AvailableCharacters.Remove(oppCharacter);
-            Game.Team2.Add(oppCharacter);
-
+            return !Game.AvailableCharacters.Any() || Game.TeamsFull;
         }
 
         private void BtnDraftTeamIntroScreen_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectTab(tabControlMain.TabPages["tabRosterMgmt"]);
+        }
+
+        private void BtnEquipItem(object sender, EventArgs e)
+        {
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            var selectedItem = (Item)dataGridViewEMPlayerInventory.CurrentRow?.DataBoundItem;
+
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            Game.PlayerInventory.Remove(selectedItem);
+            selectedCharacter.Inventory.Inventory.Add(selectedItem);
+          
+        }
+
+        private void dataGridViewEMTeamRoster_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+            if (dgv.CurrentRow.Selected)
+            {
+                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            }
+        }
+
+        private void dataGridViewEMTeamRoster_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+            if (dgv.CurrentRow.Selected)
+            {
+                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+                lblCharInv.Text = $"{selectedCharacter.Name}'s Inventory"; 
+                lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
+            }
         }
     }
 }

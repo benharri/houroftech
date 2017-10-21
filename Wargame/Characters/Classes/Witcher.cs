@@ -11,6 +11,7 @@
             WIS += 1;
             CHR -= 3;
             BaseStrength = 6;
+            MeleeStat = STR;
         }
     }
 }

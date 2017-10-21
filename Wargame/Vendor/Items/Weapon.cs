@@ -11,6 +11,6 @@
             Strength = new DiceRoll(numDice, strength);
         }
 
-        public override string ToString() => $"{Name}: [DMG: {Strength.DieName}] Price: {Price}";
+        public override string ToString() => $"{Name}: [DMG: {Strength.DieName}]";
     }
 }

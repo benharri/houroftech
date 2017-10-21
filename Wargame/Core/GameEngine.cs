@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Wargame.Core;
 
 namespace Wargame
 {
@@ -25,14 +26,21 @@ namespace Wargame
 
         internal void StartRound(bool firstRound = false)
         {
-            if (firstRound) gd.RoundNumber = 1;
-            else gd.RoundNumber++;
-            if (gd.RoundOrder != null) gd.RoundOrder.Clear();
-
-            foreach (var c in gd.LivingCharacters)
+            if (firstRound)
             {
-                c.RollInitiative();
+                gd.RoundNumber = 1;
+                foreach (var c in gd.Team1.Concat(gd.Team2))
+                {
+                    c.CurrentHP = c.MaxHP;
+                }
             }
+            else
+            {
+                gd.RoundNumber++;
+            }
+
+            gd.RoundOrder?.Clear();
+            gd.LivingCharacters.ForEach(c => c.RollInitiative());
             gd.RoundOrder = new Stack<Character>(gd.LivingCharacters);
         }
 
