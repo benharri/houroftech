@@ -23,7 +23,6 @@ namespace Wargame
             Engine = new GameEngine(Game);
             InitializeVendor();
             InitializeRoster();
-            InitializePlayerInventories();
         }
 
         private void InitializeRoster()
@@ -95,7 +94,7 @@ namespace Wargame
         {
             DataGridViewCell cell = new DataGridViewTextBoxCell();
 
-            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory };
+            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory, dataGridViewEMCharInventory };
             foreach (var i in grids)
             {
                 i.AutoGenerateColumns = false;
@@ -103,8 +102,9 @@ namespace Wargame
                 {
                     CellTemplate = cell,
                     Name = "Name",
-                    HeaderText = "Name",
-                    DataPropertyName = "Name",
+                    HeaderText = "Item",
+                    Width = 500,
+                    DataPropertyName = "Description",
                 });
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
@@ -217,30 +217,5 @@ namespace Wargame
             dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
         }
 
-        private void InitializePlayerInventories()
-        {
-            DataGridViewCell cell = new DataGridViewTextBoxCell();
-
-            var grids = new List<DataGridView>() { dataGridViewVendor, dataGridViewEMCharInventory };
-            foreach (var i in grids)
-            {
-                i.AutoGenerateColumns = false;
-                i.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    CellTemplate = cell,
-                    Name = "Name",
-                    HeaderText = "Name",
-                    DataPropertyName = "Name",
-                });
-                i.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    CellTemplate = cell,
-                    Name = "Price",
-                    Width = 70,
-                    HeaderText = "Price",
-                    DataPropertyName = "Price",
-                });
-            }
-        }
     }
 }

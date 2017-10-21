@@ -15,7 +15,7 @@
 
         public override string ToString()
         {
-            return $"{Name}: [STR: {StrengthModifer} DEF: {Defense}] Price: {Price}";
+            return $"{Name}: [STR: {StrengthModifer} DEF: {Defense}]";
         }
     }
 }
