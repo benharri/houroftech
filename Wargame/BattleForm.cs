@@ -102,19 +102,10 @@ namespace Wargame
                 i.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     CellTemplate = cell,
-                    Name = "Name",
-                    HeaderText = "Name",
-                    DataPropertyName = "Name",
+                    Name = "Description",
+                    HeaderText = "Description",
+                    DataPropertyName = "Description",
                 });
-                i.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    CellTemplate = cell,
-                    Name = "Price",
-                    Width = 70,
-                    HeaderText = "Price",
-                    DataPropertyName = "Price",
-                });
-                //TODO: show other stats on vendor screen
             }
 
             dataGridViewVendor.DataSource = Game.Vendor;
