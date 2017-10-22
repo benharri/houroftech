@@ -227,5 +227,10 @@ namespace Wargame
                 lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
             }
         }
+
+        private void dataGridViewEMCharInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
