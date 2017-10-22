@@ -228,9 +228,15 @@ namespace Wargame
             }
         }
 
-        private void dataGridViewEMCharInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnUnequip_Click(object sender, EventArgs e)
         {
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            var selectedItem = (Item)dataGridViewEMCharInventory.CurrentRow?.DataBoundItem;
 
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            selectedCharacter.Inventory.Inventory.Remove(selectedItem);
+            Game.PlayerInventory.Add(selectedItem);
+            
         }
     }
 }

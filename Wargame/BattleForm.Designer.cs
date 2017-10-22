@@ -88,6 +88,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblCharRoster = new System.Windows.Forms.Label();
             this.lblCharInv = new System.Windows.Forms.Label();
@@ -95,7 +96,6 @@
             this.dataGridViewEMPlayerInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMCharInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMTeamRoster = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabIntro.SuspendLayout();
             this.tabGame.SuspendLayout();
@@ -680,6 +680,18 @@
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "EquipmentManager";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.IndianRed;
+            this.button5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(928, 309);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(189, 60);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Unequip";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.BtnUnequip_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -715,13 +727,14 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.SpringGreen;
             this.button4.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(928, 232);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(189, 57);
             this.button4.TabIndex = 3;
             this.button4.Text = "Equip";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.BtnEquipItem);
             // 
             // dataGridViewEMPlayerInventory
@@ -802,7 +815,6 @@
             this.dataGridViewEMCharInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEMCharInventory.Size = new System.Drawing.Size(846, 161);
             this.dataGridViewEMCharInventory.TabIndex = 1;
-            this.dataGridViewEMCharInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMCharInventory_CellContentClick);
             // 
             // dataGridViewEMTeamRoster
             // 
@@ -845,16 +857,6 @@
             this.dataGridViewEMTeamRoster.TabIndex = 0;
             this.dataGridViewEMTeamRoster.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellClick);
             this.dataGridViewEMTeamRoster.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellContentClick);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(928, 309);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(189, 60);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Unequip";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // BattleForm
             // 
