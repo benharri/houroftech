@@ -18,11 +18,22 @@ namespace Wargame.Core
 
         internal string DoAttack(Character attacker, Character defender)
         {
-            var roll = attacker.Roll.DoRoll();
+            var roll = attacker.Roll;
+            if (attacker.Inventory.Equipped.Any(i => i is Weapon))
+            {
+                roll += ((Weapon) attacker.Inventory.Equipped.OrderBy(i => ((Weapon) i).Strength).First()).Strength;
+            }
+            roll.DoRoll();
 
-            defender.CurrentHp -= roll.Total;
+            var defensebonus = 0;
+            if (defender.Inventory.Equipped.Any(i => i is Weapon))
+            {
+                defensebonus += defender.Inventory.Equipped.Where(i => i is Armor).Sum(i => ((Armor) i).Defense);
+            }
 
-            return $"{attacker.Name} dealt {roll.Total} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
+            defender.CurrentHp -= roll.Total - defensebonus;
+
+            return $"{attacker.Name} dealt {roll.Total} - {defensebonus} DEF bonus ({roll.Total - defensebonus}) damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
         internal void StartRound(bool firstRound = false)
