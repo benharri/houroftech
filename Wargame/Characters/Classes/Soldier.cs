@@ -2,17 +2,18 @@
 {
     class Soldier : Character
     {
-        public Soldier(string name, int maxHP = 30) : base(name, maxHP)
+        public Soldier(string name) : base(name)
         {
-            STR += 4;
-            CON += 3;
-            DEX += 2;
-            INT -= 1;
-            WIS -= 1;
-            CHR /= 2;
+            MaxHp = 30;
+            Str += 4;
+            Con += 3;
+            Dex += 2;
+            Int -= 1;
+            Wis -= 1;
+            Chr /= 2;
             NumDmgDice = 2;
             BaseStrength = 4;
-            MeleeStat = STR;
+            MeleeStat = Str;
         }
     }
 }

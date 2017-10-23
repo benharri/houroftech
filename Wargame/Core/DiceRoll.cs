@@ -6,19 +6,18 @@ namespace Wargame
 {
     class DiceRoll
     {
-        internal int Total;
         internal int[] Rolls;
         internal int Sides;
-        internal int BareRoll;
-        internal int Quantity;
         internal int Modifier;
+        internal int Quantity => Rolls.Count();
+        internal int Total => BareRoll + Modifier;
+        internal int BareRoll => Rolls.Sum();
         internal string DieName => $"{Quantity}d{Sides}";
-        internal static Random rng = new Random();
+        internal static Random Rng = new Random();
 
         public DiceRoll(int qty = 1, int sides = 6, int modifier = 0)
         {
             Rolls = new int[qty];
-            Quantity = qty;
             Sides = sides;
             Modifier = modifier;
         }
@@ -26,19 +25,19 @@ namespace Wargame
         internal DiceRoll DoRoll()
         {
             //TODO: add parameter and rng chance of attack type. 
-            Rolls = Rolls.Select(x => rng.Next(Sides) + 1).ToArray();
-            BareRoll = Rolls.Sum();
-            Total = BareRoll + Modifier;
+            Rolls = Rolls.Select(x => Rng.Next(Sides) + 1).ToArray();
             return this;
         }
 
         public override string ToString()
         {
-            StringBuilder res = new StringBuilder();
+            var res = new StringBuilder();
             res.AppendLine($"{DieName}: {Total} ({BareRoll} with {Modifier} modifier)");
             for (var n = 0; n < Quantity && 1 < Quantity; n++)
                 res.AppendLine($"    {n + 1}: {Rolls[n]}");
             return res.ToString();
         }
+
+        public static DiceRoll operator +(DiceRoll d1, DiceRoll d2) => new DiceRoll(d1.Quantity + d1.Quantity, Math.Max(d1.Sides, d2.Sides), Math.Max(d1.Modifier, d2.Modifier));
     }
 }

@@ -2,16 +2,17 @@
 {
     class Priest : Character
     {
-        public Priest(string name, int maxHP = 15) : base(name, maxHP)
+        public Priest(string name) : base(name)
         {
-            STR -= 3;
-            CON -= 2;
-            DEX += 3;
-            INT += 3;
-            WIS += 3;
-            CHR -= 3;
+            MaxHp = 15;
+            Str -= 3;
+            Con -= 2;
+            Dex += 3;
+            Int += 3;
+            Wis += 3;
+            Chr -= 3;
             BaseStrength = 4;
-            MeleeStat = WIS;
+            MeleeStat = Wis;
         }
     }
 }

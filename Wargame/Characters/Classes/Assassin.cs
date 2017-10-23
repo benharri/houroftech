@@ -2,17 +2,17 @@
 {
     class Assassin : Character
     {
-        public Assassin(string name, int maxHP = 20) : base(name, maxHP)
+        public Assassin(string name) : base(name)
         {
-            STR -= 3;
-            CON += 2;
-            DEX += 6;
-            INT += 3;
-            WIS += 1;
-            CHR -= 2;
+            Str -= 3;
+            Con += 2;
+            Dex += 6;
+            Int += 3;
+            Wis += 1;
+            Chr -= 2;
             NumDmgDice = 2;
             BaseStrength = 6;
-            MeleeStat = DEX;
+            MeleeStat = Dex;
         }
     }
 }

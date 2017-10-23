@@ -1,7 +1,8 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Wargame.Vendor;
+using Wargame.Vendor.Items;
 
 namespace Wargame.Characters
 {
@@ -9,7 +10,10 @@ namespace Wargame.Characters
     {
         public BindingList<Item> Inventory;
         public BindingList<Item> Equipped;
-        public BindingList<Item> All => new BindingList<Item>(Inventory.Concat(Equipped).ToList()); 
+        public BindingList<Item> All => new BindingList<Item>(Inventory.Concat(Equipped).ToList());
+
+        public int DefenseBonus => Equipped.Where(i => i is Armor).Select(i => ((Armor) i).Defense).Sum();
+        public DiceRoll[] AttackBonus => Equipped.Where(i => i is Weapon).Select(i => ((Weapon) i).Strength).ToArray();
 
         public CharacterInventory()
         {

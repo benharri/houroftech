@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel;
+using Wargame.Characters;
 using Wargame.Characters.Classes;
-using Wargame.Core;
+using Wargame.Vendor;
+using Wargame.Vendor.Items;
 
-namespace Wargame
+namespace Wargame.Core
 {
     class GameFactory
     {
