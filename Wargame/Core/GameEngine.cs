@@ -21,14 +21,14 @@ namespace Wargame.Core
             var roll = attacker.Roll;
             if (attacker.Inventory.Equipped.Any(i => i is Weapon))
             {
-                roll += ((Weapon) attacker.Inventory.Equipped.OrderBy(i => ((Weapon) i).Strength).First()).Strength;
+                roll += ((Weapon) attacker.Inventory.Weapons.OrderBy(x => Guid.NewGuid()).First()).Strength;
             }
             roll.DoRoll();
 
             var defensebonus = 0;
             if (defender.Inventory.Equipped.Any(i => i is Weapon))
             {
-                defensebonus += defender.Inventory.Equipped.Where(i => i is Armor).Sum(i => ((Armor) i).Defense);
+                defensebonus += defender.Inventory.DefenseBonus;
             }
 
             defender.CurrentHp -= roll.Total - defensebonus;
