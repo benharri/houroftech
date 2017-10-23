@@ -63,7 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\CharacterInventory.cs" />
+    <Compile Include="Characters\Classes\Assassin.cs" />
+    <Compile Include="Characters\Classes\Barbarian.cs" />
+    <Compile Include="Characters\Classes\Bard.cs" />
+    <Compile Include="Characters\Classes\Druid.cs" />
+    <Compile Include="Characters\Classes\Hunter.cs" />
     <Compile Include="Characters\Classes\Mage.cs" />
+    <Compile Include="Characters\Classes\Monk.cs" />
     <Compile Include="Characters\Classes\Priest.cs" />
     <Compile Include="Characters\Classes\Soldier.cs" />
     <Compile Include="Characters\Classes\Thief.cs" />
@@ -98,6 +104,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\GameData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

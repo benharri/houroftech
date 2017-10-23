@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Wargame.Core;
 
 namespace Wargame
 {
@@ -23,15 +24,23 @@ namespace Wargame
             return $"{attacker.Name} dealt {roll.Total} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
-        internal void StartNextRound()
+        internal void StartRound(bool firstRound = false)
         {
-            gd.RoundNumber++;
-            if (gd.RoundOrder != null) gd.RoundOrder.Clear();
-
-            foreach (var c in gd.LivingCharacters)
+            if (firstRound)
             {
-                c.RollInitiative();
+                gd.RoundNumber = 1;
+                foreach (var c in gd.Team1.Concat(gd.Team2))
+                {
+                    c.CurrentHP = c.MaxHP;
+                }
             }
+            else
+            {
+                gd.RoundNumber++;
+            }
+
+            gd.RoundOrder?.Clear();
+            gd.LivingCharacters.ForEach(c => c.RollInitiative());
             gd.RoundOrder = new Stack<Character>(gd.LivingCharacters);
         }
 

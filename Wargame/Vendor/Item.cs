@@ -1,9 +1,10 @@
 ﻿namespace Wargame
 {
-    public class Item
+    class Item
     {
-        internal string Name { get; set; }
-        internal int Price { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public string Description => ToString();
 
         public override string ToString() => $"{Name} {GetType().Name} {Price}";
     }

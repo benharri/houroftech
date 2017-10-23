@@ -1,18 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Wargame
+namespace Wargame.Core
 {
-    class GameData
+    public class GameData
     {
         internal int RoundNumber { get; set; }
         internal Stack<Character> RoundOrder;
-        internal List<Character> Team1;
-        internal List<Character> Team2;
-        internal List<Item> Vendor;
+        public BindingList<Character> Team1 = new BindingList<Character>();
+        public BindingList<Character> Team2 = new BindingList<Character>();
+        public BindingList<Character> AvailableCharacters = new BindingList<Character>();
+        internal BindingList<Item> Vendor = new BindingList<Item>();
+        internal BindingList<Item> PlayerInventory = new BindingList<Item>();
+        internal int PlayerGold = 100;
         internal List<Character> LivingCharacters => Team1.Concat(Team2).Where(c => c.Alive).OrderBy(c => c.Initiative).ToList();
         internal bool GameOver => !LivingCharacters.Any();
+        internal int TeamSize = 5;
+        public bool TeamsFull => Team1.Count == TeamSize && Team2.Count == TeamSize;
 
         public GameData() { }
 
@@ -35,6 +41,5 @@ namespace Wargame
             }
             return roster.ToString();
         }
-
     }
 }
