@@ -227,5 +227,16 @@ namespace Wargame
                 lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
             }
         }
+
+        private void BtnUnequip_Click(object sender, EventArgs e)
+        {
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            var selectedItem = (Item)dataGridViewEMCharInventory.CurrentRow?.DataBoundItem;
+
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            selectedCharacter.Inventory.Inventory.Remove(selectedItem);
+            Game.PlayerInventory.Add(selectedItem);
+            
+        }
     }
 }
