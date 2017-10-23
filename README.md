@@ -12,4 +12,6 @@ characters play in initiative order, attacking a random opponent until all playe
 
 * stat modifiers
 * play as one character
-* build your own teams
+~~* buy items~~
+~~* equip/unequip items~~
+~~* build your own teams~~
