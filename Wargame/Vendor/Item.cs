@@ -1,4 +1,4 @@
-﻿namespace Wargame
+﻿namespace Wargame.Vendor
 {
     class Item
     {

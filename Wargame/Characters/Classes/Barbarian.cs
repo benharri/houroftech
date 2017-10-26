@@ -2,15 +2,16 @@
 {
     class Barbarian : Character
     {
-        public Barbarian(string name, int maxHP = 60) : base(name, maxHP)
+        public Barbarian(string name) : base(name)
         {
-            STR *= 2;
-            CON *= 2;
-            DEX -= 1;
-            INT -= 5;
-            WIS /= 2;
-            CHR /= 2;
-            MeleeStat = STR;
+            MaxHp = 60;
+            Str *= 2;
+            Con *= 2;
+            Dex -= 1;
+            Int -= 5;
+            Wis /= 2;
+            Chr /= 2;
+            MeleeStat = Str;
             NumDmgDice = 1;
             BaseStrength = 10;
         }

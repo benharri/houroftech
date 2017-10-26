@@ -2,16 +2,17 @@
 {
     class Witcher : Character
     {
-        public Witcher(string name, int maxHP = 30) : base(name, maxHP)
+        public Witcher(string name) : base(name)
         {
-            STR += 3;
-            CON *= 2;
-            DEX += 3;
-            INT += 1;
-            WIS += 1;
-            CHR -= 3;
+            MaxHp = 30;
+            Str += 3;
+            Con *= 2;
+            Dex += 3;
+            Int += 1;
+            Wis += 1;
+            Chr -= 3;
             BaseStrength = 6;
-            MeleeStat = STR;
+            MeleeStat = Str;
         }
     }
 }

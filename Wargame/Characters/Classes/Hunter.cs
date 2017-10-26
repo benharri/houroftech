@@ -2,17 +2,18 @@
 {
     class Hunter : Character
     {
-        public Hunter(string name, int maxHP = 25) : base(name, maxHP)
+        public Hunter(string name) : base(name)
         {
-            STR += 3;
-            CON += 4;
-            DEX += 1;
-            INT -= 1;
-            WIS -= 1;
-            CHR -= 2;
+            MaxHp = 25;
+            Str += 3;
+            Con += 4;
+            Dex += 1;
+            Int -= 1;
+            Wis -= 1;
+            Chr -= 2;
             NumDmgDice = 1;
             BaseStrength = 6;
-            MeleeStat = STR;
+            MeleeStat = Str;
         }
     }
 }

@@ -2,15 +2,16 @@
 {
     class Bard : Character
     {
-        public Bard(string name, int maxHP = 10) : base(name, maxHP)
+        public Bard(string name) : base(name)
         {
-            STR -= 3;
-            CON -= 2;
-            DEX += 1;
-            INT += 5;
-            WIS += 4;
-            CHR += 2;
-            MeleeStat = STR;
+            MaxHp = 10;
+            Str -= 3;
+            Con -= 2;
+            Dex += 1;
+            Int += 5;
+            Wis += 4;
+            Chr += 2;
+            MeleeStat = Str;
         }
     }
 }

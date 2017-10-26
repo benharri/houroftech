@@ -2,17 +2,18 @@
 {
     class Mage : Character
     {
-        public Mage(string name, int maxHP = 10) : base(name, maxHP)
+        public Mage(string name) : base(name)
         {
-            STR -= 3;
-            CON -= 2;
-            DEX += 1;
-            INT += 5;
-            WIS += 4;
-            CHR += 2;
+            MaxHp = 10;
+            Str -= 3;
+            Con -= 2;
+            Dex += 1;
+            Int += 5;
+            Wis += 4;
+            Chr += 2;
             NumDmgDice = 2;
             BaseStrength = 6;
-            MeleeStat = INT;
+            MeleeStat = Int;
         }
     }
 }

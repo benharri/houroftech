@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Wargame.Core;
+using Wargame.Characters;
+using Wargame.Vendor.Items;
 
-namespace Wargame
+namespace Wargame.Core
 {
     class GameEngine
     {
-        private static Random rng = new Random();
         private GameData gd;
 
         public GameEngine(GameData gameData)
@@ -18,10 +18,22 @@ namespace Wargame
 
         internal string DoAttack(Character attacker, Character defender)
         {
-            var roll = attacker.Roll.DoRoll();
-            defender.CurrentHP -= roll.Total;
+            var roll = attacker.Roll;
+            if (attacker.Inventory.Equipped.Any(i => i is Weapon))
+            {
+                roll += ((Weapon) attacker.Inventory.Weapons.OrderBy(x => Guid.NewGuid()).First()).Strength;
+            }
+            roll.DoRoll();
 
-            return $"{attacker.Name} dealt {roll.Total} damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
+            var defensebonus = 0;
+            if (defender.Inventory.Equipped.Any(i => i is Weapon))
+            {
+                defensebonus += defender.Inventory.DefenseBonus;
+            }
+
+            defender.CurrentHp -= roll.Total - defensebonus;
+
+            return $"{attacker.Name} dealt {roll.Total} - {defensebonus} DEF bonus ({roll.Total - defensebonus}) damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
         internal void StartRound(bool firstRound = false)
@@ -31,7 +43,7 @@ namespace Wargame
                 gd.RoundNumber = 1;
                 foreach (var c in gd.Team1.Concat(gd.Team2))
                 {
-                    c.CurrentHP = c.MaxHP;
+                    c.CurrentHp = c.MaxHp;
                 }
             }
             else

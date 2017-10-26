@@ -2,17 +2,18 @@
 {
     class Thief : Character
     {
-        public Thief(string name, int maxHP = 15) : base(name, maxHP)
+        public Thief(string name) : base(name)
         {
-            STR -= 1;
-            CON += 3;
-            DEX += 5;
-            INT -= 1;
-            WIS += 1;
-            CHR += 3;
+            MaxHp = 15;
+            Str -= 1;
+            Con += 3;
+            Dex += 5;
+            Int -= 1;
+            Wis += 1;
+            Chr += 3;
             NumDmgDice = 2;
             BaseStrength = 4;
-            MeleeStat = DEX;
+            MeleeStat = Dex;
         }
     }
 }
