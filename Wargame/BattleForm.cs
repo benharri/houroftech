@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Wargame.Characters;
 using Wargame.Core;
 using Wargame.Vendor;
+using Wargame.Vendor.Items;
 
 namespace Wargame
 {
@@ -239,6 +240,17 @@ namespace Wargame
             selectedCharacter.Inventory.Inventory.Remove(selectedItem);
             Game.PlayerInventory.Add(selectedItem);
             
+        }
+
+        private void BtnHealCharacter(object sender, EventArgs e)
+        {
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            var selectedItem = (Item)dataGridViewEMCharInventory.CurrentRow?.DataBoundItem;
+
+            HealingPotion hp = (HealingPotion)selectedItem;
+
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            selectedCharacter.CurrentHp += hp.HealingAmount;
         }
     }
 }
