@@ -96,6 +96,7 @@
             this.dataGridViewEMPlayerInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMCharInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewEMTeamRoster = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabIntro.SuspendLayout();
             this.tabGame.SuspendLayout();
@@ -665,6 +666,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.lblCharRoster);
@@ -858,6 +860,16 @@
             this.dataGridViewEMTeamRoster.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellClick);
             this.dataGridViewEMTeamRoster.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEMTeamRoster_CellContentClick);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(928, 154);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(189, 55);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Heal Character";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.BtnHealCharacter);
+            // 
             // BattleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,6 +948,7 @@
         private System.Windows.Forms.Label lblCharRoster;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 
