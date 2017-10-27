@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace Wargame
+namespace Wargame.Core
 {
     class DiceRoll
     {
@@ -24,7 +24,6 @@ namespace Wargame
 
         internal DiceRoll DoRoll()
         {
-            //TODO: add parameter and rng chance of attack type. 
             Rolls = Rolls.Select(x => Rng.Next(Sides) + 1).ToArray();
             return this;
         }
@@ -38,6 +37,13 @@ namespace Wargame
             return res.ToString();
         }
 
-        public static DiceRoll operator +(DiceRoll d1, DiceRoll d2) => new DiceRoll(d1.Quantity + d1.Quantity, Math.Max(d1.Sides, d2.Sides), Math.Max(d1.Modifier, d2.Modifier));
+        public static DiceRoll operator +(DiceRoll d1, DiceRoll d2)
+        {
+            return new DiceRoll(
+                d1.Quantity + d2.Quantity, 
+                Math.Max(d1.Sides, d2.Sides), 
+                Math.Max(d1.Modifier, d2.Modifier)
+            );
+        }
     }
 }

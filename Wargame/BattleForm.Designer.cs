@@ -140,7 +140,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(991, 361);
+            this.txtLog.Size = new System.Drawing.Size(991, 402);
             this.txtLog.TabIndex = 1;
             // 
             // btnAttack
@@ -152,7 +152,7 @@
             this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttack.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttack.Location = new System.Drawing.Point(1002, 614);
+            this.btnAttack.Location = new System.Drawing.Point(1002, 656);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(176, 83);
             this.btnAttack.TabIndex = 2;
@@ -204,7 +204,7 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.Padding = new System.Drawing.Point(0, 0);
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1191, 729);
+            this.tabControlMain.Size = new System.Drawing.Size(1191, 810);
             this.tabControlMain.TabIndex = 5;
             // 
             // tabIntro
@@ -262,7 +262,7 @@
             this.tabGame.Location = new System.Drawing.Point(4, 22);
             this.tabGame.Margin = new System.Windows.Forms.Padding(0);
             this.tabGame.Name = "tabGame";
-            this.tabGame.Size = new System.Drawing.Size(1183, 703);
+            this.tabGame.Size = new System.Drawing.Size(1183, 784);
             this.tabGame.TabIndex = 0;
             this.tabGame.Text = "Game";
             // 
@@ -865,7 +865,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1190, 685);
+            this.ClientSize = new System.Drawing.Size(1190, 766);
             this.Controls.Add(this.tabControlMain);
             this.Name = "BattleForm";
             this.Text = "Wargame";

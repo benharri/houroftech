@@ -11,8 +11,6 @@
             Int -= 5;
             Wis /= 2;
             Chr /= 2;
-            MeleeStat = Str;
-            NumDmgDice = 1;
             BaseStrength = 10;
         }
     }

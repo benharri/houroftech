@@ -11,7 +11,6 @@
             Int += 5;
             Wis += 4;
             Chr += 2;
-            MeleeStat = Str;
         }
     }
 }

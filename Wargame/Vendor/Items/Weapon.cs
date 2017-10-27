@@ -1,4 +1,6 @@
-﻿namespace Wargame.Vendor.Items
+﻿using Wargame.Core;
+
+namespace Wargame.Vendor.Items
 {
     class Weapon : Item
     {

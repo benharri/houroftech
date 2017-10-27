@@ -12,7 +12,6 @@
             Wis += 1;
             Chr -= 3;
             BaseStrength = 6;
-            MeleeStat = Str;
         }
     }
 }
