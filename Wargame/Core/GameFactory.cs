@@ -62,6 +62,14 @@ namespace Wargame.Core
                         Defense = 10,
                         StrengthModifer = -2,
                     },
+
+                    //Potion designer
+                    new HealingPotion("Small Healing Potion")
+                    {
+                        Price = 50,
+                        HealingAmount = 5
+                    },
+
                 },
             };
 
