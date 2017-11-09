@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Wargame.Characters;
@@ -42,6 +43,12 @@ namespace Wargame.Core
                 roster.AppendLine($"{c}");
             }
             return roster.ToString();
+        }
+
+        internal void SaveGameStateToFile()
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(this);
+            File.WriteAllText("C:\\wargamestate.json", json);
         }
     }
 }

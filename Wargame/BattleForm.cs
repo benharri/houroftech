@@ -245,12 +245,25 @@ namespace Wargame
         private void BtnHealCharacter(object sender, EventArgs e)
         {
             var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            if (!selectedCharacter.Alive)
+            {
+                return;
+            }
+
             var selectedItem = (Item)dataGridViewEMCharInventory.CurrentRow?.DataBoundItem;
 
             HealingPotion hp = (HealingPotion)selectedItem;
-
+            
+            selectedCharacter.Inventory.Inventory.Remove(hp);
             dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
             selectedCharacter.CurrentHp += hp.HealingAmount;
+            Messages.AppendLine($"{selectedCharacter.Name} used {hp}");
+            RefreshLog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Game.SaveGameStateToFile();
         }
     }
 }
