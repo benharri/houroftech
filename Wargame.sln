@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wargame", "Wargame\Wargame.csproj", "{5567FEE5-4C37-4CBF-B45C-AEA5D877CCCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HourOfCode", "HourOfCode\HourOfCode.csproj", "{442A99EE-E770-4DA9-A640-26C328812CB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5567FEE5-4C37-4CBF-B45C-AEA5D877CCCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5567FEE5-4C37-4CBF-B45C-AEA5D877CCCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5567FEE5-4C37-4CBF-B45C-AEA5D877CCCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442A99EE-E770-4DA9-A640-26C328812CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442A99EE-E770-4DA9-A640-26C328812CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442A99EE-E770-4DA9-A640-26C328812CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442A99EE-E770-4DA9-A640-26C328812CB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
