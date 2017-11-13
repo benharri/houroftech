@@ -108,7 +108,7 @@ namespace HourOfCode.Account
                 {
                     signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // var code = manager.GenerateEmailConfirmationToken(user.Id);
                     // Send this link via email: IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
 

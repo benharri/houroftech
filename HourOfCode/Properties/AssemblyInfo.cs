@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HourOfCode")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hagerty Insurance Agency, LLC")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HourOfCode")]
-[assembly: AssemblyCopyright("Copyright © Hagerty Insurance Agency, LLC 2017")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("80ad3927-34e0-4eb8-ab3e-847345a82e2a")]
+[assembly: Guid("442a99ee-e770-4da9-a640-26c328812cb9")]
 
 // Version information for an assembly consists of the following four values:
 //
