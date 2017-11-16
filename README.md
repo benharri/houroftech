@@ -1,17 +1,6 @@
-# wargame
+# [hourof.tech](https://hourof.tech)
 
-hour of code project
+this is the main repo for some learning projects.
 
-a simple generic fantasy game to practice .NET and C#. 
+a collaboration of [tufnob](https://github.com/tufnob), [spudmillions](https://github.com/SpudMillions), and [benharri](https://github.com/benharri)
 
-characters play in initiative order, attacking a random opponent until all players on one team are dead.
-
-![Wargame screenshot](Wargame.png)
-
-## next up
-
-* stat modifiers
-* play as one character
-~~* buy items~~
-~~* equip/unequip items~~
-~~* build your own teams~~
