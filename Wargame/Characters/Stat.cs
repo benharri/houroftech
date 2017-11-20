@@ -1,39 +1,38 @@
-﻿namespace Wargame
+﻿namespace Wargame.Characters
 {
     class Stat
     {
-        private int _statistic;
-        internal int Modifier => (_statistic - 10) / 2;
-        internal int Val => _statistic;
+        internal int Modifier => (Val - 10) / 2;
+        private int Val { get; set; }
 
         public Stat(int stat)
         {
-            _statistic = stat;
+            Val = stat;
         }
-        public override string ToString() => $"{_statistic}";
+        public override string ToString() => $"{Val}";
 
         
 
         public static Stat operator +(Stat s1, int s2)
         {
-            s1._statistic += s2;
+            s1.Val += s2;
             return s1;
         }
 
         public static Stat operator -(Stat s1, int s2)
         {
-            s1._statistic -= s2;
+            s1.Val -= s2;
             return s1;
         }
         public static Stat operator *(Stat s1, int s2)
         {
-            s1._statistic *= s2;
+            s1.Val *= s2;
             return s1;
         }
 
         public static Stat operator /(Stat s1, int s2)
         {
-            s1._statistic /= s2;
+            s1.Val /= s2;
             return s1;
         }
     }

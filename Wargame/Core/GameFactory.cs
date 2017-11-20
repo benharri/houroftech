@@ -6,9 +6,9 @@ using Wargame.Vendor.Items;
 
 namespace Wargame.Core
 {
-    class GameFactory
+    static class GameFactory
     {
-        public GameData CreateNewGame()
+        public static GameData CreateNewGame()
         {
             return new GameData()
             {

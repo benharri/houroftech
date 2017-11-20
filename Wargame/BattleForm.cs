@@ -12,9 +12,9 @@ namespace Wargame
 {
     public partial class BattleForm : Form
     {
-        private GameData Game { get; set; }
-        private StringBuilder Messages { get; set; }
-        private GameEngine Engine { get; set; }
+        private GameData Game { get; }
+        private StringBuilder Messages { get; }
+        private GameEngine Engine { get; }
 
         public BattleForm()
         {
@@ -22,7 +22,7 @@ namespace Wargame
             btnAttack.Enabled = false;
             btnCreateGame.Text = "Pick Players";
             Messages = new StringBuilder();
-            Game = (new GameFactory()).CreateNewGame();
+            Game = GameFactory.CreateNewGame();
             Engine = new GameEngine(Game);
             InitializeVendor();
             InitializeRoster();
@@ -30,9 +30,14 @@ namespace Wargame
 
         private void InitializeRoster()
         {
-            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            var cell = new DataGridViewTextBoxCell();
 
-            var grids = new List<DataGridView>() { dataGridViewAvailableCharacter, dataGridViewMyTeam, dataGridViewOpponentTeam };
+            var grids = new List<DataGridView>()
+            {
+                dataGridViewAvailableCharacter,
+                dataGridViewMyTeam,
+                dataGridViewOpponentTeam,
+            };
             foreach (var i in grids)
             {
                 i.AutoGenerateColumns = false;
@@ -83,7 +88,7 @@ namespace Wargame
                 tabControlMain.SelectTab(tabControlMain.TabPages["tabRosterMgmt"]);
                 return;
             }
-            Engine.StartRound(firstRound: true);
+            Game.StartRound(firstRound: true);
             Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
             RefreshLog();
             btnAttack.Enabled = true;
@@ -91,9 +96,14 @@ namespace Wargame
 
         private void InitializeVendor()
         {
-            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            var cell = new DataGridViewTextBoxCell();
 
-            var grids = new List<DataGridView>() {dataGridViewVendor, dataGridViewPlayerInventory, dataGridViewEMCharInventory };
+            var grids = new List<DataGridView>()
+            {
+                dataGridViewVendor,
+                dataGridViewPlayerInventory,
+                dataGridViewEMCharInventory
+            };
             foreach (var i in grids)
             {
                 i.AutoGenerateColumns = false;
@@ -140,7 +150,7 @@ namespace Wargame
             var status = Engine.ProcessAttack();
             Messages.AppendLine($"{status}\r\n");
 
-            if (!Game.RoundOrder.Any()) Engine.StartRound();
+            if (!Game.RoundOrder.Any()) Game.StartRound();
 
             btnAttack.Enabled = !Game.GameOver;
             if (!Game.GameOver) Messages.AppendLine($"Next up:\r\n  {Game.RoundOrder.Peek().PrintStats()}");
@@ -207,28 +217,20 @@ namespace Wargame
 
         private void dataGridViewEMTeamRoster_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null)
-                return;
-            if (dgv.CurrentRow.Selected)
-            {
-                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
-                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
-            }
+            var dgv = sender as DataGridView;
+            if (dgv == null || !dgv.CurrentRow.Selected) return;
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
         }
 
         private void dataGridViewEMTeamRoster_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null)
-                return;
-            if (dgv.CurrentRow.Selected)
-            {
-                var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
-                dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
-                lblCharInv.Text = $"{selectedCharacter.Name}'s Inventory"; 
-                lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
-            }
+            var dgv = sender as DataGridView;
+            if (dgv == null || !dgv.CurrentRow.Selected) return;
+            var selectedCharacter = (Character)dataGridViewEMTeamRoster.CurrentRow?.DataBoundItem;
+            dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;
+            lblCharInv.Text = $"{selectedCharacter.Name}'s Inventory"; 
+            lblCharRoster.Text = $"{selectedCharacter.Name} Currently Selected";
         }
 
         private void BtnUnequip_Click(object sender, EventArgs e)
@@ -252,7 +254,7 @@ namespace Wargame
 
             var selectedItem = (Item)dataGridViewEMCharInventory.CurrentRow?.DataBoundItem;
 
-            HealingPotion hp = (HealingPotion)selectedItem;
+            var hp = (HealingPotion)selectedItem;
             
             selectedCharacter.Inventory.Inventory.Remove(hp);
             dataGridViewEMCharInventory.DataSource = selectedCharacter.Inventory.Inventory;

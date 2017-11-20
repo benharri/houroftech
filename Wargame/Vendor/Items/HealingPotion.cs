@@ -17,11 +17,6 @@ namespace Wargame.Vendor.Items
 
         }
 
-        public override string ToString()
-        {
-            return $"{Name}: [HealingAmount: {HealingAmount}]";
-        }
-
-
+        public override string ToString() => $"{Name}: [HealingAmount: {HealingAmount}]";
     }
 }

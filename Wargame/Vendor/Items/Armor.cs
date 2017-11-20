@@ -13,9 +13,6 @@
             StrengthModifer = strengthmodifier;
         }
 
-        public override string ToString()
-        {
-            return $"{Name}: [STR: {StrengthModifer} DEF: {Defense}]";
-        }
+        public override string ToString() => $"{Name}: [STR: {StrengthModifer} DEF: {Defense}]";
     }
 }

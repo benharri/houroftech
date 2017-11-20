@@ -36,26 +36,6 @@ namespace Wargame.Core
             return $"{attacker.Name} dealt {roll.Total} - {defensebonus} DEF bonus ({roll.Total - defensebonus}) damage {(defender.Alive ? "to" : "and KILLED")} {defender.Name}\r\n  {roll}\r\nAttacker:\r\n  {attacker.PrintStats()}\r\nDefender:\r\n  {defender.PrintStats()}";
         }
 
-        internal void StartRound(bool firstRound = false)
-        {
-            if (firstRound)
-            {
-                gd.RoundNumber = 1;
-                foreach (var c in gd.Team1.Concat(gd.Team2))
-                {
-                    c.CurrentHp = c.MaxHp;
-                }
-            }
-            else
-            {
-                gd.RoundNumber++;
-            }
-
-            gd.RoundOrder?.Clear();
-            gd.LivingCharacters.ForEach(c => c.RollInitiative());
-            gd.RoundOrder = new Stack<Character>(gd.LivingCharacters);
-        }
-
         internal string ProcessAttack()
         {
             if (!gd.Team1.Any(t1 => t1.Alive)) // no one alive on team1

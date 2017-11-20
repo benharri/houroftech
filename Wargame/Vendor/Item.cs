@@ -1,8 +1,8 @@
 ﻿namespace Wargame.Vendor
 {
-    class Item
+    public class Item
     {
-        public string Name { get; set; }
+        protected string Name { get; set; }
         public int Price { get; set; }
         public string Description => ToString();
 

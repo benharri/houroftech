@@ -13,7 +13,7 @@ namespace Wargame.Characters
         public int MaxHp
         {
             get { return _maxHp; }
-            set
+            protected set
             {
                 _maxHp = value;
                 CurrentHp = value;
@@ -21,11 +21,11 @@ namespace Wargame.Characters
         }
         internal int CurrentHp { get; set; }
         internal bool Alive => CurrentHp > 0;
-        internal int Initiative { get; set; }
-        internal int BaseStrength { get; set; }
-        internal int NumDmgDice { get; set; }
-        internal CharacterInventory Inventory { get; set; }
-        internal static int[] BaseStats = { 15, 14, 13, 12, 10, 8 };
+        internal int Initiative { get; private set; }
+        internal int BaseStrength { private get; set; }
+        internal int NumDmgDice { private get; set; }
+        internal CharacterInventory Inventory { get; }
+        private static readonly int[] BaseStats = { 15, 14, 13, 12, 10, 8 };
         internal Stat Str { get; set; }
         internal Stat Con { get; set; }
         internal Stat Dex { get; set; }
@@ -55,7 +55,7 @@ namespace Wargame.Characters
             MeleeStat = Str;
         }
 
-        internal DiceRoll StatRoll(Stat stat) => new DiceRoll(NumDmgDice, BaseStrength, stat.Modifier);
+        private DiceRoll StatRoll(Stat stat) => new DiceRoll(NumDmgDice, BaseStrength, stat.Modifier);
 
         public override string ToString() => $"{(Alive ? " " : "X")} {Name}: \t{CurrentHp}/{MaxHp} HP ({Class})";
 
