@@ -14,7 +14,6 @@ namespace Wargame
     {
         private GameData Game { get; }
         private StringBuilder Messages { get; }
-        private GameEngine Engine { get; }
 
         public BattleForm()
         {
@@ -23,7 +22,6 @@ namespace Wargame
             btnCreateGame.Text = "Pick Players";
             Messages = new StringBuilder();
             Game = GameFactory.CreateNewGame();
-            Engine = new GameEngine(Game);
             InitializeVendor();
             InitializeRoster();
         }
@@ -147,8 +145,7 @@ namespace Wargame
         {
             btnAttack.Enabled = false;
 
-            var status = Engine.ProcessAttack();
-            Messages.AppendLine($"{status}\r\n");
+            Messages.AppendLine($"{Game.ProcessAttack()}\r\n");
 
             if (!Game.RoundOrder.Any()) Game.StartRound();
 

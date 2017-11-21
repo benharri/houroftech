@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Wargame.Core;
+using Wargame.Vendor;
+using Wargame.Vendor.Items;
 
 namespace Wargame.Characters
 {
@@ -35,6 +37,10 @@ namespace Wargame.Characters
         internal Stat MeleeStat { get; set; }
         internal DiceRoll Roll => StatRoll(MeleeStat);
         public string DieName => Roll.DieName;
+        internal IEnumerable<Item> Weapons => Inventory.Weapons;
+        internal IEnumerable<Item> Armor => Inventory.Armor;
+        internal int DefenseBonus => Inventory.DefenseBonus;
+         
 
         public Character(string name)
         {
